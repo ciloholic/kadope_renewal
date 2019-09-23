@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.container">
-    <KdpHeader />
-    <KdpTaskList />
-    <KdpCalendar />
+    <KdpHeader :class="$style.header" />
+    <KdpTaskList :class="$style.taskList" />
+    <KdpCalendar :class="$style.calendar" />
   </div>
 </template>
 
@@ -12,7 +12,6 @@ import KdpTaskList from '@/components/organisms/KdpTaskList'
 import KdpCalendar from '@/components/organisms/KdpCalendar'
 
 export default {
-  name: 'KdpTopTmp',
   components: {
     KdpHeader,
     KdpTaskList,
@@ -23,8 +22,26 @@ export default {
 
 <style lang="scss" module>
 .container {
+  margin-right: 15px;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-gap: 0 15px;
+  grid-template-rows: 15px 1fr 15px;
   grid-template-columns: 80px 250px 1fr;
+  grid-template-areas:
+    'area-h ........ ......'
+    'area-h area-t-l area-c'
+    'area-h ........ ......';
+}
+
+.header {
+  grid-area: area-h;
+}
+
+.taskList {
+  grid-area: area-t-l;
+}
+
+.calendar {
+  grid-area: area-c;
 }
 </style>

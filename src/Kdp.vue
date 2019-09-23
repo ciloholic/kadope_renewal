@@ -4,19 +4,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Kdp'
-}
-</script>
-
 <style lang="scss">
 @import '~normalize.css/normalize.css';
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&subset=japanese');
 
-$base-font-family: 'M PLUS 1p', sans-serif;
-$base-background: #332a25;
-$base-font-color: #fff;
+:root {
+  --base-font-family: 'M PLUS 1p', sans-serif;
+  --base-background-main: #332a25;
+  --base-background-sub: #fd0;
+  --base-font-color-default: #fff;
+  --base-font-color-main: #000;
+  --base-font-color-sub: #332a25;
+}
 
 * {
   padding: 0;
@@ -24,38 +23,15 @@ $base-font-color: #fff;
   box-sizing: border-box;
 }
 
-// html,
-// body,
-// #app {
-//   height: 100vh;
-// }
-
 html {
   font-size: 62.5%;
 }
 
 body {
-  font-family: $base-font-family;
+  font-family: var(--base-font-family);
   font-size: 1.4rem;
   line-height: 1.6;
-  color: $base-font-color;
-  background: $base-background;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: $base-font-color;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-span {
-  color: $base-font-color;
-  text-decoration: none;
+  color: var(--base-font-color-main);
+  background: var(--base-background-main);
 }
 </style>

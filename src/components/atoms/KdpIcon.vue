@@ -7,7 +7,6 @@
 
 <script>
 export default {
-  name: 'KdpHeader',
   props: {
     to: {
       type: String,
@@ -29,6 +28,7 @@ export default {
 
 <style lang="scss" module>
 .link {
+  color: var(--base-font-color-main);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,6 +38,7 @@ export default {
   height: 80px;
   padding: 10px;
   letter-spacing: 2px;
+  text-decoration: none;
 
   &:hover {
     background: rgba(0, 0, 0, 0.3);
@@ -45,12 +46,10 @@ export default {
 }
 
 .icon {
-  color: #000;
   font-size: 3rem;
 }
 
 .title {
-  color: #000;
   margin-top: 3px;
 }
 </style>
