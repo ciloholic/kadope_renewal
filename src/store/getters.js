@@ -5,8 +5,8 @@ export default {
   getProjectAll: state => {
     return state.projects
   },
-  getToday: state => {
-    return state.calendar.today
+  getCurrentDay: state => {
+    return state.calendar.currentDay
   },
   getCalendarConfig: state => {
     return state.calendarConfig

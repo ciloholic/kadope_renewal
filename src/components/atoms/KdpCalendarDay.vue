@@ -1,8 +1,8 @@
 <template>
-  <div :class="$style.day">
+  <div :class="$style.column">
     <div :class="$style.header">
-      <div>{{ currentDay.format('ddd') }}</div>
-      <div>{{ currentDay.format('DD') }}</div>
+      <span :class="[$style.dayOfWeek, { [$style.active]: isCurrentDay }]">{{ currentDay.format('ddd') }}</span>
+      <span :class="[$style.day, { [$style.active]: isCurrentDay }]">{{ currentDay.format('DD') }}</span>
     </div>
     <ul>
       <li :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')">
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     currentDay: {
@@ -31,6 +33,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['getCurrentDay']),
+    isCurrentDay() {
+      return this.currentDay.isSame(this.getCurrentDay, 'day')
+    },
     hours: function() {
       let start = this.moment().startOf('day')
       return [...Array(24 * 4).keys()].map(x => start.clone().add(x * 15, 'minutes'))
@@ -40,12 +46,42 @@ export default {
 </script>
 
 <style lang="scss" module>
-.day {
+.column {
   flex-grow: 1;
 }
 
 .header {
-  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50px;
+}
+
+.dayOfWeek {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+
+  &.active {
+    color: var(--base-background-sub);
+  }
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  height: 28px;
+  width: 28px;
+
+  &.active {
+    color: var(--base-font-color-sub);
+    background: var(--base-background-sub);
+  }
 }
 
 .minute {

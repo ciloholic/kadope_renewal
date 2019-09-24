@@ -25,7 +25,7 @@ export default {
     }
   ],
   calendar: {
-    today: moment()
+    currentDay: moment()
   },
   calendarConfig: {
     displayType: 'week'

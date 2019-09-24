@@ -27,7 +27,7 @@ export default {
 <style lang="scss" module>
 .header {
   background: var(--base-background-sub);
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 

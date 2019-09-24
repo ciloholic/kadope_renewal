@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.yearMonth">
-    <span :class="$style.year">{{ getToday | $_formatMoment('gggg年') }}</span>
-    <span :class="$style.month">{{ getToday | $_formatMoment('M月') }}</span>
+    <span>{{ getCurrentDay | $_formatMoment('gggg年') }}</span>
+    <span>{{ getCurrentDay | $_formatMoment('M月') }}</span>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters(['getToday'])
+    ...mapGetters(['getCurrentDay'])
   },
   mixins: [mixinMoment]
 }
@@ -25,12 +25,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
   height: 100%;
-}
-
-.year {
-}
-
-.month {
 }
 </style>

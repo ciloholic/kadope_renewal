@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.label">
+  <div>
     <ul>
       <li :class="$style.hour" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
         {{ hour | $_formatMoment('HH:mm') }}
@@ -26,11 +26,12 @@ export default {
 </script>
 
 <style lang="scss" module>
-.label {
-}
-
 .hour {
   height: 15px;
   list-style: none;
+
+  & + .hour {
+    margin-top: 45px;
+  }
 }
 </style>

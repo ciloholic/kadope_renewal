@@ -2,7 +2,7 @@
   <main :class="$style.calendar">
     <KdpCalendarHeader :class="$style.calendarHeader" />
     <KdpCalendarLabel :class="$style.calendarLabel" />
-    <KdpCalendarMain :class="$style.calendarBody" />
+    <KdpCalendarMain :class="$style.calendarMain" />
   </main>
 </template>
 
@@ -25,10 +25,11 @@ export default {
   padding: 10px;
   font-size: 0.9rem;
   display: grid;
-  grid-template-rows: 30px 1fr;
-  grid-template-columns: 50px 1fr;
+  grid-template-rows: 20px 42px 1fr;
+  grid-template-columns: 40px 1fr;
   grid-template-areas:
     'area-c-h area-c-h'
+    '........ area-c-b'
     'area-c-l area-c-b';
 }
 
@@ -40,7 +41,7 @@ export default {
   grid-area: area-c-l;
 }
 
-.calendarBody {
+.calendarMain {
   grid-area: area-c-b;
 }
 </style>

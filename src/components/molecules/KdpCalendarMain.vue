@@ -25,7 +25,11 @@ export default {
   display: flex;
 }
 
-.day + .day {
-  border-left: none;
+.day {
+  border-left: 1px solid #888;
+
+  &:last-child {
+    border-right: 1px solid #888;
+  }
 }
 </style>
