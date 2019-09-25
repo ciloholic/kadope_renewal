@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.week">
-    <KdpCalendarDay :class="$style.day" v-for="day in days" :key="day.format('YYYY-MM-DD')" :currentDay="day" />
+  <div :class="$style.calendarMain">
+    <KdpCalendarDay :class="$style.calendarDay" v-for="day in days" :key="day.format('YYYY-MM-DD')" :currentDay="day" />
   </div>
 </template>
 
@@ -21,11 +21,11 @@ export default {
 </script>
 
 <style lang="scss" module>
-.week {
+.calendarMain {
   display: flex;
 }
 
-.day {
+.calendarDay {
   border-left: 1px solid #888;
 
   &:last-child {

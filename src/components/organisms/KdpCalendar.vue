@@ -1,18 +1,30 @@
 <template>
   <main :class="$style.calendar">
-    <KdpCalendarHeader :class="$style.calendarHeader" />
-    <KdpCalendarLabel :class="$style.calendarLabel" />
+    <span :class="$style.calendarHeader">{{ getCurrentDay | $_formatMoment('gggg年M月') }}</span>
+    <ul>
+      <li :class="$style.calendarLabel" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
+        {{ hour | $_formatMoment('HH:mm') }}
+      </li>
+    </ul>
     <KdpCalendarMain :class="$style.calendarMain" />
   </main>
 </template>
 
 <script>
-import KdpCalendarHeader from '@/components/atoms/KdpCalendarHeader'
-import KdpCalendarLabel from '@/components/atoms/KdpCalendarLabel'
+import { mapGetters } from 'vuex'
+import mixinMoment from '@/mixins/moment'
 import KdpCalendarMain from '@/components/molecules/KdpCalendarMain'
 
 export default {
-  components: { KdpCalendarHeader, KdpCalendarLabel, KdpCalendarMain }
+  computed: {
+    ...mapGetters(['getCurrentDay']),
+    hours: function() {
+      let start = this.moment().startOf('day')
+      return [...Array(24).keys()].map(x => start.clone().add(x, 'hours'))
+    }
+  },
+  components: { KdpCalendarMain },
+  mixins: [mixinMoment]
 }
 </script>
 
@@ -35,10 +47,21 @@ export default {
 
 .calendarHeader {
   grid-area: area-c-h;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  height: 100%;
 }
 
 .calendarLabel {
   grid-area: area-c-l;
+  height: 15px;
+  list-style: none;
+
+  & + .calendarLabel {
+    margin-top: 45px;
+  }
 }
 
 .calendarMain {

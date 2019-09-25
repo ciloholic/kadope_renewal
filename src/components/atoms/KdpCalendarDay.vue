@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.column">
+  <div :class="$style.calendarDay">
     <div :class="$style.header">
       <span :class="[$style.dayOfWeek, { [$style.active]: isCurrentDay }]">{{ currentDay.format('ddd') }}</span>
       <span :class="[$style.day, { [$style.active]: isCurrentDay }]">{{ currentDay.format('DD') }}</span>
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-.column {
+.calendarDay {
   flex-grow: 1;
 }
 
