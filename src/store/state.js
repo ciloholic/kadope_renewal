@@ -28,6 +28,6 @@ export default {
     currentDay: moment()
   },
   calendarConfig: {
-    displayType: 'week'
+    displayDays: 7
   }
 }

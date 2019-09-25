@@ -20,7 +20,7 @@ export default {
 <style lang="scss" module>
 .taskList {
   color: var(--base-font-color-default);
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--base-background-default);
   height: 100%;
   border-radius: 3px;
   padding: 10px;

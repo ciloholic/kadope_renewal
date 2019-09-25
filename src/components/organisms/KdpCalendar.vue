@@ -1,8 +1,8 @@
 <template>
   <main :class="$style.calendar">
     <span :class="$style.calendarHeader">{{ getCurrentDay | $_formatMoment('gggg年M月') }}</span>
-    <ul>
-      <li :class="$style.calendarLabel" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
+    <ul :class="$style.calendarLabel">
+      <li :class="$style.calendarLabelList" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
         {{ hour | $_formatMoment('HH:mm') }}
       </li>
     </ul>
@@ -31,7 +31,7 @@ export default {
 <style lang="scss" module>
 .calendar {
   color: var(--base-font-color-default);
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--base-background-default);
   height: 100%;
   border-radius: 3px;
   padding: 10px;
@@ -56,11 +56,14 @@ export default {
 
 .calendarLabel {
   grid-area: area-c-l;
-  height: 15px;
-  list-style: none;
 
-  & + .calendarLabel {
-    margin-top: 45px;
+  .calendarLabelList {
+    height: 15px;
+    list-style: none;
+
+    & + .calendarLabelList {
+      margin-top: 45px;
+    }
   }
 }
 

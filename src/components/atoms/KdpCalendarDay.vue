@@ -5,9 +5,7 @@
       <span :class="[$style.day, { [$style.active]: isCurrentDay }]">{{ currentDay.format('DD') }}</span>
     </div>
     <ul>
-      <li :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')">
-        {{ hour.format('HH:mm') }}
-      </li>
+      <li :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')"></li>
     </ul>
   </div>
 </template>
@@ -56,6 +54,8 @@ export default {
   align-items: center;
   flex-direction: column;
   height: 50px;
+  position: sticky;
+  top: 0;
 }
 
 .dayOfWeek {

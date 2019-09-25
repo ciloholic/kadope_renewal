@@ -5,14 +5,16 @@
 </template>
 
 <script>
-import KdpCalendarDay from '@/components/atoms/KdpCalendarDay'
+import { mapGetters } from 'vuex'
 import mixinMoment from '@/mixins/moment'
+import KdpCalendarDay from '@/components/atoms/KdpCalendarDay'
 
 export default {
   computed: {
+    ...mapGetters(['getCalendarConfig']),
     days: function() {
       let start = this.moment().startOf('week')
-      return [...Array(7).keys()].map(x => start.clone().add(x, 'days'))
+      return [...Array(this.getCalendarConfig.displayDays).keys()].map(x => start.clone().add(x, 'days'))
     }
   },
   components: { KdpCalendarDay },
