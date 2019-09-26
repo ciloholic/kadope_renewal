@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import mixinMoment from '@/mixins/moment'
-import KdpCalendarDay from '@/components/atoms/KdpCalendarDay'
+import KdpCalendarDay from '@/components/molecules/KdpCalendarDay'
 
 export default {
   computed: {

@@ -64,7 +64,7 @@ export default {
     user-select: none;
 
     & + .calendarLabelList {
-      margin-top: 45px;
+      margin-top: 33px;
     }
   }
 }

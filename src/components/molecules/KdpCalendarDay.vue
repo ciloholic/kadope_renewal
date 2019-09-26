@@ -7,11 +7,13 @@
     <ul>
       <li :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')"></li>
     </ul>
+    <KdpTimeLine :class="$style.timeLine" v-if="isCurrentDay" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import KdpTimeLine from '@/components/atoms/KdpTimeLine'
 
 export default {
   props: {
@@ -38,13 +40,15 @@ export default {
       let start = this.moment().startOf('day')
       return [...Array(24 * 4).keys()].map(x => start.clone().add(x * 15, 'minutes'))
     }
-  }
+  },
+  components: { KdpTimeLine }
 }
 </script>
 
 <style lang="scss" module>
 .calendarDay {
   flex-grow: 1;
+  position: relative;
 }
 
 .header {
@@ -87,8 +91,12 @@ export default {
 }
 
 .minute {
-  height: 15px;
+  height: 12px;
   list-style: none;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .m00,
@@ -102,5 +110,9 @@ export default {
 
 .m30 {
   border-top: 1px dashed #888;
+}
+
+.timeLine {
+  position: absolute;
 }
 </style>
