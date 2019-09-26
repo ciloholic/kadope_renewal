@@ -50,6 +50,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
   font-size: 1.5rem;
   height: 100%;
 }
@@ -60,6 +61,7 @@ export default {
   .calendarLabelList {
     height: 15px;
     list-style: none;
+    user-select: none;
 
     & + .calendarLabelList {
       margin-top: 45px;

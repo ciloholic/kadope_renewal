@@ -24,7 +24,6 @@ export default {
     classObject(hour) {
       return {
         [this.$style.m00]: hour.format('mm') === '00',
-        [this.$style.m15]: hour.format('mm') === '15',
         [this.$style.m30]: hour.format('mm') === '30',
         [this.$style.m45]: hour.format('mm') === '45'
       }
@@ -53,6 +52,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  user-select: none;
   height: 50px;
   position: sticky;
   top: 0;
@@ -62,6 +62,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
   font-size: 1rem;
 
   &.active {
@@ -73,6 +74,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
   border-radius: 50%;
   font-size: 1.8rem;
   height: 28px;
