@@ -3,21 +3,20 @@
 </template>
 
 <script>
-const MIN_HEIGHT = 12
-const MIN_MINUTES = 15
-const HEADER_HEIGHT = 50
-
 export default {
   data: function() {
     return {
-      intervalId: null
+      intervalId: null,
+      min_height: 12,
+      min_minutes: 15,
+      header_height: 50
     }
   },
   methods: {
     updateTimeLine: function() {
       const start = this.moment().startOf('day')
       const minutes = this.moment().diff(start, 'minutes')
-      const top = parseInt((minutes / MIN_MINUTES) * MIN_HEIGHT + HEADER_HEIGHT)
+      const top = parseInt((minutes / this.min_minutes) * this.min_height + this.header_height)
       this.$refs.timeLine.style.top = `${top}px`
     }
   },
