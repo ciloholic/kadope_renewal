@@ -10,12 +10,14 @@
 
 :root {
   --base-font-family: 'M PLUS 1p', sans-serif;
+  --base-background-default: #514a44;
   --base-background-main: #332a25;
   --base-background-sub: #fd0;
-  --base-background-default: #514a44;
+  --base-background-light: #777;
   --base-font-color-default: #fff;
   --base-font-color-main: #000;
   --base-font-color-sub: #332a25;
+  --base-border-color-default: #fff;
 }
 
 * {

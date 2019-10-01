@@ -7,17 +7,27 @@
         v-for="project in getProjectAll"
         :key="project.id"
         :project="project"
+        @click="onClick"
       />
     </div>
   </aside>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import KdpSearch from '@/components/atoms/KdpSearch'
 import KdpDropdownList from '@/components/atoms/KdpDropdownList'
 
 export default {
+  created() {
+    this.DROPDOWN_HIDDEN_ALL()
+  },
+  methods: {
+    ...mapMutations(['DROPDOWN_TOGGLE_BY_ID', 'DROPDOWN_HIDDEN_ALL']),
+    onClick: function(id) {
+      this.DROPDOWN_TOGGLE_BY_ID(id)
+    }
+  },
   computed: {
     ...mapGetters(['getProjectAll'])
   },
@@ -32,7 +42,7 @@ export default {
   border-radius: 3px;
   padding: 10px;
   display: grid;
-  grid-gap: 15px 0;
+  grid-gap: 5px 0;
   grid-template-rows: 25px 1fr;
   grid-template-columns: 1fr;
   grid-template-areas:

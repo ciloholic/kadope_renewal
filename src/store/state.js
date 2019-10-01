@@ -12,15 +12,15 @@ export default {
     {
       id: 1,
       projectName: 'project-name-1',
-      tasks: [{ id: 1, taskName: 'task-name-1' }, { id: 2, taskName: 'task-name-2' }]
+      tasks: [{ id: 1, taskName: 'task-name-1', isShown: false }, { id: 2, taskName: 'task-name-2', isShown: false }]
     },
     {
       id: 2,
       projectName: 'project-name-2',
       tasks: [
-        { id: 3, taskName: 'task-name-1' },
-        { id: 4, taskName: 'task-name-2' },
-        { id: 5, taskName: 'task-name-3' }
+        { id: 3, taskName: 'task-name-1', isShown: false },
+        { id: 4, taskName: 'task-name-2', isShown: false },
+        { id: 5, taskName: 'task-name-3', isShown: false }
       ]
     }
   ],

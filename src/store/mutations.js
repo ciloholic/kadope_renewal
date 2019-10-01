@@ -1,12 +1,16 @@
-// import * as types from './mutation-types'
+import * as types from './mutation-types'
 
 export default {
-  // [types.AUTH_LOGIN] (state, payload) {
-  //   state.auth = payload
-  // },
-  // [types.FETCH_ALL_TASKLIST] (state, payload) {
-  //   state.board.lists = payload
-  // },
+  [types.DROPDOWN_TOGGLE_BY_ID](state, payload) {
+    state.projects.forEach(project => {
+      if (project.id == payload) {
+        project.tasks.forEach(task => (task.isShown = !task.isShown))
+      }
+    })
+  },
+  [types.DROPDOWN_HIDDEN_ALL](state) {
+    state.projects.forEach(project => project.tasks.forEach(task => (task.isShown = false)))
+  }
   // [types.ADD_TASK] (state, payload) {
   //   const task = payload
   //   for (let i = 0; i < state.board.lists.length; i++) {
