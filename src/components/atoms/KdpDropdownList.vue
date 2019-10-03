@@ -1,19 +1,22 @@
 <template>
   <div :class="$style.dropdownList">
-    <div :class="[$style.title, { [$style.rotate]: this.isShown }]" @click="onClick(project)">
+    <div :class="[$style.title, { [$style.rotate]: this.isShown }]" :style="setStyle" @click="onClick(project)">
       {{ project.projectName }}
       <div :class="$style.editButton" />
     </div>
     <ul :class="$style.project">
       <li :class="$style.task" v-for="task in project.tasks" :key="task.id" v-show="task.isShown">
-        <div :class="$style.taskName">{{ task.taskName }}</div>
+        <div :class="$style.taskName" :style="setStyle">{{ task.taskName }}</div>
         <div :class="$style.editButton" />
       </li>
     </ul>
+    <slot />
   </div>
 </template>
 
 <script>
+import mixinColor from '@/mixins/color'
+
 export default {
   props: {
     project: {
@@ -31,7 +34,13 @@ export default {
       this.isShown = !this.isShown
       this.$emit('click', project.id)
     }
-  }
+  },
+  computed: {
+    setStyle: function() {
+      return { '--target-background-color-hover': this.$_hsla(this.project.id, 0.5) }
+    }
+  },
+  mixins: [mixinColor]
 }
 </script>
 
@@ -40,27 +49,33 @@ export default {
   color: var(--base-font-color-default);
   font-size: 1.4rem;
   border-radius: 3px;
-  padding: 5px;
 }
 
 .title {
   position: relative;
   font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
+  word-break: break-all;
   user-select: none;
+  min-height: 3rem;
+  padding: 5px 0;
 
   &:before {
     content: ' ';
     display: inline-block;
-    width: 0;
-    height: 0;
     border: 4px solid transparent;
     border-right: 0;
     border-left: 6px solid var(--base-border-color-default);
-    margin: 0 5px 1px 3px;
+    margin: 0 1px 1px 8px;
   }
 
   &.rotate:before {
     transform: rotate(90deg);
+  }
+
+  &:hover {
+    background: var(--target-background-color-hover);
   }
 
   &:hover > .editButton {
@@ -88,8 +103,13 @@ export default {
   font-size: 1.2rem;
   min-height: 3rem;
   padding: 5px;
+  word-break: break-all;
   user-select: none;
   cursor: pointer;
+
+  &:hover {
+    background: var(--target-background-color-hover);
+  }
 }
 
 .editButton {

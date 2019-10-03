@@ -16,10 +16,10 @@ export default {
     },
     {
       id: 2,
-      projectName: 'project-name-2',
+      projectName: 'projectname2projectname2projectname2projectname2',
       tasks: [
         { id: 3, taskName: 'task-name-1', isShown: false },
-        { id: 4, taskName: 'task-name-2', isShown: false },
+        { id: 4, taskName: 'taskname2taskname2taskname2taskname2taskname2', isShown: false },
         { id: 5, taskName: 'task-name-3', isShown: false }
       ]
     }

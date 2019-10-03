@@ -19,11 +19,8 @@ import KdpSearch from '@/components/atoms/KdpSearch'
 import KdpDropdownList from '@/components/atoms/KdpDropdownList'
 
 export default {
-  created() {
-    this.DROPDOWN_HIDDEN_ALL()
-  },
   methods: {
-    ...mapMutations(['DROPDOWN_TOGGLE_BY_ID', 'DROPDOWN_HIDDEN_ALL']),
+    ...mapMutations(['DROPDOWN_TOGGLE_BY_ID']),
     onClick: function(id) {
       this.DROPDOWN_TOGGLE_BY_ID(id)
     }
@@ -56,6 +53,7 @@ export default {
 
 .project {
   grid-area: area-d-b;
+  max-width: 230px;
 }
 
 .dropdownList + .dropdownList {
