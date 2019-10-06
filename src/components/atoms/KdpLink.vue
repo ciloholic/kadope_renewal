@@ -1,6 +1,6 @@
 <template>
   <router-link :class="$style.link" :to="{ name: to }">
-    <font-awesome-icon :class="$style.icon" :icon="icon" />
+    <font-awesome-icon :icon="icon" size="3x" fixed-width />
     <span :class="$style.title">{{ title }}</span>
   </router-link>
 </template>
@@ -43,10 +43,6 @@ export default {
   &:hover {
     background: rgba(0, 0, 0, 0.3);
   }
-}
-
-.icon {
-  font-size: 3rem;
 }
 
 .title {

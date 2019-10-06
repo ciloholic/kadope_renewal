@@ -1,13 +1,13 @@
 <template>
   <aside :class="$style.taskList">
     <KdpSearch :class="$style.search" />
-    <div :class="$style.project">
+    <div :class="$style.projects">
       <KdpDropdownList
         :class="$style.dropdownList"
         v-for="project in getProjectAll"
         :key="project.id"
         :project="project"
-        @click="onClick"
+        @click="onProjectClick"
       />
     </div>
   </aside>
@@ -21,7 +21,7 @@ import KdpDropdownList from '@/components/atoms/KdpDropdownList'
 export default {
   methods: {
     ...mapMutations(['DROPDOWN_TOGGLE_BY_ID']),
-    onClick: function(id) {
+    onProjectClick: function(id) {
       this.DROPDOWN_TOGGLE_BY_ID(id)
     }
   },
@@ -38,21 +38,17 @@ export default {
   background: var(--base-background-default);
   border-radius: 3px;
   padding: 10px;
-  display: grid;
-  grid-gap: 5px 0;
-  grid-template-rows: 25px 1fr;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    'area-s'
-    'area-d-b';
+  display: flex;
+  flex-direction: column;
 }
 
 .search {
-  grid-area: area-s;
+  width: auto;
+  height: 25px;
 }
 
-.project {
-  grid-area: area-d-b;
+.projects {
+  margin-top: 10px;
   max-width: 230px;
 }
 

@@ -1,8 +1,11 @@
 <template>
   <div :class="$style.dropdownList">
-    <div :class="[$style.title, { [$style.rotate]: this.isShown }]" :style="setStyle" @click="onClick(project)">
-      {{ project.projectName }}
-      <div :class="$style.editButton" />
+    <div :class="$style.titleGroup" @click="onClick(project)" :style="setStyle">
+      <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
+      <div :class="$style.title">
+        {{ project.projectName }}
+        <div :class="$style.editButton" />
+      </div>
     </div>
     <ul :class="$style.project">
       <li :class="$style.task" v-for="task in project.tasks" :key="task.id" v-show="task.isShown">
@@ -38,6 +41,9 @@ export default {
   computed: {
     setStyle: function() {
       return { '--target-background-color-hover': this.$_hsla(this.project.id, 0.5) }
+    },
+    getIcon: function() {
+      return this.isShown ? 'chevron-down' : 'chevron-right'
     }
   },
   mixins: [mixinColor]
@@ -51,27 +57,23 @@ export default {
   border-radius: 3px;
 }
 
-.title {
-  position: relative;
-  font-size: 1.4rem;
-  font-weight: bold;
-  line-height: 2rem;
-  word-break: break-all;
-  user-select: none;
-  min-height: 3rem;
-  padding: 5px 0;
+.titleGroup {
+  display: flex;
+  align-items: center;
 
-  &:before {
-    content: ' ';
-    display: inline-block;
-    border: 4px solid transparent;
-    border-right: 0;
-    border-left: 6px solid var(--base-border-color-default);
-    margin: 0 1px 1px 8px;
+  .icon {
+    margin: auto 2px;
   }
 
-  &.rotate:before {
-    transform: rotate(90deg);
+  .title {
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 2rem;
+    word-break: break-all;
+    user-select: none;
+    min-height: 3rem;
+    padding: 5px 0;
   }
 
   &:hover {
