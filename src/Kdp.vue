@@ -11,12 +11,12 @@
 :root {
   --base-font-family: 'M PLUS 1p', sans-serif;
   --base-background-default: #514a44;
-  --base-background-main: #332a25;
-  --base-background-sub: #fd0;
+  --base-background-primary: #332a25;
+  --base-background-secondary: #fd0;
   --base-background-light: #777;
   --base-font-color-default: #fff;
-  --base-font-color-main: #000;
-  --base-font-color-sub: #332a25;
+  --base-font-color-primary: #000;
+  --base-font-color-secondary: #332a25;
   --base-border-color-default: #fff;
 }
 
@@ -34,7 +34,7 @@ body {
   font-family: var(--base-font-family);
   font-size: 1.4rem;
   line-height: 1.6;
-  color: var(--base-font-color-main);
-  background: var(--base-background-main);
+  color: var(--base-font-color-primary);
+  background: var(--base-background-primary);
 }
 </style>

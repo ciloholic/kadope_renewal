@@ -6,7 +6,7 @@
 
 <style lang="scss" module>
 .logo {
-  color: var(--base-font-color-sub);
+  color: var(--base-font-color-secondary);
   padding: 2px 0 1px;
   font-weight: bold;
   font-size: 1.4rem;

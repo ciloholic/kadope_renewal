@@ -70,7 +70,7 @@ export default {
   font-size: 1rem;
 
   &.active {
-    color: var(--base-background-sub);
+    color: var(--base-background-secondary);
   }
 }
 
@@ -85,8 +85,8 @@ export default {
   width: 28px;
 
   &.active {
-    color: var(--base-font-color-sub);
-    background: var(--base-background-sub);
+    color: var(--base-font-color-secondary);
+    background: var(--base-background-secondary);
   }
 }
 

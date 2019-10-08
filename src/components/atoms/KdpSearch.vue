@@ -5,7 +5,7 @@
 <style lang="scss" module>
 .search {
   color: var(--base-font-color-default);
-  background: var(--base-background-main);
+  background: var(--base-background-primary);
   font-size: 1.4rem;
   border-radius: 3px;
   padding: 5px 10px;

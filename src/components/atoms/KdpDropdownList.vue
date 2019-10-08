@@ -2,10 +2,8 @@
   <div :class="$style.dropdownList">
     <div :class="$style.titleGroup" @click="onClick(project)" :style="setStyle">
       <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
-      <div :class="$style.title">
-        {{ project.projectName }}
-        <div :class="$style.editButton" />
-      </div>
+      <div :class="$style.title">{{ project.projectName }}</div>
+      <div :class="$style.editButton" />
     </div>
     <ul :class="$style.project">
       <li :class="$style.task" v-for="task in project.tasks" :key="task.id" v-show="task.isShown">
@@ -13,7 +11,6 @@
         <div :class="$style.editButton" />
       </li>
     </ul>
-    <slot />
   </div>
 </template>
 
@@ -58,6 +55,7 @@ export default {
 }
 
 .titleGroup {
+  position: relative;
   display: flex;
   align-items: center;
 
@@ -66,7 +64,6 @@ export default {
   }
 
   .title {
-    position: relative;
     font-size: 1.4rem;
     font-weight: bold;
     line-height: 2rem;
@@ -115,7 +112,7 @@ export default {
 }
 
 .editButton {
-  background: var(--base-background-main);
+  background: var(--base-background-primary);
   display: none;
   width: 2.4rem;
   font-size: 1rem;

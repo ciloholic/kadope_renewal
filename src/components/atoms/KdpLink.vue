@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" module>
 .link {
-  color: var(--base-font-color-main);
+  color: var(--base-font-color-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
