@@ -1,14 +1,13 @@
 <template>
   <div :class="$style.dropdownList">
-    <div :class="$style.titleGroup" @click="onClick(project)" :style="setStyle">
+    <div :class="$style.mainTitle" @click="onClick">
       <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
-      <div :class="$style.title">{{ project.projectName }}</div>
-      <div :class="$style.editButton" />
+      <div :class="$style.title">{{ title }}</div>
     </div>
-    <ul :class="$style.project">
-      <li :class="$style.task" v-for="task in project.tasks" :key="task.id" v-show="task.isShown">
-        <div :class="$style.taskName" :style="setStyle">{{ task.taskName }}</div>
-        <div :class="$style.editButton" />
+    <ul :class="$style.tasks">
+      <li :class="$style.task" v-for="task in tasks" :key="task.id" v-show="shown">
+        <div :class="$style.taskName" :style="setStyle(task.project_id)">{{ task.taskName }}</div>
+        <KdpEditButton :class="$style.editButton" />
       </li>
     </ul>
   </div>
@@ -16,33 +15,38 @@
 
 <script>
 import mixinColor from '@/mixins/color'
+import KdpEditButton from '@/components/atoms/KdpEditButton'
 
 export default {
   props: {
-    project: {
-      type: Object,
+    title: {
+      type: String,
+      required: true
+    },
+    tasks: {
+      type: Array,
       required: true
     }
   },
   data: function() {
     return {
-      isShown: false
+      shown: true
     }
   },
   methods: {
-    onClick(project) {
-      this.isShown = !this.isShown
-      this.$emit('click', project.id)
+    onClick() {
+      this.shown = !this.shown
+    },
+    setStyle: function(seed) {
+      return { '--target-background-color-hover': this.$_hsla(seed, 0.5) }
     }
   },
   computed: {
-    setStyle: function() {
-      return { '--target-background-color-hover': this.$_hsla(this.project.id, 0.5) }
-    },
     getIcon: function() {
-      return this.isShown ? 'chevron-down' : 'chevron-right'
+      return this.shown ? 'chevron-down' : 'chevron-right'
     }
   },
+  components: { KdpEditButton },
   mixins: [mixinColor]
 }
 </script>
@@ -54,16 +58,16 @@ export default {
   border-radius: 3px;
 }
 
-.titleGroup {
+.mainTitle {
   position: relative;
   display: flex;
   align-items: center;
 
-  .icon {
+  & > .icon {
     margin: auto 2px;
   }
 
-  .title {
+  & > .title {
     font-size: 1.4rem;
     font-weight: bold;
     line-height: 2rem;
@@ -82,16 +86,16 @@ export default {
   }
 }
 
-.project {
+.tasks {
   list-style: none;
-}
 
-.task {
-  position: relative;
-  margin-top: 5px;
+  & > .task {
+    position: relative;
+    margin-top: 5px;
 
-  &:hover > .editButton {
-    display: flex;
+    &:hover > .editButton {
+      display: flex;
+    }
   }
 }
 
@@ -112,21 +116,8 @@ export default {
 }
 
 .editButton {
-  background: var(--base-background-primary);
-  display: none;
-  width: 2.4rem;
-  font-size: 1rem;
   position: absolute;
   top: 0;
   right: 0;
-  border-radius: 0 0 0 3px;
-  cursor: default;
-
-  &::before {
-    display: block;
-    content: 'edit';
-    margin: auto;
-    line-height: 1.3rem;
-  }
 }
 </style>

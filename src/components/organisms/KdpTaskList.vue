@@ -1,34 +1,36 @@
 <template>
   <aside :class="$style.taskList">
     <KdpSearch :class="$style.search" />
-    <div :class="$style.projects">
-      <KdpDropdownList
-        :class="$style.dropdownList"
-        v-for="project in getProjectAll"
-        :key="project.id"
-        :project="project"
-        @click="onProjectClick"
-      />
-    </div>
+    <KdpRecentTask :class="$style.dropdownList" title="最近使ったタスク" :tasks="getRecentTaskAll | limit" />
+    <KdpDropdownList
+      :class="$style.dropdownList"
+      v-for="project in getProjectAll"
+      :key="project.id"
+      :title="project.projectName"
+      :seed="project.id"
+      :tasks="project.tasks"
+      @click="DROPDOWN_TOGGLE_BY_ID(id)"
+    />
   </aside>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import KdpSearch from '@/components/atoms/KdpSearch'
-import KdpDropdownList from '@/components/atoms/KdpDropdownList'
+import KdpDropdownList from '@/components/molecules/KdpDropdownList'
+import KdpRecentTask from '@/components/molecules/KdpRecentTask'
 
 export default {
   methods: {
-    ...mapMutations(['DROPDOWN_TOGGLE_BY_ID']),
-    onProjectClick: function(id) {
-      this.DROPDOWN_TOGGLE_BY_ID(id)
-    }
+    ...mapMutations(['DROPDOWN_TOGGLE_BY_ID'])
   },
   computed: {
-    ...mapGetters(['getProjectAll'])
+    ...mapGetters(['getRecentTaskAll', 'getProjectAll'])
   },
-  components: { KdpSearch, KdpDropdownList }
+  filters: {
+    limit: v => v.slice(0, 6)
+  },
+  components: { KdpSearch, KdpRecentTask, KdpDropdownList }
 }
 </script>
 
@@ -47,7 +49,7 @@ export default {
   height: 25px;
 }
 
-.projects {
+.dropdownList {
   margin-top: 10px;
   max-width: 230px;
 }

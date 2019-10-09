@@ -81,8 +81,9 @@ export default {
   user-select: none;
   border-radius: 50%;
   font-size: 1.8rem;
-  height: 28px;
-  width: 28px;
+  height: 32px;
+  width: 32px;
+  margin-bottom: 2px;
 
   &.active {
     color: var(--base-font-color-secondary);
