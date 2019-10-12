@@ -33,19 +33,20 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  width: 80px;
-  height: 80px;
-  padding: 10px;
+  font-size: 0.8rem;
+  width: 70px;
+  height: 70px;
+  padding: 5px;
   letter-spacing: 2px;
   text-decoration: none;
+  user-select: none;
 
   &:hover {
     background: rgba(0, 0, 0, 0.3);
   }
-}
 
-.title {
-  margin-top: 3px;
+  & > .title {
+    margin-top: 5px;
+  }
 }
 </style>

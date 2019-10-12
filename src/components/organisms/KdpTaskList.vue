@@ -6,10 +6,8 @@
       :class="$style.dropdownList"
       v-for="project in getProjectAll"
       :key="project.id"
-      :title="project.projectName"
-      :seed="project.id"
-      :tasks="project.tasks"
-      @click="DROPDOWN_TOGGLE_BY_ID(id)"
+      :project="project"
+      @click="TASK_TOGGLE_BY_ID(id)"
     />
   </aside>
 </template>
@@ -17,12 +15,12 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import KdpSearch from '@/components/atoms/KdpSearch'
-import KdpDropdownList from '@/components/molecules/KdpDropdownList'
 import KdpRecentTask from '@/components/molecules/KdpRecentTask'
+import KdpDropdownList from '@/components/molecules/KdpDropdownList'
 
 export default {
   methods: {
-    ...mapMutations(['DROPDOWN_TOGGLE_BY_ID'])
+    ...mapMutations(['TASK_TOGGLE_BY_ID'])
   },
   computed: {
     ...mapGetters(['getRecentTaskAll', 'getProjectAll'])

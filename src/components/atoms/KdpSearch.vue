@@ -11,6 +11,7 @@
   padding: 5px 10px;
   border: none;
   width: 100%;
+  user-select: none;
 
   &:focus {
     outline: 0;

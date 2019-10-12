@@ -1,13 +1,12 @@
 <template>
   <div :class="$style.dropdownList">
-    <div :class="$style.mainTitle" @click="onClick">
+    <div :class="$style.mainTitle" @click="onDropdown">
       <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
       <div :class="$style.title">{{ title }}</div>
     </div>
     <ul :class="$style.tasks">
-      <li :class="$style.task" v-for="task in tasks" :key="task.id" v-show="shown">
+      <li :class="$style.task" v-for="task in tasks" :key="task.id" v-show="dropdownShown">
         <div :class="$style.taskName" :style="setStyle(task.project_id)">{{ task.taskName }}</div>
-        <KdpEditButton :class="$style.editButton" />
       </li>
     </ul>
   </div>
@@ -15,7 +14,6 @@
 
 <script>
 import mixinColor from '@/mixins/color'
-import KdpEditButton from '@/components/atoms/KdpEditButton'
 
 export default {
   props: {
@@ -30,12 +28,12 @@ export default {
   },
   data: function() {
     return {
-      shown: true
+      dropdownShown: true
     }
   },
   methods: {
-    onClick() {
-      this.shown = !this.shown
+    onDropdown() {
+      this.dropdownShown = !this.dropdownShown
     },
     setStyle: function(seed) {
       return { '--target-background-color-hover': this.$_hsla(seed, 0.5) }
@@ -43,10 +41,9 @@ export default {
   },
   computed: {
     getIcon: function() {
-      return this.shown ? 'chevron-down' : 'chevron-right'
+      return this.dropdownShown ? 'chevron-down' : 'chevron-right'
     }
   },
-  components: { KdpEditButton },
   mixins: [mixinColor]
 }
 </script>
@@ -63,40 +60,32 @@ export default {
   display: flex;
   align-items: center;
 
-  & > .icon {
-    margin: auto 2px;
-  }
-
-  & > .title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    line-height: 2rem;
-    word-break: break-all;
-    user-select: none;
-    min-height: 3rem;
-    padding: 5px 0;
-  }
-
   &:hover {
     background: var(--target-background-color-hover);
   }
+}
 
-  &:hover > .editButton {
-    display: flex;
-  }
+.icon {
+  margin: auto 2px;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
+  word-break: break-all;
+  user-select: none;
+  min-height: 3rem;
+  padding: 5px 0;
 }
 
 .tasks {
   list-style: none;
+}
 
-  & > .task {
-    position: relative;
-    margin-top: 5px;
-
-    &:hover > .editButton {
-      display: flex;
-    }
-  }
+.task {
+  position: relative;
+  margin-top: 5px;
 }
 
 .taskName {
@@ -113,11 +102,5 @@ export default {
   &:hover {
     background: var(--target-background-color-hover);
   }
-}
-
-.editButton {
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 </style>
