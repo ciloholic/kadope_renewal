@@ -1,13 +1,13 @@
 <template>
   <div :class="$style.calendarDay">
     <div :class="$style.header">
-      <span :class="[$style.dayOfWeek, { [$style.active]: isCurrentDay }]">{{ currentDay.format('ddd') }}</span>
-      <span :class="[$style.day, { [$style.active]: isCurrentDay }]">{{ currentDay.format('DD') }}</span>
+      <span :class="[$style.dayOfWeek, { [$style.active]: isToDay }]">{{ currentDay.format('ddd') }}</span>
+      <span :class="[$style.day, { [$style.active]: isToDay }]">{{ currentDay.format('DD') }}</span>
     </div>
     <ul>
       <li :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')"></li>
     </ul>
-    <KdpTimeLine :class="$style.timeLine" v-if="isCurrentDay" />
+    <KdpTimeLine :class="$style.timeLine" v-if="isToDay" />
   </div>
 </template>
 
@@ -32,9 +32,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCurrentDay']),
-    isCurrentDay() {
-      return this.currentDay.isSame(this.getCurrentDay, 'day')
+    ...mapGetters(['getCalendarInfo']),
+    isToDay() {
+      return this.currentDay.isSame(this.getCalendarInfo.toDay, 'day')
     },
     hours: function() {
       let start = this.moment().startOf('day')

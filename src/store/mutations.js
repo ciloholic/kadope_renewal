@@ -26,7 +26,7 @@ export default {
       }
     })
   },
-  [types.TASK_HIDDEN_ALL](state) {
-    state.projects.forEach(project => project.tasks.forEach(task => (task.isShown = false)))
+  [types.CALENDAR_INFO_UPDATE](state, payload) {
+    state.calendarInfo = Object.assign(state.calendarInfo, payload)
   }
 }

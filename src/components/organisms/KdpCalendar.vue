@@ -1,6 +1,10 @@
 <template>
   <main :class="$style.calendar">
-    <span :class="$style.calendarHeader">{{ getCurrentDay | $_formatMoment('gggg年M月') }}</span>
+    <div :class="$style.calendarHeader">
+      <font-awesome-icon :class="$style.prev" icon="angle-left" size="lg" fixed-width @click="onPrev" />
+      <p @click="onToday">{{ getCalendarInfo.currentDay | $_formatMoment('gggg年M月') }}</p>
+      <font-awesome-icon :class="$style.next" icon="angle-right" size="lg" fixed-width @click="onNext" />
+    </div>
     <ul :class="$style.calendarLabel">
       <li :class="$style.calendarLabelList" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
         {{ hour | $_formatMoment('HH:mm') }}
@@ -11,13 +15,25 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import mixinMoment from '@/mixins/moment'
 import KdpCalendarMain from '@/components/molecules/KdpCalendarMain'
 
 export default {
+  methods: {
+    ...mapMutations(['CALENDAR_INFO_UPDATE']),
+    onToday() {
+      this.CALENDAR_INFO_UPDATE({ currentDay: this.moment() })
+    },
+    onPrev() {
+      this.CALENDAR_INFO_UPDATE({ currentDay: this.getCalendarInfo.currentDay.clone().subtract(1, 'weeks') })
+    },
+    onNext() {
+      this.CALENDAR_INFO_UPDATE({ currentDay: this.getCalendarInfo.currentDay.clone().add(1, 'weeks') })
+    }
+  },
   computed: {
-    ...mapGetters(['getCurrentDay']),
+    ...mapGetters(['getCalendarInfo']),
     hours: function() {
       let start = this.moment().startOf('day')
       return [...Array(24).keys()].map(x => start.clone().add(x, 'hours'))
@@ -53,6 +69,19 @@ export default {
   user-select: none;
   font-size: 1.5rem;
   height: 100%;
+
+  .topLink {
+    color: var(--base-font-color-default);
+    text-decoration: none;
+  }
+
+  .prev {
+    margin-right: 20px;
+  }
+
+  .next {
+    margin-left: 20px;
+  }
 }
 
 .calendarLabel {

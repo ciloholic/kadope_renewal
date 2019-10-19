@@ -6,7 +6,7 @@
     </div>
     <ul :class="$style.tasks">
       <li :class="$style.task" v-for="task in tasks" :key="task.id" v-show="dropdownShown">
-        <div :class="$style.taskName" :style="setStyle(task.project_id)">{{ task.taskName }}</div>
+        <div :class="$style.taskName" :style="setStyle(task.projectId)">{{ task.taskName }}</div>
       </li>
     </ul>
   </div>

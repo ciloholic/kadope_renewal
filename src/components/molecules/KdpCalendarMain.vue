@@ -11,10 +11,18 @@ import KdpCalendarDay from '@/components/molecules/KdpCalendarDay'
 
 export default {
   computed: {
-    ...mapGetters(['getCalendarConfig']),
+    ...mapGetters(['getCalendarInfo']),
     days: function() {
-      let start = this.moment().startOf('week')
-      return [...Array(this.getCalendarConfig.displayDays).keys()].map(x => start.clone().add(x, 'days'))
+      if (this.getCalendarInfo.displayDays === 5) {
+        let start = this.getCalendarInfo.currentDay
+          .clone()
+          .startOf('week')
+          .add(1, 'days')
+        return [...Array(this.getCalendarInfo.displayDays).keys()].map(x => start.clone().add(x, 'days'))
+      } else {
+        let start = this.getCalendarInfo.currentDay.clone().startOf('week')
+        return [...Array(this.getCalendarInfo.displayDays).keys()].map(x => start.clone().add(x, 'days'))
+      }
     }
   },
   components: { KdpCalendarDay },

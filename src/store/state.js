@@ -1,5 +1,6 @@
 import moment from 'moment-timezone'
 moment.tz.setDefault('Asia/Tokyo')
+moment.locale('ja')
 
 export default {
   links: [
@@ -13,13 +14,13 @@ export default {
     { to: 'KdpTop', icon: 'tools', title: '個人設定' }
   ],
   recentTasks: [
-    { project_id: 111, projectName: 'project-name-1', taskName: 'task-name-1' },
-    { project_id: 222, projectName: 'project-name-2', taskName: 'task-name-2' },
-    { project_id: 333, projectName: 'project-name-3', taskName: 'task-name-3' },
-    { project_id: 444, projectName: 'project-name-4', taskName: 'task-name-4' },
-    { project_id: 555, projectName: 'project-name-5', taskName: 'task-name-5' },
-    { project_id: 666, projectName: 'project-name-6', taskName: 'task-name-6' },
-    { project_id: 777, projectName: 'project-name-7', taskName: 'task-name-7' }
+    { projectId: 111, projectName: 'project-name-1', taskName: 'task-name-1' },
+    { projectId: 222, projectName: 'project-name-2', taskName: 'task-name-2' },
+    { projectId: 333, projectName: 'project-name-3', taskName: 'task-name-3' },
+    { projectId: 444, projectName: 'project-name-4', taskName: 'task-name-4' },
+    { projectId: 555, projectName: 'project-name-5', taskName: 'task-name-5' },
+    { projectId: 666, projectName: 'project-name-6', taskName: 'task-name-6' },
+    { projectId: 777, projectName: 'project-name-7', taskName: 'task-name-7' }
   ],
   projects: [
     {
@@ -43,10 +44,9 @@ export default {
       ]
     }
   ],
-  calendar: {
-    currentDay: moment()
-  },
-  calendarConfig: {
+  calendarInfo: {
+    toDay: moment(),
+    currentDay: moment(),
     displayDays: 7
   }
 }
