@@ -4,15 +4,17 @@
       <span :class="[$style.dayOfWeek, { [$style.active]: isToDay }]">{{ currentDay.format('ddd') }}</span>
       <span :class="[$style.day, { [$style.active]: isToDay }]">{{ currentDay.format('DD') }}</span>
     </div>
-    <ul>
-      <li :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')"></li>
-    </ul>
+    <div :class="$style.cells">
+      <KdpEvent :class="$style.eventList" v-for="event in currentEvent" :key="event.id" :event="event" />
+      <div :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')"></div>
+    </div>
     <KdpTimeLine :class="$style.timeLine" v-if="isToDay" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import KdpEvent from '@/components/atoms/KdpEvent'
 import KdpTimeLine from '@/components/atoms/KdpTimeLine'
 
 export default {
@@ -32,16 +34,20 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCalendarInfo']),
+    ...mapGetters(['getEventAll', 'getCalendarInfo']),
     isToDay() {
       return this.currentDay.isSame(this.getCalendarInfo.toDay, 'day')
     },
-    hours: function() {
+    hours() {
       let start = this.moment().startOf('day')
       return [...Array(24 * 4).keys()].map(x => start.clone().add(x * 15, 'minutes'))
+    },
+    currentEvent() {
+      let self = this
+      return this.getEventAll.filter(event => self.currentDay.isSame(event.start, 'day'))
     }
   },
-  components: { KdpTimeLine }
+  components: { KdpEvent, KdpTimeLine }
 }
 </script>
 
@@ -91,26 +97,37 @@ export default {
   }
 }
 
-.minute {
-  height: 12px;
-  list-style: none;
+.cells {
+  position: relative;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
+  .minute {
+    height: 12px;
+    list-style: none;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
   }
-}
 
-.m00,
-.m45 + .m00 {
-  border-top: 1px solid #888;
-}
+  .m00,
+  .m45 + .m00 {
+    border-top: 1px solid #888;
+  }
 
-.m45:last-child {
-  border-bottom: 1px solid #888;
-}
+  .m45:last-child {
+    border-bottom: 1px solid #888;
+  }
 
-.m30 {
-  border-top: 1px dashed #888;
+  .m30 {
+    border-top: 1px dashed #888;
+  }
+
+  .eventList {
+    height: 12px;
+    width: 100%;
+    position: absolute;
+    list-style: none;
+  }
 }
 
 .timeLine {

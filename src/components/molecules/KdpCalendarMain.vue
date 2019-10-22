@@ -6,7 +6,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import mixinMoment from '@/mixins/moment'
 import KdpCalendarDay from '@/components/molecules/KdpCalendarDay'
 
 export default {
@@ -25,8 +24,7 @@ export default {
       }
     }
   },
-  components: { KdpCalendarDay },
-  mixins: [mixinMoment]
+  components: { KdpCalendarDay }
 }
 </script>
 

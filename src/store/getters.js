@@ -8,6 +8,9 @@ export default {
   getProjectAll: state => {
     return state.projects
   },
+  getEventAll: state => {
+    return state.events
+  },
   getCalendarInfo: state => {
     return state.calendarInfo
   }
