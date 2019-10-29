@@ -10,8 +10,8 @@ export default {
     { to: 'KdpTop', icon: 'envelope', title: '日報' },
     { to: 'KdpTop', icon: 'users', title: 'グループ' },
     { to: 'KdpTop', icon: 'users-cog', title: 'ユーザ管理' },
-    { to: 'KdpTop', icon: 'user-plus', title: 'アサイン' },
-    { to: 'KdpTop', icon: 'tools', title: '個人設定' }
+    { to: 'KdpTop', icon: 'folder-open', title: 'プロジェクト管理' },
+    { to: 'KdpTop', icon: 'sign-out-alt', title: 'ログアウト' }
   ],
   recentTasks: [
     { projectId: 1, projectName: 'project-name-1', hsla: 'hsla(111, 100%, 80%, 0.5)', taskName: 'task-name-1' },
@@ -54,7 +54,7 @@ export default {
       hsla: 'hsla(111, 100%, 80%, 0.5)',
       taskId: 1,
       taskName: 'task-name-1',
-      start: moment('2019-10-22 03:00:00'),
+      start: moment('2019-10-29 03:00:00'),
       time: 60
     }
   ],
