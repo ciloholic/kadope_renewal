@@ -33,11 +33,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   width: 70px;
   height: 70px;
-  padding: 5px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-decoration: none;
   user-select: none;
 

@@ -36,7 +36,7 @@ export default {
   computed: {
     ...mapGetters(['getEventAll', 'getCalendarInfo']),
     isToDay() {
-      return this.currentDay.isSame(this.getCalendarInfo.toDay, 'day')
+      return this.currentDay.isSame(this.getCalendarInfo.today, 'day')
     },
     hours() {
       let start = this.moment().startOf('day')

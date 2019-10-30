@@ -9,8 +9,8 @@ export default {
     { to: 'KdpTop', icon: 'chart-bar', title: 'レポート' },
     { to: 'KdpTop', icon: 'envelope', title: '日報' },
     { to: 'KdpTop', icon: 'users', title: 'グループ' },
-    { to: 'KdpTop', icon: 'users-cog', title: 'ユーザ管理' },
-    { to: 'KdpTop', icon: 'folder-open', title: 'プロジェクト管理' },
+    { to: 'KdpTop', icon: 'users-cog', title: 'ユーザ' },
+    { to: 'KdpTop', icon: 'folder-open', title: 'プロジェクト' },
     { to: 'KdpTop', icon: 'sign-out-alt', title: 'ログアウト' }
   ],
   recentTasks: [
@@ -59,7 +59,7 @@ export default {
     }
   ],
   calendarInfo: {
-    toDay: moment(),
+    today: moment(),
     currentDay: moment(),
     displayDays: 7
   }
