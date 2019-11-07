@@ -2,8 +2,8 @@ export default {
   getLinkAll: state => {
     return state.links
   },
-  getRecentTaskAll: state => {
-    return state.recentTasks
+  getPinTaskAll: state => {
+    return state.pinTasks
   },
   getProjectAll: state => {
     return state.projects

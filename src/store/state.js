@@ -13,7 +13,7 @@ export default {
     { to: 'KdpTop', icon: 'folder-open', title: 'プロジェクト' },
     { to: 'KdpTop', icon: 'sign-out-alt', title: 'ログアウト' }
   ],
-  recentTasks: [
+  pinTasks: [
     { projectId: 1, projectName: 'project-name-1', hsla: 'hsla(111, 100%, 80%, 0.5)', taskName: 'task-name-1' },
     { projectId: 2, projectName: 'project-name-2', hsla: 'hsla(222, 100%, 80%, 0.5)', taskName: 'task-name-2' },
     { projectId: 3, projectName: 'project-name-3', hsla: 'hsla(333, 100%, 80%, 0.5)', taskName: 'task-name-3' },
@@ -54,7 +54,7 @@ export default {
       hsla: 'hsla(111, 100%, 80%, 0.5)',
       taskId: 1,
       taskName: 'task-name-1',
-      start: moment('2019-10-29 03:00:00'),
+      start: moment('2019-11-8 03:00:00', 'YYYY-MM-DD HH:mm:ss'),
       time: 60
     }
   ],

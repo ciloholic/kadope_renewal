@@ -1,8 +1,8 @@
 <template>
   <aside :class="$style.taskList">
     <KdpSearch :class="$style.search" />
-    <KdpRecentTask :class="$style.dropdownList" title="最近使ったタスク" :tasks="getRecentTaskAll | limit" />
-    <KdpDropdownList
+    <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="getPinTaskAll" />
+    <KdpProject
       :class="$style.dropdownList"
       v-for="project in getProjectAll"
       :key="project.id"
@@ -15,20 +15,17 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import KdpSearch from '@/components/atoms/KdpSearch'
-import KdpRecentTask from '@/components/molecules/KdpRecentTask'
-import KdpDropdownList from '@/components/molecules/KdpDropdownList'
+import KdpPinTask from '@/components/molecules/KdpPinTask'
+import KdpProject from '@/components/molecules/KdpProject'
 
 export default {
   methods: {
     ...mapMutations(['TASK_TOGGLE_BY_ID'])
   },
   computed: {
-    ...mapGetters(['getRecentTaskAll', 'getProjectAll'])
+    ...mapGetters(['getPinTaskAll', 'getProjectAll'])
   },
-  filters: {
-    limit: v => v.slice(0, 6)
-  },
-  components: { KdpSearch, KdpRecentTask, KdpDropdownList }
+  components: { KdpSearch, KdpPinTask, KdpProject }
 }
 </script>
 
