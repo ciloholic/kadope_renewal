@@ -34,7 +34,7 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  width: 70px;
+  width: 75px;
   height: 70px;
   letter-spacing: 1px;
   text-decoration: none;

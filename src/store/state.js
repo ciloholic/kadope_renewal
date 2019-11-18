@@ -44,6 +44,17 @@ export default {
         { id: 5, taskName: 'taskname2taskname2taskname2taskname2taskname2', pin: true },
         { id: 6, taskName: 'task-name-3', pin: false }
       ]
+    },
+    {
+      id: 3,
+      projectName: 'マイプロジェクト',
+      hsla: 'hsla(333, 100%, 80%, 0.5)',
+      pin: true,
+      tasks: [
+        { id: 7, taskName: 'task-name-7', pin: true },
+        { id: 8, taskName: 'task-name-8', pin: false },
+        { id: 9, taskName: 'task-name-9', pin: false }
+      ]
     }
   ],
   events: [
@@ -54,7 +65,7 @@ export default {
       hsla: 'hsla(111, 100%, 80%, 0.5)',
       taskId: 1,
       taskName: 'task-name-1',
-      start: moment('2019-11-8 03:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      start: moment('2019-11-18 03:00:00', 'YYYY-MM-DD HH:mm:ss'),
       time: 60
     }
   ],

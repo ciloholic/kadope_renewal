@@ -1,12 +1,13 @@
 <template>
   <aside :class="$style.taskList">
-    <KdpSearch :class="$style.search" />
+    <KdpSearch :class="$style.search" v-model="search" />
     <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="getPinTaskAll" />
     <KdpProject
       :class="$style.dropdownList"
       v-for="project in getProjectAll"
       :key="project.id"
       :project="project"
+      :search="search"
       @click="TASK_TOGGLE_BY_ID(id)"
     />
   </aside>
@@ -19,6 +20,11 @@ import KdpPinTask from '@/components/molecules/KdpPinTask'
 import KdpProject from '@/components/molecules/KdpProject'
 
 export default {
+  data: function() {
+    return {
+      search: ''
+    }
+  },
   methods: {
     ...mapMutations(['TASK_TOGGLE_BY_ID'])
   },

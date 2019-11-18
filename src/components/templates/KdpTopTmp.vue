@@ -25,7 +25,7 @@ export default {
   display: grid;
   grid-gap: 0 15px;
   grid-template-rows: 15px 1fr 15px;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 75px 1fr;
   grid-template-areas:
     'area-s-h ......'
     'area-s-h area-s'

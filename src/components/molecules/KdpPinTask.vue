@@ -6,15 +6,13 @@
     </div>
     <ul :class="$style.tasks">
       <li :class="$style.task" v-for="task in tasks" :key="task.id" v-show="dropdownShown">
-        <div :class="$style.taskName" :style="setStyle(task.projectId)">{{ task.taskName }}</div>
+        <div :class="$style.taskName" :style="setStyle(task)">{{ task.taskName }}</div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import mixinColor from '@/mixins/color'
-
 export default {
   props: {
     title: {
@@ -35,16 +33,15 @@ export default {
     onDropdown() {
       this.dropdownShown = !this.dropdownShown
     },
-    setStyle: function(seed) {
-      return { '--target-background-color-hover': this.$_hsla(seed, 0.5) }
+    setStyle: function(task) {
+      return { '--target-background-color-hover': task.hsla }
     }
   },
   computed: {
-    getIcon: function() {
+    getIcon() {
       return this.dropdownShown ? 'chevron-down' : 'chevron-right'
     }
-  },
-  mixins: [mixinColor]
+  }
 }
 </script>
 

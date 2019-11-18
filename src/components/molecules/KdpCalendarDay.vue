@@ -66,6 +66,7 @@ export default {
   height: 50px;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .dayOfWeek {
