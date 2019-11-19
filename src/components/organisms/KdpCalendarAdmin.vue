@@ -1,18 +1,15 @@
 <template>
   <main :class="$style.calendar">
-    <!-- calendar header -->
     <div :class="$style.calendarHeader">
       <font-awesome-icon :class="$style.prev" icon="angle-left" size="lg" fixed-width @click="onPrev" />
       <p @click="onToday">{{ getCalendarInfo.currentDay | $_formatMoment('gggg年M月') }}</p>
       <font-awesome-icon :class="$style.next" icon="angle-right" size="lg" fixed-width @click="onNext" />
     </div>
-    <!-- calendar time label -->
     <ul :class="$style.calendarLabel">
       <li :class="$style.calendarLabelList" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
         {{ hour | $_formatMoment('HH:mm') }}
       </li>
     </ul>
-    <!-- calendar main -->
     <KdpCalendarMain :class="$style.calendarMain" />
   </main>
 </template>

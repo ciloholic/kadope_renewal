@@ -4,14 +4,14 @@ moment.locale('ja')
 
 export default {
   links: [
-    { to: 'KdpTop', icon: 'calendar-alt', title: '稼働入力' },
-    { to: 'KdpTop', icon: 'search', title: '稼働閲覧' },
-    { to: 'KdpTop', icon: 'chart-bar', title: 'レポート' },
-    { to: 'KdpTop', icon: 'envelope', title: '日報' },
-    { to: 'KdpTop', icon: 'users', title: 'グループ' },
-    { to: 'KdpTop', icon: 'users-cog', title: 'ユーザ' },
-    { to: 'KdpTop', icon: 'folder-open', title: 'プロジェクト' },
-    { to: 'KdpTop', icon: 'sign-out-alt', title: 'ログアウト' }
+    { to: 'KdpCalendar', icon: 'calendar-alt', title: '稼働入力' },
+    { to: 'KdpCalendarAdmin', icon: 'search', title: '稼働閲覧' },
+    { to: 'KdpReport', icon: 'chart-bar', title: 'レポート' },
+    { to: 'KdpDailyReport', icon: 'envelope', title: '日報' },
+    { to: 'KdpGroupAdmin', icon: 'users', title: 'グループ' },
+    { to: 'KdpUserAdmin', icon: 'users-cog', title: 'ユーザ' },
+    { to: 'KdpProjectAdmin', icon: 'folder-open', title: 'プロジェクト' },
+    { to: 'KdpLogout', icon: 'sign-out-alt', title: 'ログアウト' }
   ],
   pinTasks: [
     { projectId: 1, projectName: 'project-name-1', hsla: 'hsla(111, 100%, 80%, 0.5)', taskName: 'task-name-1' },
@@ -67,6 +67,32 @@ export default {
       taskName: 'task-name-1',
       start: moment('2019-11-18 03:00:00', 'YYYY-MM-DD HH:mm:ss'),
       time: 60
+    }
+  ],
+  groups: [
+    {
+      id: 1,
+      name: 'group-1',
+      users: [
+        {
+          id: 1,
+          name: 'user-name-1'
+        },
+        {
+          id: 2,
+          name: 'user-name-2'
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: 'group-2',
+      users: [
+        {
+          id: 3,
+          name: 'user-name-3'
+        }
+      ]
     }
   ],
   calendarInfo: {
