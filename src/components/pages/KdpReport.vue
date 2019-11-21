@@ -1,7 +1,11 @@
 <template>
-  <p></p>
+  <KdpReportTemplate />
 </template>
 
 <script>
-export default {}
+import KdpReportTemplate from '@/components/templates/KdpReportTemplate'
+
+export default {
+  components: { KdpReportTemplate }
+}
 </script>

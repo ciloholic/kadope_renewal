@@ -1,5 +1,5 @@
 <template>
-  <aside :class="$style.taskList">
+  <KdpFrame :class="$style.taskList">
     <KdpSearch :class="$style.search" v-model="search" />
     <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="getPinTaskAll" />
     <KdpProject
@@ -10,11 +10,12 @@
       :search="search"
       @click="TASK_TOGGLE_BY_ID(id)"
     />
-  </aside>
+  </KdpFrame>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpSearch from '@/components/atoms/KdpSearch'
 import KdpPinTask from '@/components/molecules/KdpPinTask'
 import KdpProject from '@/components/molecules/KdpProject'
@@ -31,16 +32,12 @@ export default {
   computed: {
     ...mapGetters(['getPinTaskAll', 'getProjectAll'])
   },
-  components: { KdpSearch, KdpPinTask, KdpProject }
+  components: { KdpSearch, KdpFrame, KdpPinTask, KdpProject }
 }
 </script>
 
 <style lang="scss" module>
 .taskList {
-  color: var(--base-font-color-default);
-  background: var(--base-background-default);
-  border-radius: 3px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -51,7 +48,7 @@ export default {
 }
 
 .dropdownList {
-  margin-top: 10px;
+  margin-top: 5px;
   max-width: 230px;
 }
 

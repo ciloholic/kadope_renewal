@@ -1,5 +1,5 @@
 <template>
-  <main :class="$style.calendar">
+  <KdpFrame :class="$style.calendar">
     <!-- calendar header -->
     <div :class="$style.calendarHeader">
       <font-awesome-icon :class="$style.prev" icon="angle-left" size="lg" fixed-width @click="onPrev" />
@@ -14,12 +14,13 @@
     </ul>
     <!-- calendar main -->
     <KdpCalendarMain :class="$style.calendarMain" />
-  </main>
+  </KdpFrame>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import mixinMoment from '@/mixins/moment'
+import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpCalendarMain from '@/components/molecules/KdpCalendarMain'
 
 export default {
@@ -37,23 +38,19 @@ export default {
   },
   computed: {
     ...mapGetters(['getCalendarInfo']),
-    hours: function() {
+    hours() {
       let start = this.moment().startOf('day')
       return [...Array(24).keys()].map(x => start.clone().add(x, 'hours'))
     }
   },
-  components: { KdpCalendarMain },
+  components: { KdpFrame, KdpCalendarMain },
   mixins: [mixinMoment]
 }
 </script>
 
 <style lang="scss" module>
 .calendar {
-  color: var(--base-font-color-default);
-  background: var(--base-background-default);
   height: 100%;
-  border-radius: 3px;
-  padding: 10px;
   font-size: 0.9rem;
   display: grid;
   grid-template-rows: 20px 42px 1fr;
