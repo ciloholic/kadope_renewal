@@ -1,27 +1,24 @@
 <template>
-  <input v-model="input" :class="$style.input" :type="type" :placeholder="placeholder" />
+  <select v-model="selected" :class="$style.select">
+    <option value=""></option>
+    <option v-for="value in values" :key="value.id" :value="value.id">{{ value.name }}</option>
+  </select>
 </template>
 
 <script>
 export default {
   model: {
-    prop: 'value',
+    prop: 'selected',
     event: 'input'
   },
   props: {
-    type: {
-      type: String,
+    values: {
+      type: Array,
       required: true
-    },
-    value: {
-      required: true
-    },
-    placeholder: {
-      default: ''
     }
   },
   computed: {
-    input: {
+    selected: {
       get() {
         return this.value
       },
@@ -34,15 +31,12 @@ export default {
 </script>
 
 <style lang="scss" module>
-.input {
+.select {
   color: var(--base-font-color-default);
   background: var(--base-background-primary);
   font-size: 1.4rem;
-  border-radius: 3px;
-  padding: 5px 10px;
   border: none;
   width: 100%;
   height: 30px;
-  user-select: none;
 }
 </style>

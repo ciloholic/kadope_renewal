@@ -1,14 +1,44 @@
 <template>
   <KdpFrame :class="$style.reportFilter">
-    <!-- specify the time period -->
-    <KdpTitleHeader :class="$style.titleHeader">条件指定</KdpTitleHeader>
-    <KdpTitleSubHeader :class="$style.titleSubHeader">期間</KdpTitleSubHeader>
-    <KdpInput :class="$style.calendarInput" v-model="start" type="date"></KdpInput>
-    <KdpInput :class="$style.calendarInput" v-model="end" type="date"></KdpInput>
-    <div :class="$style.periodGroup">
-      <KdpPeriodButton v-for="(period, key) in periods" :key="key" :period="period" @onClick="onPeriodClick" />
+    <div :class="$style.mainBlock">
+      <KdpTitleHeader :class="$style.titleHeader">条件指定</KdpTitleHeader>
+      <!-- period -->
+      <div :class="$style.subBlock">
+        <KdpTitleSubHeader :class="$style.titleSubHeader">期間</KdpTitleSubHeader>
+        <KdpInput :class="$style.input" v-model="start" type="date" />
+        <KdpInput :class="$style.input" v-model="end" type="date" />
+        <div :class="$style.periodGroup">
+          <KdpPeriodButton v-for="(period, key) in periods" :key="key" :period="period" @onClick="onPeriodClick" />
+        </div>
+      </div>
+      <!-- group -->
+      <div :class="$style.subBlock">
+        <KdpTitleSubHeader :class="$style.titleSubHeader">グループ</KdpTitleSubHeader>
+        <KdpSelect :class="$style.select" v-model="group" :values="getGroupAll" />
+      </div>
     </div>
-    <!-- selected group -->
+    <div :class="$style.mainBlock">
+      <KdpTitleHeader :class="$style.titleHeader">詳細指定</KdpTitleHeader>
+      <!-- aggregate unit -->
+      <div :class="$style.subBlock">
+        <KdpTitleSubHeader :class="$style.titleSubHeader">集計単位</KdpTitleSubHeader>
+        <KdpSwitch
+          :class="$style.switch"
+          v-model="aggregateUnit.value"
+          :lists="aggregateUnit.lists"
+          :value="aggregateUnit.value"
+          @onClick="onSwitchClick"
+        />
+      </div>
+      <!-- project -->
+      <div :class="$style.subBlock">
+        <KdpTitleSubHeader :class="$style.titleSubHeader">プロジェクト</KdpTitleSubHeader>
+      </div>
+      <!-- user -->
+      <div :class="$style.subBlock">
+        <KdpTitleSubHeader :class="$style.titleSubHeader">ユーザ</KdpTitleSubHeader>
+      </div>
+    </div>
   </KdpFrame>
 </template>
 
@@ -16,6 +46,8 @@
 import { mapGetters } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpInput from '@/components/atoms/KdpInput'
+import KdpSelect from '@/components/atoms/KdpSelect'
+import KdpSwitch from '@/components/atoms/KdpSwitch'
 import KdpPeriodButton from '@/components/atoms/KdpPeriodButton'
 import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
 import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
@@ -25,13 +57,24 @@ export default {
     return {
       start: null,
       end: null,
-      periods: []
+      periods: [],
+      group: '',
+      aggregateUnit: {
+        lists: [
+          { id: 1, text: 'プロジェクト' },
+          { id: 2, text: 'ユーザ' }
+        ],
+        value: 1
+      }
     }
   },
   methods: {
     onPeriodClick(e) {
       this.start = e['start']
       this.end = e['end']
+    },
+    onSwitchClick(e) {
+      this.aggregateUnit.value = e
     }
   },
   computed: {
@@ -40,7 +83,7 @@ export default {
       let baseline = this.getCalendarInfo.today
         .clone()
         .startOf('month')
-        .month(7 - 1)
+        .month(6)
       if (this.getCalendarInfo.today.clone().isBefore(baseline)) {
         // 1〜6月の場合、基準を前年7月に設定
         return baseline.subtract(1, 'years')
@@ -152,7 +195,7 @@ export default {
       }
     ]
   },
-  components: { KdpTitleHeader, KdpTitleSubHeader, KdpFrame, KdpInput, KdpPeriodButton }
+  components: { KdpTitleHeader, KdpTitleSubHeader, KdpFrame, KdpInput, KdpSelect, KdpSwitch, KdpPeriodButton }
 }
 </script>
 
@@ -162,12 +205,19 @@ export default {
   flex-direction: column;
 }
 
+.mainBlock + .mainBlock,
+.subBlock + .subBlock {
+  margin-top: 10px;
+}
+
 .titleHeader,
 .titleSubHeader {
   margin-bottom: 5px;
 }
 
-.calendarInput {
+.input,
+.select,
+.switch {
   margin-bottom: 5px;
 }
 
