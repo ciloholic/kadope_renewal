@@ -6,7 +6,7 @@
     </div>
     <ul :class="$style.lists">
       <li :class="$style.list" v-for="list in lists" :key="list.id" v-show="dropdownShown">
-        <div :class="$style.name">{{ list.name }}</div>
+        <div :class="$style.userName">{{ list.userName }}</div>
       </li>
     </ul>
   </div>
@@ -77,7 +77,7 @@ export default {
   margin-top: 5px;
 }
 
-.name {
+.userName {
   display: flex;
   align-items: flex-start;
   background: var(--base-background-light);

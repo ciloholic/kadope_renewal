@@ -18,6 +18,10 @@ moment.tz.setDefault('Asia/Tokyo')
 moment.locale('ja')
 Vue.prototype.moment = moment
 
+// lodash
+import _ from 'lodash'
+Vue.prototype._ = _
+
 Vue.config.productionTip = false
 
 new Vue({

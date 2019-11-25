@@ -5,7 +5,7 @@
       :class="$style.dropdownList"
       v-for="group in getGroupAll"
       :key="group.id"
-      :title="group.name"
+      :title="group.groupName"
       :lists="group.users"
     />
   </KdpFrame>

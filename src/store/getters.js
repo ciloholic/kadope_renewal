@@ -14,6 +14,9 @@ export default {
   getGroupAll: state => {
     return state.groups
   },
+  getUserAll: state => {
+    return state.users
+  },
   getCalendarInfo: state => {
     return state.calendarInfo
   }

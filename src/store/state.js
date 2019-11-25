@@ -65,34 +65,51 @@ export default {
       hsla: 'hsla(111, 100%, 80%, 0.5)',
       taskId: 1,
       taskName: 'task-name-1',
-      start: moment('2019-11-18 03:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      start: moment()
+        .startOf('week')
+        .add(1, 'days')
+        .add(3, 'hours'),
       time: 60
     }
   ],
   groups: [
     {
       id: 1,
-      name: 'group-1',
+      groupName: 'group-1',
       users: [
         {
           id: 1,
-          name: 'user-name-1'
+          userName: 'user-name-1'
         },
         {
           id: 2,
-          name: 'user-name-2'
+          userName: 'user-name-2'
         }
       ]
     },
     {
       id: 2,
-      name: 'group-2',
+      groupName: 'group-2',
       users: [
         {
           id: 3,
-          name: 'user-name-3'
+          userName: 'user-name-3'
         }
       ]
+    }
+  ],
+  users: [
+    {
+      id: 1,
+      userName: 'user-name-1'
+    },
+    {
+      id: 2,
+      userName: 'user-name-2'
+    },
+    {
+      id: 3,
+      userName: 'user-name-3'
     }
   ],
   calendarInfo: {

@@ -33,10 +33,12 @@
       <!-- project -->
       <div :class="$style.subBlock">
         <KdpTitleSubHeader :class="$style.titleSubHeader">プロジェクト</KdpTitleSubHeader>
+        <KdpProjectCheckboxList />
       </div>
       <!-- user -->
       <div :class="$style.subBlock">
         <KdpTitleSubHeader :class="$style.titleSubHeader">ユーザ</KdpTitleSubHeader>
+        <KdpUserCheckboxList />
       </div>
     </div>
   </KdpFrame>
@@ -51,6 +53,8 @@ import KdpSwitch from '@/components/atoms/KdpSwitch'
 import KdpPeriodButton from '@/components/atoms/KdpPeriodButton'
 import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
 import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
+import KdpProjectCheckboxList from '@/components/atoms/KdpProjectCheckboxList'
+import KdpUserCheckboxList from '@/components/atoms/KdpUserCheckboxList'
 
 export default {
   data() {
@@ -195,7 +199,17 @@ export default {
       }
     ]
   },
-  components: { KdpTitleHeader, KdpTitleSubHeader, KdpFrame, KdpInput, KdpSelect, KdpSwitch, KdpPeriodButton }
+  components: {
+    KdpTitleHeader,
+    KdpTitleSubHeader,
+    KdpFrame,
+    KdpInput,
+    KdpSelect,
+    KdpSwitch,
+    KdpPeriodButton,
+    KdpProjectCheckboxList,
+    KdpUserCheckboxList
+  }
 }
 </script>
 
