@@ -112,6 +112,14 @@ export default {
       userName: 'user-name-3'
     }
   ],
+  reportFilterInfo: {
+    start: null,
+    end: null,
+    group: -1,
+    aggregateUnit: 1,
+    projectChecked: [],
+    userChecked: []
+  },
   calendarInfo: {
     today: moment(),
     currentDay: moment(),

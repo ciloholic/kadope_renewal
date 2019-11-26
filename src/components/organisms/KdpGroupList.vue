@@ -3,7 +3,7 @@
     <KdpTitleHeader>グループ一覧</KdpTitleHeader>
     <KdpDropdownList
       :class="$style.dropdownList"
-      v-for="group in getGroupAll"
+      v-for="group in getGroupListAll"
       :key="group.id"
       :title="group.groupName"
       :lists="group.users"
@@ -19,7 +19,7 @@ import KdpDropdownList from '@/components/molecules/KdpDropdownList'
 
 export default {
   computed: {
-    ...mapGetters(['getGroupAll'])
+    ...mapGetters(['getGroupListAll'])
   },
   components: { KdpDropdownList, KdpTitleHeader, KdpFrame }
 }

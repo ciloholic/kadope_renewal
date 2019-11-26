@@ -26,6 +26,9 @@ export default {
       }
     })
   },
+  [types.REPORT_FILTER_INFO_UPDATE](state, payload) {
+    state.reportFilterInfo = Object.assign(state.reportFilterInfo, payload)
+  },
   [types.CALENDAR_INFO_UPDATE](state, payload) {
     state.calendarInfo = Object.assign(state.calendarInfo, payload)
   }

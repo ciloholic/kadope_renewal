@@ -1,24 +1,24 @@
 <template>
-  <select v-model="selected" :class="$style.select">
+  <select v-model="_selected" :class="$style.select">
     <option value=""></option>
-    <option v-for="value in values" :key="value.id" :value="value.id">{{ value.name }}</option>
+    <option v-for="item in items" :key="item.id" :value="item.id">{{ item.name }}</option>
   </select>
 </template>
 
 <script>
 export default {
   model: {
-    prop: 'selected',
+    prop: '_selected',
     event: 'input'
   },
   props: {
-    values: {
+    items: {
       type: Array,
       required: true
     }
   },
   computed: {
-    selected: {
+    _selected: {
       get() {
         return this.value
       },

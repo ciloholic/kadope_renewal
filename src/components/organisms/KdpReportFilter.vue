@@ -14,7 +14,7 @@
       <!-- group -->
       <div :class="$style.subBlock">
         <KdpTitleSubHeader :class="$style.titleSubHeader">グループ</KdpTitleSubHeader>
-        <KdpSelect :class="$style.select" v-model="group" :values="getGroupAll" />
+        <KdpSelect :class="$style.select" v-model="group" :items="getGroupAll" />
       </div>
     </div>
     <div :class="$style.mainBlock">
@@ -33,19 +33,19 @@
       <!-- project -->
       <div :class="$style.subBlock">
         <KdpTitleSubHeader :class="$style.titleSubHeader">プロジェクト</KdpTitleSubHeader>
-        <KdpProjectCheckboxList />
+        <KdpCheckboxList v-model="projectChecked" :items="getProjectAll" :checked="projectChecked" />
       </div>
       <!-- user -->
       <div :class="$style.subBlock">
         <KdpTitleSubHeader :class="$style.titleSubHeader">ユーザ</KdpTitleSubHeader>
-        <KdpUserCheckboxList />
+        <KdpCheckboxList v-model="userChecked" :items="getUserAll" :checked="userChecked" />
       </div>
     </div>
   </KdpFrame>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpInput from '@/components/atoms/KdpInput'
 import KdpSelect from '@/components/atoms/KdpSelect'
@@ -53,26 +53,48 @@ import KdpSwitch from '@/components/atoms/KdpSwitch'
 import KdpPeriodButton from '@/components/atoms/KdpPeriodButton'
 import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
 import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
-import KdpProjectCheckboxList from '@/components/atoms/KdpProjectCheckboxList'
-import KdpUserCheckboxList from '@/components/atoms/KdpUserCheckboxList'
+import KdpCheckboxList from '@/components/atoms/KdpCheckboxList'
 
 export default {
-  data() {
+  data: function() {
     return {
       start: null,
       end: null,
       periods: [],
-      group: '',
+      group: -1,
       aggregateUnit: {
         lists: [
           { id: 1, text: 'プロジェクト' },
           { id: 2, text: 'ユーザ' }
         ],
         value: 1
-      }
+      },
+      projectChecked: [],
+      userChecked: []
+    }
+  },
+  watch: {
+    start: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ start: this.start })
+    },
+    end: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ end: this.end })
+    },
+    group: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ group: this.group })
+    },
+    'aggregateUnit.value': function() {
+      this.REPORT_FILTER_INFO_UPDATE({ aggregateUnit: this.aggregateUnit.value })
+    },
+    projectChecked: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ projectChecked: this.projectChecked })
+    },
+    userChecked: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ userChecked: this.userChecked })
     }
   },
   methods: {
+    ...mapMutations(['REPORT_FILTER_INFO_UPDATE']),
     onPeriodClick(e) {
       this.start = e['start']
       this.end = e['end']
@@ -82,7 +104,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getGroupAll', 'getCalendarInfo']),
+    ...mapGetters(['getGroupAll', 'getProjectAll', 'getUserAll', 'getCalendarInfo']),
     baseline() {
       let baseline = this.getCalendarInfo.today
         .clone()
@@ -207,8 +229,7 @@ export default {
     KdpSelect,
     KdpSwitch,
     KdpPeriodButton,
-    KdpProjectCheckboxList,
-    KdpUserCheckboxList
+    KdpCheckboxList
   }
 }
 </script>
