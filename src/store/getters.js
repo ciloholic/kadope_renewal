@@ -1,35 +1,32 @@
 export default {
-  getLinkAll: state => {
+  links: state => {
     return state.links
   },
-  getPinTaskAll: state => {
+  pinTasks: state => {
     return state.pinTasks
   },
-  getProjectAll: state => {
-    return state.projects.map(x => {
-      return { id: x.id, name: x.projectName }
-    })
+  projects: state => {
+    return state.projects
   },
-  getEventAll: state => {
+  events: state => {
     return state.events
   },
-  getGroupAll: state => {
-    return state.groups.map(x => {
-      return { id: x.id, name: x.groupName }
-    })
-  },
-  getGroupListAll: state => {
+  groups: state => {
     return state.groups
   },
-  getUserAll: state => {
-    return state.users.map(x => {
-      return { id: x.id, name: x.userName }
-    })
+  users: state => {
+    return state.users
   },
-  getReportFilterInfo: state => {
-    return state.reportFilterInfo
+  reports: state => {
+    return state.reports
   },
-  getCalendarInfo: state => {
+  saveReports: state => {
+    return state.saveReports
+  },
+  reportInfo: state => {
+    return state.reportInfo
+  },
+  calendarInfo: state => {
     return state.calendarInfo
   }
 }

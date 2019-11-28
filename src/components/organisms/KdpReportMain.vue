@@ -1,19 +1,22 @@
 <template>
-  <KdpFrame :class="$style.reportMain">
-    <KdpTitleHeader>レポート</KdpTitleHeader>
+  <KdpFrame>
+    <KdpAggregateCondition :class="$style.block" />
+    <KdpReportTable :class="$style.block" />
   </KdpFrame>
 </template>
 
 <script>
 import KdpFrame from '@/components/atoms/KdpFrame'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
+import KdpReportTable from '@/components/molecules/KdpReportTable'
+import KdpAggregateCondition from '@/components/molecules/KdpAggregateCondition'
 
 export default {
-  components: { KdpTitleHeader, KdpFrame }
+  components: { KdpFrame, KdpReportTable, KdpAggregateCondition }
 }
 </script>
 
 <style lang="scss" module>
-.reportMain {
+.block + .block {
+  margin-top: 10px;
 }
 </style>

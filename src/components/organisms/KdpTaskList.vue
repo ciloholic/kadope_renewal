@@ -1,11 +1,11 @@
 <template>
   <KdpFrame :class="$style.taskList">
-    <KdpSearch :class="$style.search" v-model="search" />
-    <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="getPinTaskAll" />
+    <KdpSearch v-model="search" :class="$style.search" />
+    <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="pinTasks" />
     <KdpProject
-      :class="$style.dropdownList"
-      v-for="project in getProjectAll"
+      v-for="project in projects"
       :key="project.id"
+      :class="$style.dropdownList"
       :project="project"
       :search="search"
       @click="TASK_TOGGLE_BY_ID(id)"
@@ -21,18 +21,18 @@ import KdpPinTask from '@/components/molecules/KdpPinTask'
 import KdpProject from '@/components/molecules/KdpProject'
 
 export default {
+  components: { KdpSearch, KdpFrame, KdpPinTask, KdpProject },
   data: function() {
     return {
       search: ''
     }
   },
+  computed: {
+    ...mapGetters(['pinTasks', 'projects'])
+  },
   methods: {
     ...mapMutations(['TASK_TOGGLE_BY_ID'])
-  },
-  computed: {
-    ...mapGetters(['getPinTaskAll', 'getProjectAll'])
-  },
-  components: { KdpSearch, KdpFrame, KdpPinTask, KdpProject }
+  }
 }
 </script>
 

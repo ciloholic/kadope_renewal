@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.timeLine" ref="timeLine" />
+  <div ref="timeLine" :class="$style.timeLine" />
 </template>
 
 <script>
@@ -12,14 +12,6 @@ export default {
       header_height: 50
     }
   },
-  methods: {
-    updateTimeLine: function() {
-      const start = this.moment().startOf('day')
-      const minutes = this.moment().diff(start, 'minutes')
-      const top = parseInt((minutes / this.min_minutes) * this.min_height + this.header_height)
-      this.$refs.timeLine.style.top = `${top}px`
-    }
-  },
   mounted() {
     this.updateTimeLine()
     this.intervalId = setInterval(() => {
@@ -28,6 +20,14 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.intervalId)
+  },
+  methods: {
+    updateTimeLine: function() {
+      const start = this.moment().startOf('day')
+      const minutes = this.moment().diff(start, 'minutes')
+      const top = parseInt((minutes / this.min_minutes) * this.min_height + this.header_height)
+      this.$refs.timeLine.style.top = `${top}px`
+    }
   }
 }
 </script>

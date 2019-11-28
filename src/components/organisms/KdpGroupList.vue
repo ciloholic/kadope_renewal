@@ -2,10 +2,10 @@
   <KdpFrame :class="$style.groupList">
     <KdpTitleHeader>グループ一覧</KdpTitleHeader>
     <KdpDropdownList
-      :class="$style.dropdownList"
-      v-for="group in getGroupListAll"
+      v-for="group in _groups"
       :key="group.id"
-      :title="group.groupName"
+      :class="$style.dropdownList"
+      :title="group.name"
       :lists="group.users"
     />
   </KdpFrame>
@@ -18,10 +18,15 @@ import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
 import KdpDropdownList from '@/components/molecules/KdpDropdownList'
 
 export default {
+  components: { KdpDropdownList, KdpTitleHeader, KdpFrame },
   computed: {
-    ...mapGetters(['getGroupListAll'])
-  },
-  components: { KdpDropdownList, KdpTitleHeader, KdpFrame }
+    ...mapGetters(['groups']),
+    _groups() {
+      return this.groups.map(x => {
+        return { ...x, id: x.id, name: x.groupName }
+      })
+    }
+  }
 }
 </script>
 

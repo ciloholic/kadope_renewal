@@ -1,6 +1,6 @@
 <template>
   <select v-model="_selected" :class="$style.select">
-    <option value=""></option>
+    <option value="-1">手動選択</option>
     <option v-for="item in items" :key="item.id" :value="item.id">{{ item.name }}</option>
   </select>
 </template>

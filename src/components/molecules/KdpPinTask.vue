@@ -5,7 +5,7 @@
       <div :class="$style.title">{{ title }}</div>
     </div>
     <ul :class="$style.tasks">
-      <li :class="$style.task" v-for="task in tasks" :key="task.id" v-show="dropdownShown">
+      <li v-for="task in tasks" v-show="dropdownShown" :key="task.id" :class="$style.task">
         <div :class="$style.taskName" :style="setStyle(task)">{{ task.taskName }}</div>
       </li>
     </ul>
@@ -29,17 +29,17 @@ export default {
       dropdownShown: true
     }
   },
+  computed: {
+    getIcon() {
+      return this.dropdownShown ? 'chevron-down' : 'chevron-right'
+    }
+  },
   methods: {
     onDropdown() {
       this.dropdownShown = !this.dropdownShown
     },
     setStyle: function(task) {
       return { '--target-background-color-hover': task.hsla }
-    }
-  },
-  computed: {
-    getIcon() {
-      return this.dropdownShown ? 'chevron-down' : 'chevron-right'
     }
   }
 }

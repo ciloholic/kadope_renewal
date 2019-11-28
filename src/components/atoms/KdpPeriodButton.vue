@@ -1,10 +1,10 @@
 <template>
   <div
-    :class="$style.periodButton"
-    @click.stop="onClick"
     ref="periodButton"
+    :class="$style.periodButton"
     :data-start="period.start.format('YYYY-MM-DD')"
     :data-end="period.end.format('YYYY-MM-DD')"
+    @click.stop="onClick"
   >
     {{ period.text }}
   </div>

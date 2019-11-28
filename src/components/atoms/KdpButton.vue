@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.button" @click.stop="onClick" ref="button" :data-project-id="projectId" :data-task-id="taskId">
+  <div ref="button" :class="$style.button" :data-project-id="projectId" :data-task-id="taskId" @click.stop="onClick">
     <font-awesome-icon :icon="icon" size="sm" fixed-width />
   </div>
 </template>
@@ -12,10 +12,12 @@ export default {
       required: true
     },
     projectId: {
-      type: Number
+      type: Number,
+      default: 0
     },
     taskId: {
-      type: Number
+      type: Number,
+      default: 0
     }
   },
   methods: {

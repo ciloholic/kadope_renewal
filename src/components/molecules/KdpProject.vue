@@ -1,39 +1,39 @@
 <template>
   <div :class="$style.dropdownList">
     <!-- main title -->
-    <div :class="$style.mainTitle" @click="onDropdown" :style="setStyle">
+    <div :class="$style.mainTitle" :style="setStyle" @click="onDropdown">
       <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
-      <div :class="$style.title">{{ project.projectName }}</div>
+      <div :class="$style.title">{{ project.name }}</div>
       <KdpButton
         :class="[$style.pinButton, $style.projectPin, { [$style.onPin]: project.pin }]"
-        :projectId="project.id"
-        @onClick="onProjectPinClick"
+        :project-id="project.id"
         icon="map-pin"
+        @onClick="onProjectPinClick"
       />
-      <KdpButton :class="$style.addButton" :projectId="project.id" @onClick="onProjectAddClick" icon="plus" />
-      <KdpButton :class="$style.editButton" :projectId="project.id" @onClick="onProjectEditClick" icon="ellipsis-h" />
+      <KdpButton :class="$style.addButton" :project-id="project.id" icon="plus" @onClick="onProjectAddClick" />
+      <KdpButton :class="$style.editButton" :project-id="project.id" icon="ellipsis-h" @onClick="onProjectEditClick" />
     </div>
     <!-- tasks -->
     <ul :class="$style.tasks">
       <li
-        :class="$style.task"
         v-for="task in project.tasks"
+        v-show="hiddenTask(dropdownShown, task.name)"
         :key="task.id"
-        v-show="hiddenTask(dropdownShown, task.taskName)"
+        :class="$style.task"
       >
         <!-- task name -->
         <div :class="$style.taskName" :style="setStyle">
-          {{ task.taskName }}
+          {{ task.name }}
           <!-- pin button -->
           <KdpButton
             :class="[$style.pinButton, $style.taskPin, { [$style.onPin]: task.pin }]"
-            :projectId="project.id"
-            :taskId="task.id"
-            @onClick="onTaskPinClick"
+            :project-id="project.id"
+            :task-id="task.id"
             icon="map-pin"
+            @onClick="onTaskPinClick"
           />
           <!-- edit button -->
-          <KdpButton :class="$style.editButton" @onClick="onTaskEditClick" icon="ellipsis-h" />
+          <KdpButton :class="$style.editButton" icon="ellipsis-h" @onClick="onTaskEditClick" />
         </div>
       </li>
     </ul>
@@ -55,6 +55,8 @@ import KdpButton from '@/components/atoms/KdpButton'
 import KdpModal from '@/components/atoms/KdpModal'
 
 export default {
+  components: { KdpButton, KdpModal },
+  mixins: [mixinColor],
   props: {
     project: {
       type: Object,
@@ -70,6 +72,14 @@ export default {
       dropdownShown: false,
       projectModalShown: false,
       taskModalShown: false
+    }
+  },
+  computed: {
+    setStyle() {
+      return { '--target-background-color-hover': this.project.hsla }
+    },
+    getIcon() {
+      return this.dropdownShown ? 'chevron-down' : 'chevron-right'
     }
   },
   methods: {
@@ -107,17 +117,7 @@ export default {
     onTaskCloseClick() {
       this.taskModalShown = !this.taskModalShown
     }
-  },
-  computed: {
-    setStyle() {
-      return { '--target-background-color-hover': this.project.hsla }
-    },
-    getIcon() {
-      return this.dropdownShown ? 'chevron-down' : 'chevron-right'
-    }
-  },
-  components: { KdpButton, KdpModal },
-  mixins: [mixinColor]
+  }
 }
 </script>
 

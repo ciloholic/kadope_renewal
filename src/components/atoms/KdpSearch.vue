@@ -1,5 +1,5 @@
 <template>
-  <input :class="$style.search" v-model="inputSearch" type="search" placeholder="タスクを検索" />
+  <input v-model="inputSearch" :class="$style.search" type="search" placeholder="タスクを検索" />
 </template>
 
 <script>

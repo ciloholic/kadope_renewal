@@ -1,9 +1,15 @@
 <template>
   <div :class="$style.container">
     <KdpSideHeader :class="$style.sideHeader" />
-    <KdpReportFilter :class="$style.reportFilter" />
-    <KdpReportMain :class="$style.reportMain" />
-    <KdpReportSave :class="$style.reportSave" />
+    <div :class="$style.reportFilter">
+      <KdpReportFilter />
+    </div>
+    <div :class="$style.reportMain">
+      <KdpReportMain />
+    </div>
+    <div :class="$style.reportSave">
+      <KdpReportSave />
+    </div>
   </div>
 </template>
 

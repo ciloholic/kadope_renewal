@@ -1,30 +1,30 @@
 <template>
   <KdpFrame :class="$style.reportFilter">
     <div :class="$style.mainBlock">
-      <KdpTitleHeader :class="$style.titleHeader">条件指定</KdpTitleHeader>
+      <KdpTitleHeader :class="$style.h1">条件指定</KdpTitleHeader>
       <!-- period -->
       <div :class="$style.subBlock">
-        <KdpTitleSubHeader :class="$style.titleSubHeader">期間</KdpTitleSubHeader>
-        <KdpInput :class="$style.input" v-model="start" type="date" />
-        <KdpInput :class="$style.input" v-model="end" type="date" />
+        <KdpTitleSubHeader :class="$style.h2">期間</KdpTitleSubHeader>
+        <KdpInput v-model="start" :class="$style.input" type="date" />
+        <KdpInput v-model="end" :class="$style.input" type="date" />
         <div :class="$style.periodGroup">
           <KdpPeriodButton v-for="(period, key) in periods" :key="key" :period="period" @onClick="onPeriodClick" />
         </div>
       </div>
       <!-- group -->
       <div :class="$style.subBlock">
-        <KdpTitleSubHeader :class="$style.titleSubHeader">グループ</KdpTitleSubHeader>
-        <KdpSelect :class="$style.select" v-model="group" :items="getGroupAll" />
+        <KdpTitleSubHeader :class="$style.h2">グループ</KdpTitleSubHeader>
+        <KdpSelect v-model="group" :class="$style.select" :items="groups" />
       </div>
     </div>
     <div :class="$style.mainBlock">
-      <KdpTitleHeader :class="$style.titleHeader">詳細指定</KdpTitleHeader>
+      <KdpTitleHeader :class="$style.h1">詳細指定</KdpTitleHeader>
       <!-- aggregate unit -->
       <div :class="$style.subBlock">
-        <KdpTitleSubHeader :class="$style.titleSubHeader">集計単位</KdpTitleSubHeader>
+        <KdpTitleSubHeader :class="$style.h2">集計単位</KdpTitleSubHeader>
         <KdpSwitch
-          :class="$style.switch"
           v-model="aggregateUnit.value"
+          :class="$style.switch"
           :lists="aggregateUnit.lists"
           :value="aggregateUnit.value"
           @onClick="onSwitchClick"
@@ -32,13 +32,18 @@
       </div>
       <!-- project -->
       <div :class="$style.subBlock">
-        <KdpTitleSubHeader :class="$style.titleSubHeader">プロジェクト</KdpTitleSubHeader>
-        <KdpCheckboxList v-model="projectChecked" :items="getProjectAll" :checked="projectChecked" />
+        <KdpTitleSubHeader :class="$style.h2">プロジェクト</KdpTitleSubHeader>
+        <KdpCheckboxList
+          v-model="projectChecked"
+          :class="$style.checkboxList"
+          :items="_projects"
+          :checked="projectChecked"
+        />
       </div>
       <!-- user -->
       <div :class="$style.subBlock">
-        <KdpTitleSubHeader :class="$style.titleSubHeader">ユーザ</KdpTitleSubHeader>
-        <KdpCheckboxList v-model="userChecked" :items="getUserAll" :checked="userChecked" />
+        <KdpTitleSubHeader :class="$style.h2">ユーザ</KdpTitleSubHeader>
+        <KdpCheckboxList v-model="userChecked" :class="$style.checkboxList" :items="_users" :checked="userChecked" />
       </div>
     </div>
   </KdpFrame>
@@ -56,6 +61,16 @@ import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
 import KdpCheckboxList from '@/components/atoms/KdpCheckboxList'
 
 export default {
+  components: {
+    KdpTitleHeader,
+    KdpTitleSubHeader,
+    KdpFrame,
+    KdpInput,
+    KdpSelect,
+    KdpSwitch,
+    KdpPeriodButton,
+    KdpCheckboxList
+  },
   data: function() {
     return {
       start: null,
@@ -64,13 +79,46 @@ export default {
       group: -1,
       aggregateUnit: {
         lists: [
-          { id: 1, text: 'プロジェクト' },
-          { id: 2, text: 'ユーザ' }
+          { id: 1, name: 'プロジェクト' },
+          { id: 2, name: 'ユーザ' }
         ],
         value: 1
       },
       projectChecked: [],
       userChecked: []
+    }
+  },
+  computed: {
+    ...mapGetters(['groups', 'projects', 'users', 'calendarInfo']),
+    _projects() {
+      return this.projects.map(x => {
+        const tasks = x.tasks.map(y => {
+          return { ...y, name: y.taskName }
+        })
+        return {
+          ...x,
+          name: x.projectName,
+          tasks: tasks
+        }
+      })
+    },
+    _users() {
+      return this.users.map(x => {
+        return { id: x.id, name: x.userName }
+      })
+    },
+    baseline() {
+      let baseline = this.calendarInfo.today
+        .clone()
+        .startOf('month')
+        .month(6)
+      if (this.calendarInfo.today.clone().isBefore(baseline)) {
+        // 1〜6月の場合、基準を前年7月に設定
+        return baseline.subtract(1, 'years')
+      } else {
+        // 7〜12月の場合、基準を今年7月に設定
+        return baseline
+      }
     }
   },
   watch: {
@@ -93,38 +141,12 @@ export default {
       this.REPORT_FILTER_INFO_UPDATE({ userChecked: this.userChecked })
     }
   },
-  methods: {
-    ...mapMutations(['REPORT_FILTER_INFO_UPDATE']),
-    onPeriodClick(e) {
-      this.start = e['start']
-      this.end = e['end']
-    },
-    onSwitchClick(e) {
-      this.aggregateUnit.value = e
-    }
-  },
-  computed: {
-    ...mapGetters(['getGroupAll', 'getProjectAll', 'getUserAll', 'getCalendarInfo']),
-    baseline() {
-      let baseline = this.getCalendarInfo.today
-        .clone()
-        .startOf('month')
-        .month(6)
-      if (this.getCalendarInfo.today.clone().isBefore(baseline)) {
-        // 1〜6月の場合、基準を前年7月に設定
-        return baseline.subtract(1, 'years')
-      } else {
-        // 7〜12月の場合、基準を今年7月に設定
-        return baseline
-      }
-    }
-  },
   created() {
-    this.start = this.getCalendarInfo.today
+    this.start = this.calendarInfo.today
       .clone()
       .startOf('month')
       .format('YYYY-MM-DD')
-    this.end = this.getCalendarInfo.today
+    this.end = this.calendarInfo.today
       .clone()
       .endOf('month')
       .format('YYYY-MM-DD')
@@ -132,17 +154,17 @@ export default {
       {
         key: 'this_week',
         text: '今週',
-        start: this.getCalendarInfo.today.clone().startOf('week'),
-        end: this.getCalendarInfo.today.clone().endOf('week')
+        start: this.calendarInfo.today.clone().startOf('week'),
+        end: this.calendarInfo.today.clone().endOf('week')
       },
       {
         key: 'last_week',
         text: '先週',
-        start: this.getCalendarInfo.today
+        start: this.calendarInfo.today
           .clone()
           .startOf('week')
           .subtract(7, 'days'),
-        end: this.getCalendarInfo.today
+        end: this.calendarInfo.today
           .clone()
           .endOf('week')
           .subtract(7, 'days')
@@ -150,17 +172,17 @@ export default {
       {
         key: 'this_month',
         text: '今月',
-        start: this.getCalendarInfo.today.clone().startOf('month'),
-        end: this.getCalendarInfo.today.clone().endOf('month')
+        start: this.calendarInfo.today.clone().startOf('month'),
+        end: this.calendarInfo.today.clone().endOf('month')
       },
       {
         key: 'last_month',
         text: '先月',
-        start: this.getCalendarInfo.today
+        start: this.calendarInfo.today
           .clone()
           .subtract(1, 'months')
           .startOf('month'),
-        end: this.getCalendarInfo.today
+        end: this.calendarInfo.today
           .clone()
           .subtract(1, 'months')
           .endOf('month')
@@ -221,15 +243,15 @@ export default {
       }
     ]
   },
-  components: {
-    KdpTitleHeader,
-    KdpTitleSubHeader,
-    KdpFrame,
-    KdpInput,
-    KdpSelect,
-    KdpSwitch,
-    KdpPeriodButton,
-    KdpCheckboxList
+  methods: {
+    ...mapMutations(['REPORT_FILTER_INFO_UPDATE']),
+    onPeriodClick(e) {
+      this.start = e['start']
+      this.end = e['end']
+    },
+    onSwitchClick(e) {
+      this.aggregateUnit.value = e
+    }
   }
 }
 </script>
@@ -245,8 +267,13 @@ export default {
   margin-top: 10px;
 }
 
-.titleHeader,
-.titleSubHeader {
+.h1 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.h2 {
+  font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
@@ -259,5 +286,9 @@ export default {
 .periodGroup {
   display: flex;
   justify-content: space-between;
+}
+
+.checkboxList {
+  font-size: 1.2rem;
 }
 </style>

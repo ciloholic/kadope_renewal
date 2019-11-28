@@ -2,12 +2,12 @@
   <div :class="$style.switchGroup">
     <input v-model="switched" :class="$style.input" :value="value" type="checkbox" />
     <div
-      :class="[$style.switch, setClass(list.id)]"
-      @click.stop="onClick(list.id)"
       v-for="list in lists"
       :key="list.id"
+      :class="[$style.switch, setClass(list.id)]"
+      @click.stop="onClick(list.id)"
     >
-      {{ list.text }}
+      {{ list.name }}
     </div>
   </div>
 </template>
@@ -28,14 +28,6 @@ export default {
       required: true
     }
   },
-  methods: {
-    setClass(id) {
-      return this.value === id ? this.$style.on : this.$style.off
-    },
-    onClick(id) {
-      this.$emit('onClick', id)
-    }
-  },
   computed: {
     switched: {
       get() {
@@ -44,6 +36,14 @@ export default {
       set(value) {
         this.$emit('input', value)
       }
+    }
+  },
+  methods: {
+    setClass(id) {
+      return this.value === id ? this.$style.on : this.$style.off
+    },
+    onClick(id) {
+      this.$emit('onClick', id)
     }
   }
 }

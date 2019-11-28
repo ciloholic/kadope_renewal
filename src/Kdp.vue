@@ -18,6 +18,7 @@
   --base-font-color-primary: #000;
   --base-font-color-secondary: #332a25;
   --base-border-color-default: #fff;
+  --base-border-color-primary: #000;
 }
 
 * {

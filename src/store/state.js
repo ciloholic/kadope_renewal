@@ -112,7 +112,50 @@ export default {
       userName: 'user-name-3'
     }
   ],
-  reportFilterInfo: {
+  reports: [
+    {
+      id: 1,
+      projectName: 'project-name-1',
+      total: 60,
+      tasks: [{ id: 1, taskName: 'task-name-1', time: 60 }]
+    },
+    {
+      id: 2,
+      projectName: 'projectname2projectname2projectname2projectname2',
+      total: 90,
+      tasks: [
+        { id: 2, taskName: 'task-name-2', time: 15 },
+        { id: 3, taskName: 'taskname3taskname3taskname3taskname3taskname3', time: 30 },
+        { id: 4, taskName: 'task-name-4', time: 45 }
+      ]
+    },
+    {
+      id: 3,
+      projectName: 'マイプロジェクト',
+      total: 135,
+      tasks: [
+        { id: 5, taskName: 'task-name-5', time: 30 },
+        { id: 6, taskName: 'task-name-6', time: 45 },
+        { id: 7, taskName: 'task-name-7', time: 45 },
+        { id: 8, taskName: 'task-name-8', time: 15 }
+      ]
+    }
+  ],
+  saveReports: [
+    {
+      id: 1,
+      reportName: 'report-name-1'
+    },
+    {
+      id: 2,
+      reportName: 'report-name-2'
+    },
+    {
+      id: 3,
+      reportName: 'report-name-3'
+    }
+  ],
+  reportInfo: {
     start: null,
     end: null,
     group: -1,

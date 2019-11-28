@@ -9,15 +9,17 @@ export default {
     event: 'input'
   },
   props: {
+    placeholder: {
+      type: String,
+      default: ''
+    },
     type: {
       type: String,
       required: true
     },
     value: {
+      type: String,
       required: true
-    },
-    placeholder: {
-      default: ''
     }
   },
   computed: {

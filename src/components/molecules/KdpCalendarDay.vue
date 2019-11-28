@@ -5,10 +5,10 @@
       <span :class="[$style.day, { [$style.active]: isToDay }]">{{ currentDay.format('DD') }}</span>
     </div>
     <div :class="$style.cells">
-      <KdpEvent :class="$style.eventList" v-for="event in currentEvent" :key="event.id" :event="event" />
-      <div :class="[$style.minute, classObject(hour)]" v-for="hour in hours" :key="hour.format('HH:mm')"></div>
+      <KdpEvent v-for="event in currentEvent" :key="event.id" :class="$style.eventList" :event="event" />
+      <div v-for="hour in hours" :key="hour.format('HH:mm')" :class="[$style.minute, classObject(hour)]"></div>
     </div>
-    <KdpTimeLine :class="$style.timeLine" v-if="isToDay" />
+    <KdpTimeLine v-if="isToDay" :class="$style.timeLine" />
   </div>
 </template>
 
@@ -18,10 +18,25 @@ import KdpEvent from '@/components/atoms/KdpEvent'
 import KdpTimeLine from '@/components/atoms/KdpTimeLine'
 
 export default {
+  components: { KdpEvent, KdpTimeLine },
   props: {
     currentDay: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    ...mapGetters(['events', 'calendarInfo']),
+    isToDay() {
+      return this.currentDay.isSame(this.calendarInfo.today, 'day')
+    },
+    hours() {
+      let start = this.moment().startOf('day')
+      return [...Array(24 * 4).keys()].map(x => start.clone().add(x * 15, 'minutes'))
+    },
+    currentEvent() {
+      let self = this
+      return this.events.filter(event => self.currentDay.isSame(event.start, 'day'))
     }
   },
   methods: {
@@ -32,22 +47,7 @@ export default {
         [this.$style.m45]: hour.format('mm') === '45'
       }
     }
-  },
-  computed: {
-    ...mapGetters(['getEventAll', 'getCalendarInfo']),
-    isToDay() {
-      return this.currentDay.isSame(this.getCalendarInfo.today, 'day')
-    },
-    hours() {
-      let start = this.moment().startOf('day')
-      return [...Array(24 * 4).keys()].map(x => start.clone().add(x * 15, 'minutes'))
-    },
-    currentEvent() {
-      let self = this
-      return this.getEventAll.filter(event => self.currentDay.isSame(event.start, 'day'))
-    }
-  },
-  components: { KdpEvent, KdpTimeLine }
+  }
 }
 </script>
 

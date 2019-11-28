@@ -3,12 +3,12 @@
     <!-- calendar header -->
     <div :class="$style.calendarHeader">
       <font-awesome-icon :class="$style.prev" icon="angle-left" size="lg" fixed-width @click="onPrev" />
-      <p @click="onToday">{{ getCalendarInfo.currentDay | $_formatMoment('gggg年M月') }}</p>
+      <p @click="onToday">{{ calendarInfo.currentDay | $_formatMoment('gggg年M月') }}</p>
       <font-awesome-icon :class="$style.next" icon="angle-right" size="lg" fixed-width @click="onNext" />
     </div>
     <!-- calendar time label -->
     <ul :class="$style.calendarLabel">
-      <li :class="$style.calendarLabelList" v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')">
+      <li v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')" :class="$style.calendarLabelList">
         {{ hour | $_formatMoment('HH:mm') }}
       </li>
     </ul>
@@ -24,27 +24,27 @@ import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpCalendarMain from '@/components/molecules/KdpCalendarMain'
 
 export default {
+  components: { KdpFrame, KdpCalendarMain },
+  mixins: [mixinMoment],
+  computed: {
+    ...mapGetters(['calendarInfo']),
+    hours() {
+      let start = this.moment().startOf('day')
+      return [...Array(24).keys()].map(x => start.clone().add(x, 'hours'))
+    }
+  },
   methods: {
     ...mapMutations(['CALENDAR_INFO_UPDATE']),
     onToday() {
       this.CALENDAR_INFO_UPDATE({ currentDay: this.moment() })
     },
     onPrev() {
-      this.CALENDAR_INFO_UPDATE({ currentDay: this.getCalendarInfo.currentDay.clone().subtract(1, 'weeks') })
+      this.CALENDAR_INFO_UPDATE({ currentDay: this.calendarInfo.currentDay.clone().subtract(1, 'weeks') })
     },
     onNext() {
-      this.CALENDAR_INFO_UPDATE({ currentDay: this.getCalendarInfo.currentDay.clone().add(1, 'weeks') })
+      this.CALENDAR_INFO_UPDATE({ currentDay: this.calendarInfo.currentDay.clone().add(1, 'weeks') })
     }
-  },
-  computed: {
-    ...mapGetters(['getCalendarInfo']),
-    hours() {
-      let start = this.moment().startOf('day')
-      return [...Array(24).keys()].map(x => start.clone().add(x, 'hours'))
-    }
-  },
-  components: { KdpFrame, KdpCalendarMain },
-  mixins: [mixinMoment]
+  }
 }
 </script>
 

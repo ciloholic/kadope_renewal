@@ -5,7 +5,7 @@
       <div :class="$style.title">{{ title }}</div>
     </div>
     <ul :class="$style.lists">
-      <li :class="$style.list" v-for="list in lists" :key="list.id" v-show="dropdownShown">
+      <li v-for="list in lists" v-show="dropdownShown" :key="list.id" :class="$style.list">
         <div :class="$style.userName">{{ list.userName }}</div>
       </li>
     </ul>
@@ -29,14 +29,14 @@ export default {
       dropdownShown: true
     }
   },
-  methods: {
-    onDropdown() {
-      this.dropdownShown = !this.dropdownShown
-    }
-  },
   computed: {
     getIcon() {
       return this.dropdownShown ? 'chevron-down' : 'chevron-right'
+    }
+  },
+  methods: {
+    onDropdown() {
+      this.dropdownShown = !this.dropdownShown
     }
   }
 }
