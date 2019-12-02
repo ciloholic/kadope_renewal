@@ -3,7 +3,7 @@
     <KdpSearch v-model="search" :class="$style.search" />
     <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="pinTasks" />
     <KdpProject
-      v-for="project in projects"
+      v-for="project in _projects"
       :key="project.id"
       :class="$style.dropdownList"
       :project="project"
@@ -28,7 +28,19 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['pinTasks', 'projects'])
+    ...mapGetters(['pinTasks', 'projects']),
+    _projects() {
+      return this.projects.map(x => {
+        const tasks = x.tasks.map(y => {
+          return { ...y, name: y.taskName }
+        })
+        return {
+          ...x,
+          name: x.projectName,
+          tasks: tasks
+        }
+      })
+    }
   },
   methods: {
     ...mapMutations(['TASK_TOGGLE_BY_ID'])

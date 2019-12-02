@@ -23,6 +23,9 @@ export default {
   saveReports: state => {
     return state.saveReports
   },
+  dailyReports: state => {
+    return state.dailyReports
+  },
   reportInfo: state => {
     return state.reportInfo
   },

@@ -4,14 +4,19 @@
     <div :class="$style.mainTitle" :style="setStyle" @click="onDropdown">
       <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
       <div :class="$style.title">{{ project.name }}</div>
-      <KdpButton
+      <KdpToolButton
         :class="[$style.pinButton, $style.projectPin, { [$style.onPin]: project.pin }]"
         :project-id="project.id"
         icon="map-pin"
         @onClick="onProjectPinClick"
       />
-      <KdpButton :class="$style.addButton" :project-id="project.id" icon="plus" @onClick="onProjectAddClick" />
-      <KdpButton :class="$style.editButton" :project-id="project.id" icon="ellipsis-h" @onClick="onProjectEditClick" />
+      <KdpToolButton :class="$style.addButton" :project-id="project.id" icon="plus" @onClick="onProjectAddClick" />
+      <KdpToolButton
+        :class="$style.editButton"
+        :project-id="project.id"
+        icon="ellipsis-h"
+        @onClick="onProjectEditClick"
+      />
     </div>
     <!-- tasks -->
     <ul :class="$style.tasks">
@@ -25,7 +30,7 @@
         <div :class="$style.taskName" :style="setStyle">
           {{ task.name }}
           <!-- pin button -->
-          <KdpButton
+          <KdpToolButton
             :class="[$style.pinButton, $style.taskPin, { [$style.onPin]: task.pin }]"
             :project-id="project.id"
             :task-id="task.id"
@@ -33,7 +38,7 @@
             @onClick="onTaskPinClick"
           />
           <!-- edit button -->
-          <KdpButton :class="$style.editButton" icon="ellipsis-h" @onClick="onTaskEditClick" />
+          <KdpToolButton :class="$style.editButton" icon="ellipsis-h" @onClick="onTaskEditClick" />
         </div>
       </li>
     </ul>
@@ -51,11 +56,11 @@
 <script>
 import { mapMutations } from 'vuex'
 import mixinColor from '@/mixins/color'
-import KdpButton from '@/components/atoms/KdpButton'
+import KdpToolButton from '@/components/atoms/KdpToolButton'
 import KdpModal from '@/components/atoms/KdpModal'
 
 export default {
-  components: { KdpButton, KdpModal },
+  components: { KdpToolButton, KdpModal },
   mixins: [mixinColor],
   props: {
     project: {
@@ -124,7 +129,7 @@ export default {
 <style lang="scss" module>
 .dropdownList {
   color: var(--base-font-color-default);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   border-radius: 3px;
 }
 

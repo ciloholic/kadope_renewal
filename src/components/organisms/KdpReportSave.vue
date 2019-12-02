@@ -22,7 +22,6 @@ export default {
 
 <style lang="scss" module>
 .h1 {
-  font-size: 1.4rem;
   margin-bottom: 5px;
 }
 
@@ -32,7 +31,7 @@ export default {
 }
 
 .item {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .item + .item {

@@ -6,7 +6,7 @@
 
 <style lang="scss" module>
 .titleSubHeader {
-  font-size: 1rem;
+  font-size: 1.4rem;
   user-select: none;
   border-bottom: solid 1px;
 }

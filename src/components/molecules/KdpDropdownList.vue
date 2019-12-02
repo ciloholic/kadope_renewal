@@ -59,7 +59,7 @@ export default {
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
   line-height: 2rem;
   word-break: break-all;

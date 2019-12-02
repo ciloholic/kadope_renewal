@@ -14,31 +14,27 @@
             <span :class="$style.taskName">{{ project.taskName }}</span>
           </td>
           <td :class="$style.task">
-            <span :class="$style.taskTime">{{ project.time | formatMinute() }}</span>
+            <span :class="$style.taskTime">{{ project.time | $_formatMinute() }}</span>
           </td>
           <td v-if="i === 0" :class="[$style.summary, $style.taskSummary]" :rowspan="projects.length">
-            <span>{{ project.total | formatMinute() }}</span>
+            <span>{{ project.total | $_formatMinute() }}</span>
           </td>
         </tr>
       </template>
       <tr :class="$style.projects">
         <td></td>
         <td :class="[$style.summary, $style.totalSummary]" colspan="2">合計</td>
-        <td :class="[$style.summary, $style.taskSummary]">{{ summary | formatMinute() }}</td>
+        <td :class="[$style.summary, $style.taskSummary]">{{ summary | $_formatMinute() }}</td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
+import mixinMoment from '@/mixins/moment'
+
 export default {
-  filters: {
-    formatMinute: minute => {
-      const _hour = Math.floor(minute / 60)
-      const _minute = ('0' + (minute % 60)).slice(-2)
-      return `${_hour}:${_minute}`
-    }
-  },
+  mixins: [mixinMoment],
   props: {
     items: {
       type: Array,

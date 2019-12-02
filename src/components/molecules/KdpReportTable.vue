@@ -33,7 +33,6 @@ export default {
 
 <style lang="scss" module>
 .h1 {
-  font-size: 1.4rem;
   margin-bottom: 10px;
 }
 </style>

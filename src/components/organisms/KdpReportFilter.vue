@@ -71,7 +71,7 @@ export default {
     KdpPeriodButton,
     KdpCheckboxList
   },
-  data: function() {
+  data() {
     return {
       start: null,
       end: null,
@@ -268,12 +268,10 @@ export default {
 }
 
 .h1 {
-  font-size: 1.4rem;
   margin-bottom: 5px;
 }
 
 .h2 {
-  font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
@@ -289,6 +287,6 @@ export default {
 }
 
 .checkboxList {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 </style>

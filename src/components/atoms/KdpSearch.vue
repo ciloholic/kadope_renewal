@@ -31,7 +31,7 @@ export default {
 .search {
   color: var(--base-font-color-default);
   background: var(--base-background-primary);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   border-radius: 3px;
   padding: 5px 10px;
   border: none;

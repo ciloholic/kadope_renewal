@@ -155,6 +155,32 @@ export default {
       reportName: 'report-name-3'
     }
   ],
+  dailyReports: [
+    {
+      id: 1,
+      datetime: '2019-01-01',
+      title: 'daily-report-name-1',
+      body: 'daily-report-name-1daily-report-name-1daily-report-name-1daily-report-name-1',
+      completed: true,
+      total: 480
+    },
+    {
+      id: 2,
+      datetime: '2019-01-02',
+      title: 'daily-report-name-2',
+      body: 'daily-report-name-2daily-report-name-2daily-report-name-2daily-report-name-2daily-report-name-2',
+      completed: false,
+      total: 510
+    },
+    {
+      id: 3,
+      datetime: '2019-01-03',
+      title: 'daily-report-name-3',
+      body: 'daily-report-name-3daily-report-name-3daily-report-name-3',
+      completed: false,
+      total: 540
+    }
+  ],
   reportInfo: {
     start: null,
     end: null,

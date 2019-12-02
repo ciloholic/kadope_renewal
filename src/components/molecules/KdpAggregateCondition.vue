@@ -2,7 +2,7 @@
   <div>
     <KdpTitleHeader :class="$style.h1">レポート</KdpTitleHeader>
     <div :class="$style.report">
-      <KdpTitleSubHeader :class="$style.h2">集計条件</KdpTitleSubHeader>
+      <KdpTitleSubHeader>集計条件</KdpTitleSubHeader>
       <ul :class="$style.items">
         <li :class="$style.item">
           <span>開始日</span>
@@ -52,12 +52,7 @@ export default {
 
 <style lang="scss" module>
 .h1 {
-  font-size: 1.4rem;
   margin-bottom: 5px;
-}
-
-.h2 {
-  font-size: 1.2rem;
 }
 
 .report {
@@ -68,7 +63,7 @@ export default {
 }
 
 .items {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   list-style: none;
 }
 
@@ -85,7 +80,7 @@ export default {
 
 .links {
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   justify-content: flex-end;
 }
 

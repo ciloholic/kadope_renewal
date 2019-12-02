@@ -9,7 +9,7 @@
   color: var(--base-font-color-secondary);
   padding: 2px 0 1px;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   bottom: 54px;
   left: 0;
   right: 0;

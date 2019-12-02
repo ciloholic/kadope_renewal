@@ -1,28 +1,14 @@
 <template>
-  <div ref="button" :class="$style.button" :data-project-id="projectId" :data-task-id="taskId" @click.stop="onClick">
-    <font-awesome-icon :icon="icon" size="sm" fixed-width />
+  <div :class="$style.button" @click="onClick">
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    icon: {
-      type: String,
-      required: true
-    },
-    projectId: {
-      type: Number,
-      default: 0
-    },
-    taskId: {
-      type: Number,
-      default: 0
-    }
-  },
   methods: {
-    onClick() {
-      this.$emit('onClick', Object.assign({}, this.$refs.button.dataset))
+    onClick(e) {
+      this.$emit('onClick', e)
     }
   }
 }
@@ -30,12 +16,12 @@ export default {
 
 <style lang="scss" module>
 .button {
-  background: var(--base-background-primary);
-  display: none;
+  color: var(--base-font-color-primary);
+  background: var(--base-background-secondary);
   justify-content: center;
   align-items: center;
-  width: 15px;
-  height: 15px;
+  width: 100%;
+  height: 100%;
   border-radius: 3px;
   cursor: default;
 }

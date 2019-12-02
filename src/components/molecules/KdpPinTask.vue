@@ -24,7 +24,7 @@ export default {
       required: true
     }
   },
-  data: function() {
+  data() {
     return {
       dropdownShown: true
     }
@@ -66,7 +66,7 @@ export default {
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
   line-height: 2rem;
   word-break: break-all;
@@ -88,7 +88,7 @@ export default {
   display: flex;
   align-items: flex-start;
   background: var(--base-background-light);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   min-height: 3rem;
   padding: 5px;
   word-break: break-all;
