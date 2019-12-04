@@ -1,21 +1,21 @@
 <template>
   <div>
     <template v-if="aggregateUnit == 1">
-      <KdpTitleHeader :class="$style.h1">プロジェクト毎</KdpTitleHeader>
+      <KdpH1 :class="$style.h1">プロジェクト毎</KdpH1>
     </template>
     <template v-else>
-      <KdpTitleHeader :class="$style.h1">ユーザ毎</KdpTitleHeader>
+      <KdpH1 :class="$style.h1">ユーザ毎</KdpH1>
     </template>
     <KdpTable :items="items" />
   </div>
 </template>
 
 <script>
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
 import KdpTable from '@/components/atoms/KdpTable'
 
 export default {
-  components: { KdpTitleHeader, KdpTable },
+  components: { KdpH1, KdpTable },
   props: {
     aggregateUnit: {
       type: Number,

@@ -1,15 +1,15 @@
 <template>
   <KdpFrame>
-    <KdpTitleHeader :class="$style.h1">
+    <KdpH1 :class="$style.h1">
       <span :class="$style.status" :data-completed="_dailyReportInfo.completed">{{
         statusText(_dailyReportInfo.completed)
       }}</span>
       <span>{{ _dailyReportInfo.datetime | $_formatMoment('YYYY-MM-DD') }} の日報</span>
-    </KdpTitleHeader>
+    </KdpH1>
     <KdpTable :items="_reports" />
-    <KdpTitleSubHeader :class="$style.h2">件名</KdpTitleSubHeader>
+    <KdpH2 :class="$style.h2">件名</KdpH2>
     <div :class="$style.title">{{ _dailyReportInfo.title }}</div>
-    <KdpTitleSubHeader :class="$style.h2">所感</KdpTitleSubHeader>
+    <KdpH2 :class="$style.h2">所感</KdpH2>
     <textarea v-model="_dailyReportInfo.body" :class="$style.textarea" />
     <div :class="$style.buttonGroup">
       <KdpButton :class="$style.button" @onClick="onSaveClick">保存</KdpButton>
@@ -23,12 +23,12 @@ import { mapGetters } from 'vuex'
 import mixinMoment from '@/mixins/moment'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpButton from '@/components/atoms/KdpButton'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
-import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
+import KdpH2 from '@/components/atoms/KdpH2'
 import KdpTable from '@/components/atoms/KdpTable'
 
 export default {
-  components: { KdpFrame, KdpTitleHeader, KdpTitleSubHeader, KdpTable, KdpButton },
+  components: { KdpFrame, KdpH1, KdpH2, KdpTable, KdpButton },
   mixins: [mixinMoment],
   computed: {
     ...mapGetters(['dailyReportInfo', 'reports']),

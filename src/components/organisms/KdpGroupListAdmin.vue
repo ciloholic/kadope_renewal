@@ -1,6 +1,6 @@
 <template>
   <KdpFrame :class="$style.groupListAdmin">
-    <KdpTitleHeader :class="$style.h1">グループ一覧</KdpTitleHeader>
+    <KdpH1 :class="$style.h1">グループ一覧</KdpH1>
     <KdpList :items="groups" @onClick="onListClick" />
   </KdpFrame>
 </template>
@@ -9,10 +9,10 @@
 import { mapGetters } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpList from '@/components/atoms/KdpList'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
 
 export default {
-  components: { KdpTitleHeader, KdpFrame, KdpList },
+  components: { KdpH1, KdpFrame, KdpList },
   computed: {
     ...mapGetters(['groups'])
   },

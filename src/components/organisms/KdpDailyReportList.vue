@@ -1,6 +1,6 @@
 <template>
   <KdpFrame>
-    <KdpTitleHeader :class="$style.h1">過去の日報</KdpTitleHeader>
+    <KdpH1 :class="$style.h1">過去の日報</KdpH1>
     <ul :class="$style.items">
       <li v-for="item in _dailyReports" :key="item.id" :class="$style.item">
         <div :class="$style.status" :data-completed="item.completed">{{ statusText(item.completed) }}</div>
@@ -15,10 +15,10 @@
 import { mapGetters } from 'vuex'
 import mixinMoment from '@/mixins/moment'
 import KdpFrame from '@/components/atoms/KdpFrame'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
 
 export default {
-  components: { KdpFrame, KdpTitleHeader },
+  components: { KdpFrame, KdpH1 },
   mixins: [mixinMoment],
   computed: {
     ...mapGetters(['dailyReports']),

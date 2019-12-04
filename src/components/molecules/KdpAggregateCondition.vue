@@ -1,8 +1,8 @@
 <template>
   <div>
-    <KdpTitleHeader :class="$style.h1">レポート</KdpTitleHeader>
+    <KdpH1 :class="$style.h1">レポート</KdpH1>
     <div :class="$style.report">
-      <KdpTitleSubHeader>集計条件</KdpTitleSubHeader>
+      <KdpH2>集計条件</KdpH2>
       <ul :class="$style.items">
         <li :class="$style.item">
           <span>開始日</span>
@@ -39,11 +39,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
-import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
+import KdpH2 from '@/components/atoms/KdpH2'
 
 export default {
-  components: { KdpTitleHeader, KdpTitleSubHeader },
+  components: { KdpH1, KdpH2 },
   computed: {
     ...mapGetters(['reportInfo'])
   }

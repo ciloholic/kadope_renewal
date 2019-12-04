@@ -1,10 +1,10 @@
 <template>
   <KdpFrame :class="$style.reportFilter">
     <div :class="$style.block">
-      <KdpTitleHeader :class="$style.h1">条件指定</KdpTitleHeader>
+      <KdpH1 :class="$style.h1">条件指定</KdpH1>
       <!-- period -->
       <div :class="$style.block">
-        <KdpTitleSubHeader :class="$style.h2">期間</KdpTitleSubHeader>
+        <KdpH2 :class="$style.h2">期間</KdpH2>
         <KdpInput v-model="start" :class="$style.input" type="date" />
         <KdpInput v-model="end" :class="$style.input" type="date" />
         <div :class="$style.periodGroup">
@@ -13,15 +13,15 @@
       </div>
       <!-- group -->
       <div :class="$style.block">
-        <KdpTitleSubHeader :class="$style.h2">グループ</KdpTitleSubHeader>
+        <KdpH2 :class="$style.h2">グループ</KdpH2>
         <KdpSelect v-model="group" :class="$style.select" :items="groups" />
       </div>
     </div>
     <div :class="$style.block">
-      <KdpTitleHeader :class="$style.h1">詳細指定</KdpTitleHeader>
+      <KdpH1 :class="$style.h1">詳細指定</KdpH1>
       <!-- aggregate unit -->
       <div :class="$style.block">
-        <KdpTitleSubHeader :class="$style.h2">集計単位</KdpTitleSubHeader>
+        <KdpH2 :class="$style.h2">集計単位</KdpH2>
         <KdpSwitch
           :class="$style.switch"
           :labels="aggregateUnit.labels"
@@ -31,12 +31,12 @@
       </div>
       <!-- project -->
       <div :class="$style.block">
-        <KdpTitleSubHeader :class="$style.h2">プロジェクト</KdpTitleSubHeader>
+        <KdpH2 :class="$style.h2">プロジェクト</KdpH2>
         <KdpCheckboxList v-model="projectChecked" :items="projects" :checked="projectChecked" />
       </div>
       <!-- user -->
       <div :class="$style.block">
-        <KdpTitleSubHeader :class="$style.h2">ユーザ</KdpTitleSubHeader>
+        <KdpH2 :class="$style.h2">ユーザ</KdpH2>
         <KdpCheckboxList v-model="userChecked" :items="users" :checked="userChecked" />
       </div>
     </div>
@@ -50,14 +50,14 @@ import KdpInput from '@/components/atoms/KdpInput'
 import KdpSelect from '@/components/atoms/KdpSelect'
 import KdpSwitch from '@/components/atoms/KdpSwitch'
 import KdpPeriodButton from '@/components/atoms/KdpPeriodButton'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
-import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
+import KdpH2 from '@/components/atoms/KdpH2'
 import KdpCheckboxList from '@/components/atoms/KdpCheckboxList'
 
 export default {
   components: {
-    KdpTitleHeader,
-    KdpTitleSubHeader,
+    KdpH1,
+    KdpH2,
     KdpFrame,
     KdpInput,
     KdpSelect,

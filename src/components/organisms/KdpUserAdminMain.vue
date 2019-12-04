@@ -1,6 +1,6 @@
 <template>
   <KdpFrame>
-    <KdpTitleHeader :class="$style.h1">ユーザ権限設定</KdpTitleHeader>
+    <KdpH1 :class="$style.h1">ユーザ権限設定</KdpH1>
     <ul :class="$style.users">
       <li v-for="user in users" :key="user.id" :class="$style.user">
         <div :class="$style.name">{{ user.name }}</div>
@@ -20,10 +20,10 @@
 import { mapGetters, mapMutations } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpSwitch from '@/components/atoms/KdpSwitch'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
 
 export default {
-  components: { KdpFrame, KdpTitleHeader, KdpSwitch },
+  components: { KdpFrame, KdpH1, KdpSwitch },
   data() {
     return {
       labels: [

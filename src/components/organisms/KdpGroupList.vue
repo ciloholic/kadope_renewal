@@ -1,6 +1,6 @@
 <template>
   <KdpFrame :class="$style.frame">
-    <KdpTitleHeader>グループ一覧</KdpTitleHeader>
+    <KdpH1>グループ一覧</KdpH1>
     <div v-for="(group, i) in groups" :key="group.id">
       <div :class="$style.group" @click="onToggleClick(i)">
         <font-awesome-icon :class="$style.icon" :icon="getIcon(i)" size="sm" fixed-width />
@@ -14,11 +14,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
 import KdpList from '@/components/atoms/KdpList'
 
 export default {
-  components: { KdpList, KdpTitleHeader, KdpFrame },
+  components: { KdpList, KdpH1, KdpFrame },
   data() {
     return {
       groupShown: []

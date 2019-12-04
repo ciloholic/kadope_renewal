@@ -1,12 +1,12 @@
 <template>
   <KdpFrame>
-    <KdpTitleHeader :class="$style.h1">新規グループの追加</KdpTitleHeader>
+    <KdpH1 :class="$style.h1">新規グループの追加</KdpH1>
     <div :class="$style.block">
-      <KdpTitleSubHeader :class="$style.h2">グループ名</KdpTitleSubHeader>
+      <KdpH2 :class="$style.h2">グループ名</KdpH2>
       <KdpInput v-model="groupName" :class="$style.input" type="text" placeholder="グループ名" />
     </div>
     <div :class="$style.block">
-      <KdpTitleSubHeader :class="$style.h2">プロジェクト</KdpTitleSubHeader>
+      <KdpH2 :class="$style.h2">プロジェクト</KdpH2>
       <KdpCheckboxList
         v-model="projectChecked"
         :class="$style.checkboxList"
@@ -15,7 +15,7 @@
       />
     </div>
     <div :class="$style.block">
-      <KdpTitleSubHeader :class="$style.h2">ユーザ</KdpTitleSubHeader>
+      <KdpH2 :class="$style.h2">ユーザ</KdpH2>
       <KdpCheckboxList v-model="userChecked" :class="$style.checkboxList" :items="users" :checked="userChecked" />
     </div>
   </KdpFrame>
@@ -25,12 +25,12 @@
 import { mapGetters } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpInput from '@/components/atoms/KdpInput'
-import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
-import KdpTitleSubHeader from '@/components/atoms/KdpTitleSubHeader'
+import KdpH1 from '@/components/atoms/KdpH1'
+import KdpH2 from '@/components/atoms/KdpH2'
 import KdpCheckboxList from '@/components/atoms/KdpCheckboxList'
 
 export default {
-  components: { KdpFrame, KdpTitleHeader, KdpTitleSubHeader, KdpInput, KdpCheckboxList },
+  components: { KdpFrame, KdpH1, KdpH2, KdpInput, KdpCheckboxList },
   data() {
     return {
       groupName: '',
