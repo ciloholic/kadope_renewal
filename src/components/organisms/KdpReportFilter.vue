@@ -1,9 +1,9 @@
 <template>
   <KdpFrame :class="$style.reportFilter">
-    <div :class="$style.mainBlock">
+    <div :class="$style.block">
       <KdpTitleHeader :class="$style.h1">条件指定</KdpTitleHeader>
       <!-- period -->
-      <div :class="$style.subBlock">
+      <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">期間</KdpTitleSubHeader>
         <KdpInput v-model="start" :class="$style.input" type="date" />
         <KdpInput v-model="end" :class="$style.input" type="date" />
@@ -12,15 +12,15 @@
         </div>
       </div>
       <!-- group -->
-      <div :class="$style.subBlock">
+      <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">グループ</KdpTitleSubHeader>
         <KdpSelect v-model="group" :class="$style.select" :items="groups" />
       </div>
     </div>
-    <div :class="$style.mainBlock">
+    <div :class="$style.block">
       <KdpTitleHeader :class="$style.h1">詳細指定</KdpTitleHeader>
       <!-- aggregate unit -->
-      <div :class="$style.subBlock">
+      <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">集計単位</KdpTitleSubHeader>
         <KdpSwitch
           v-model="aggregateUnit.value"
@@ -31,19 +31,14 @@
         />
       </div>
       <!-- project -->
-      <div :class="$style.subBlock">
+      <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">プロジェクト</KdpTitleSubHeader>
-        <KdpCheckboxList
-          v-model="projectChecked"
-          :class="$style.checkboxList"
-          :items="_projects"
-          :checked="projectChecked"
-        />
+        <KdpCheckboxList v-model="projectChecked" :items="_projects" :checked="projectChecked" />
       </div>
       <!-- user -->
-      <div :class="$style.subBlock">
+      <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">ユーザ</KdpTitleSubHeader>
-        <KdpCheckboxList v-model="userChecked" :class="$style.checkboxList" :items="_users" :checked="userChecked" />
+        <KdpCheckboxList v-model="userChecked" :items="_users" :checked="userChecked" />
       </div>
     </div>
   </KdpFrame>
@@ -262,8 +257,7 @@ export default {
   flex-direction: column;
 }
 
-.mainBlock + .mainBlock,
-.subBlock + .subBlock {
+.block + .block {
   margin-top: 10px;
 }
 
@@ -284,9 +278,5 @@ export default {
 .periodGroup {
   display: flex;
   justify-content: space-between;
-}
-
-.checkboxList {
-  font-size: 1.4rem;
 }
 </style>

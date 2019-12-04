@@ -1,11 +1,11 @@
 <template>
   <KdpFrame :class="$style.taskList">
     <KdpSearch v-model="search" :class="$style.search" />
-    <KdpPinTask :class="$style.dropdownList" title="ピン留めタスク" :tasks="pinTasks" />
+    <KdpPinTask :class="$style.list" title="ピン留めタスク" :tasks="pinTasks" />
     <KdpProject
       v-for="project in _projects"
       :key="project.id"
-      :class="$style.dropdownList"
+      :class="$style.list"
       :project="project"
       :search="search"
       @click="TASK_TOGGLE_BY_ID(id)"
@@ -22,7 +22,7 @@ import KdpProject from '@/components/molecules/KdpProject'
 
 export default {
   components: { KdpSearch, KdpFrame, KdpPinTask, KdpProject },
-  data: function() {
+  data() {
     return {
       search: ''
     }
@@ -59,12 +59,12 @@ export default {
   height: 25px;
 }
 
-.dropdownList {
+.list {
   margin-top: 5px;
   max-width: 230px;
 }
 
-.dropdownList + .dropdownList {
+.list + .list {
   margin-top: 5px;
 }
 </style>

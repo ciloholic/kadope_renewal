@@ -72,7 +72,7 @@ export default {
       default: ''
     }
   },
-  data: function() {
+  data() {
     return {
       dropdownShown: false,
       projectModalShown: false,

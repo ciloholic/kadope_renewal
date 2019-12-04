@@ -1,5 +1,5 @@
 <template>
-  <router-link :class="$style.link" :to="{ name: to }">
+  <router-link :class="$style.link" :to="{ name: to }" :data-active="isActive">
     <font-awesome-icon :icon="icon" size="3x" fixed-width />
     <span :class="$style.title">{{ title }}</span>
   </router-link>
@@ -22,6 +22,11 @@ export default {
       type: String,
       default: 'default'
     }
+  },
+  computed: {
+    isActive() {
+      return this.to === this.$route.name
+    }
   }
 }
 </script>
@@ -39,13 +44,17 @@ export default {
   letter-spacing: 1px;
   text-decoration: none;
   user-select: none;
+}
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.3);
-  }
+.link[data-active] {
+  background: rgba(0, 0, 0, 0.3);
+}
 
-  & > .title {
-    margin-top: 5px;
-  }
+.link:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  margin-top: 5px;
 }
 </style>

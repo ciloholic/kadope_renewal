@@ -2,7 +2,9 @@
   <div :class="$style.container">
     <KdpSideHeader :class="$style.sideHeader" />
     <div :class="$style.scroll">
-      <KdpTaskList :class="$style.taskList" />
+      <div :class="$style.taskList">
+        <KdpTaskList />
+      </div>
       <KdpCalendar :class="$style.calendar" />
     </div>
   </div>

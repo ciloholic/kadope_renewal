@@ -61,6 +61,7 @@ export default {
 
 <style lang="scss" module>
 .checkboxList {
+  font-size: 1.4rem;
   display: flex;
   flex-direction: column;
 }
