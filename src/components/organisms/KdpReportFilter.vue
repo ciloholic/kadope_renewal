@@ -23,10 +23,9 @@
       <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">集計単位</KdpTitleSubHeader>
         <KdpSwitch
-          v-model="aggregateUnit.value"
           :class="$style.switch"
-          :lists="aggregateUnit.lists"
-          :value="aggregateUnit.value"
+          :labels="aggregateUnit.labels"
+          :value="aggregateUnit.authority"
           @onClick="onSwitchClick"
         />
       </div>
@@ -73,11 +72,11 @@ export default {
       periods: [],
       group: -1,
       aggregateUnit: {
-        lists: [
+        labels: [
           { id: 1, name: 'プロジェクト' },
           { id: 2, name: 'ユーザ' }
         ],
-        value: 1
+        authority: 1
       },
       projectChecked: [],
       userChecked: []
@@ -126,8 +125,8 @@ export default {
     group: function() {
       this.REPORT_FILTER_INFO_UPDATE({ group: this.group })
     },
-    'aggregateUnit.value': function() {
-      this.REPORT_FILTER_INFO_UPDATE({ aggregateUnit: this.aggregateUnit.value })
+    'aggregateUnit.authority': function() {
+      this.REPORT_FILTER_INFO_UPDATE({ aggregateUnit: this.aggregateUnit.authority })
     },
     projectChecked: function() {
       this.REPORT_FILTER_INFO_UPDATE({ projectChecked: this.projectChecked })
@@ -245,7 +244,7 @@ export default {
       this.end = e['end']
     },
     onSwitchClick(e) {
-      this.aggregateUnit.value = e
+      this.aggregateUnit.authority = e
     }
   }
 }

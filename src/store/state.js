@@ -101,15 +101,21 @@ export default {
   users: [
     {
       id: 1,
-      userName: 'user-name-1'
+      userName: 'user-name-1',
+      email: 'xxxx@yyyy.zzz',
+      authority: 1
     },
     {
       id: 2,
-      userName: 'user-name-2'
+      userName: 'user-name-2',
+      email: 'xxxx@yyyy.zzz',
+      authority: 2
     },
     {
       id: 3,
-      userName: 'user-name-3'
+      userName: 'user-name-3',
+      email: 'xxxx@yyyy.zzz',
+      authority: 3
     }
   ],
   reports: [

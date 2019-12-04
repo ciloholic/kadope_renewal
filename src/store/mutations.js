@@ -10,9 +10,9 @@ export default {
   },
   [types.TASK_PIN_TOGGLE_BY_ID](state, payload) {
     state.projects.forEach(project => {
-      if (project.id == payload['projectId']) {
+      if (project.id === payload['projectId']) {
         project.tasks.forEach(task => {
-          if (task.id == payload['taskId']) {
+          if (task.id === payload['taskId']) {
             task.pin = !task.pin
           }
         })
@@ -21,8 +21,17 @@ export default {
   },
   [types.TASK_TOGGLE_BY_ID](state, id) {
     state.projects.forEach(project => {
-      if (project.id == id) {
+      if (project.id === id) {
         project.tasks.forEach(task => (task.isShown = !task.isShown))
+      }
+    })
+  },
+  [types.USER_UPDATE](state, payload) {
+    const userId = payload['userId']
+    delete payload['userId']
+    state.users.forEach(user => {
+      if (user.id === userId) {
+        user = Object.assign(user, payload)
       }
     })
   },

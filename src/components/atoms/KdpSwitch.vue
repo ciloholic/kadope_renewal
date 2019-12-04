@@ -1,41 +1,27 @@
 <template>
   <div :class="$style.switchGroup">
-    <input v-model="switched" :class="$style.input" :value="value" type="checkbox" />
+    <input :class="$style.input" :value="value" type="checkbox" />
     <div
-      v-for="list in lists"
-      :key="list.id"
-      :class="[$style.switch, setClass(list.id)]"
-      @click.stop="onClick(list.id)"
+      v-for="label in labels"
+      :key="label.id"
+      :class="[$style.switch, setClass(label.id)]"
+      @click.stop="onClick(label.id)"
     >
-      {{ list.name }}
+      {{ label.name }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  model: {
-    prop: 'switched',
-    event: 'input'
-  },
   props: {
-    lists: {
+    labels: {
       type: Array,
       required: true
     },
     value: {
       type: Number,
       required: true
-    }
-  },
-  computed: {
-    switched: {
-      get() {
-        return this.value
-      },
-      set(value) {
-        this.$emit('input', value)
-      }
     }
   },
   methods: {
