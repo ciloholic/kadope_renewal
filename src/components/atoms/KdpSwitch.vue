@@ -38,8 +38,8 @@ export default {
 <style lang="scss" module>
 .switchGroup {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   height: 30px;
 
   & > .switch:first-of-type {
@@ -59,20 +59,20 @@ export default {
 
 .switch {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
 
 .on {
-  background: var(--base-background-secondary);
   color: var(--base-font-color-primary);
+  background: var(--base-background-secondary);
 }
 
 .off {
-  background: var(--base-background-primary);
   color: var(--base-font-color-default);
+  background: var(--base-background-primary);
 }
 </style>

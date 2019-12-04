@@ -53,28 +53,28 @@ export default {
 
 <style lang="scss" module>
 .calendarDay {
-  flex-grow: 1;
   position: relative;
+  flex-grow: 1;
 }
 
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  user-select: none;
-  height: 50px;
   position: sticky;
   top: 0;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  user-select: none;
 }
 
 .dayOfWeek {
   display: flex;
-  justify-content: center;
   align-items: center;
-  user-select: none;
+  justify-content: center;
   font-size: 1rem;
+  user-select: none;
 
   &.active {
     color: var(--base-background-secondary);
@@ -83,14 +83,14 @@ export default {
 
 .day {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 2px;
+  font-size: 1.8rem;
   user-select: none;
   border-radius: 50%;
-  font-size: 1.8rem;
-  height: 32px;
-  width: 32px;
-  margin-bottom: 2px;
 
   &.active {
     color: var(--base-font-color-secondary);
@@ -124,9 +124,9 @@ export default {
   }
 
   .eventList {
-    height: 12px;
-    width: 100%;
     position: absolute;
+    width: 100%;
+    height: 12px;
     list-style: none;
   }
 }

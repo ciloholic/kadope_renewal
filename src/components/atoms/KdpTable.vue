@@ -51,10 +51,10 @@ export default {
 
 <style lang="scss" module>
 .table {
-  color: var(--base-font-color-primary);
-  border-collapse: collapse;
-  word-wrap: break-word;
   width: 100%;
+  color: var(--base-font-color-primary);
+  word-wrap: break-word;
+  border-collapse: collapse;
 }
 
 .projects + .projects {
@@ -94,9 +94,9 @@ tr:nth-of-type(2n) > .task {
 }
 
 .summary {
-  background: #faf5d0;
-  font-weight: bold;
   padding: 0 5px;
+  font-weight: bold;
+  background: #faf5d0;
 }
 
 .taskSummary {

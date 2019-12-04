@@ -60,11 +60,11 @@ export default {
 }
 
 .user {
-  background: var(--base-background-light);
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   height: 35px;
   margin-top: 5px;
+  background: var(--base-background-light);
 }
 
 .name,
@@ -75,7 +75,7 @@ export default {
   height: 100%;
   padding: 5px;
   word-break: break-all;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
 }
 </style>

@@ -37,8 +37,8 @@ export default {
 }
 
 .dropdownList {
-  margin-top: 5px;
   max-width: 230px;
+  margin-top: 5px;
 }
 
 .dropdownList + .dropdownList {

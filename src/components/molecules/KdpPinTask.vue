@@ -66,13 +66,13 @@ export default {
 }
 
 .title {
+  min-height: 3rem;
+  padding: 5px 0;
   font-size: 1.4rem;
   font-weight: bold;
   line-height: 2rem;
   word-break: break-all;
   user-select: none;
-  min-height: 3rem;
-  padding: 5px 0;
 }
 
 .tasks {
@@ -87,13 +87,13 @@ export default {
 .taskName {
   display: flex;
   align-items: flex-start;
-  background: var(--base-background-light);
-  font-size: 1.2rem;
   min-height: 3rem;
   padding: 5px;
+  font-size: 1.2rem;
   word-break: break-all;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
+  background: var(--base-background-light);
 
   &:hover {
     background: var(--target-background-color-hover);

@@ -38,13 +38,13 @@ export default {
 .name {
   display: flex;
   align-items: flex-start;
-  background: var(--base-background-light);
-  font-size: 1.2rem;
   min-height: 3rem;
   padding: 5px;
+  font-size: 1.2rem;
   word-break: break-all;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
+  background: var(--base-background-light);
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);

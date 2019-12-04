@@ -36,13 +36,13 @@ export default {
 
 <style lang="scss" module>
 .toolButton {
-  background: var(--base-background-primary);
   display: none;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 15px;
   height: 15px;
-  border-radius: 3px;
   cursor: default;
+  background: var(--base-background-primary);
+  border-radius: 3px;
 }
 </style>

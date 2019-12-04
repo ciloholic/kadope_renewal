@@ -28,15 +28,15 @@ export default {
 
 <style lang="scss" module>
 .periodButton {
-  background: var(--base-background-primary);
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  justify-content: center;
   width: 25px;
   height: 20px;
-  border-radius: 3px;
+  font-size: 1rem;
   cursor: default;
+  background: var(--base-background-primary);
+  border-radius: 3px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);

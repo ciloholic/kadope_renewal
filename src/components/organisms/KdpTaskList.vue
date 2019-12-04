@@ -60,8 +60,8 @@ export default {
 }
 
 .list {
-  margin-top: 5px;
   max-width: 230px;
+  margin-top: 5px;
 }
 
 .list + .list {

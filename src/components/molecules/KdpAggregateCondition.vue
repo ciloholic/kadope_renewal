@@ -56,9 +56,9 @@ export default {
 }
 
 .report {
+  padding: 10px 15px 12px;
   margin: 0 0 20px 0;
   background: rgba(0, 0, 0, 0.3);
-  padding: 10px 15px 12px;
   border-radius: 3px;
 }
 
@@ -80,8 +80,8 @@ export default {
 
 .links {
   display: flex;
-  font-size: 1.4rem;
   justify-content: flex-end;
+  font-size: 1.4rem;
 }
 
 .link {

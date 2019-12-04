@@ -34,8 +34,8 @@ export default {
 
 <style lang="scss" module>
 .timeLine {
-  background: var(--base-background-secondary);
-  height: 1px;
   width: 100%;
+  height: 1px;
+  background: var(--base-background-secondary);
 }
 </style>

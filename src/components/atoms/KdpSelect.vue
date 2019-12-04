@@ -32,11 +32,11 @@ export default {
 
 <style lang="scss" module>
 .select {
-  color: var(--base-font-color-default);
-  background: var(--base-background-primary);
-  font-size: 1.6rem;
-  border: none;
   width: 100%;
   height: 30px;
+  font-size: 1.6rem;
+  color: var(--base-font-color-default);
+  background: var(--base-background-primary);
+  border: none;
 }
 </style>

@@ -92,8 +92,5 @@ export default {
 <style lang="scss" module>
 .event {
   user-select: none;
-
-  .after {
-  }
 }
 </style>

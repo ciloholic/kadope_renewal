@@ -24,8 +24,8 @@ export default {
 
 <style lang="scss" module>
 .header {
-  background: var(--base-background-secondary);
   position: relative;
+  background: var(--base-background-secondary);
 }
 
 .logo {

@@ -65,10 +65,10 @@ export default {
 }
 
 .status {
-  color: #ff5544;
+  color: #f54;
 
   &[data-completed] {
-    color: #44cc22;
+    color: #4c2;
   }
 }
 
@@ -78,14 +78,14 @@ export default {
 }
 
 .textarea {
-  color: var(--base-font-color-default);
-  background: var(--base-background-primary);
   width: 100%;
   height: 200px;
+  padding: 5px 10px;
+  color: var(--base-font-color-default);
   resize: none;
+  background: var(--base-background-primary);
   border: none;
   border-radius: 3px;
-  padding: 5px 10px;
 }
 
 .buttonGroup {

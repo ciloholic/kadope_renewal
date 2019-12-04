@@ -128,8 +128,8 @@ export default {
 
 <style lang="scss" module>
 .dropdownList {
-  color: var(--base-font-color-default);
   font-size: 1.6rem;
+  color: var(--base-font-color-default);
   border-radius: 3px;
 }
 
@@ -154,13 +154,13 @@ export default {
 }
 
 .title {
+  min-height: 3rem;
+  padding: 5px 0;
   font-size: 1.4rem;
   font-weight: bold;
   line-height: 2rem;
   word-break: break-all;
   user-select: none;
-  min-height: 3rem;
-  padding: 5px 0;
 }
 
 .tasks {
@@ -175,13 +175,13 @@ export default {
 .taskName {
   display: flex;
   align-items: center;
-  background: var(--base-background-light);
-  font-size: 1.2rem;
   min-height: 3rem;
   padding: 5px;
+  font-size: 1.2rem;
   word-break: break-all;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
+  background: var(--base-background-light);
 
   &:hover {
     background: var(--target-background-color-hover);
@@ -206,8 +206,8 @@ export default {
   }
 
   &.onPin {
-    background: var(--base-background-secondary);
     color: var(--base-font-color-primary);
+    background: var(--base-background-secondary);
   }
 }
 

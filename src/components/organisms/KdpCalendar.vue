@@ -50,25 +50,25 @@ export default {
 
 <style lang="scss" module>
 .calendar {
-  height: 100%;
-  font-size: 0.9rem;
   display: grid;
-  grid-template-rows: 20px 42px 1fr;
-  grid-template-columns: 40px 1fr;
   grid-template-areas:
     'area-c-h area-c-h'
     '........ area-c-b'
     'area-c-l area-c-b';
+  grid-template-rows: 20px 42px 1fr;
+  grid-template-columns: 40px 1fr;
+  height: 100%;
+  font-size: 0.9rem;
 }
 
 .calendarHeader {
-  grid-area: area-c-h;
   display: flex;
-  justify-content: center;
+  grid-area: area-c-h;
   align-items: center;
-  user-select: none;
-  font-size: 1.5rem;
+  justify-content: center;
   height: 100%;
+  font-size: 1.5rem;
+  user-select: none;
 
   .topLink {
     color: var(--base-font-color-default);

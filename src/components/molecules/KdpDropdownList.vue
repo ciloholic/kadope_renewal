@@ -59,13 +59,13 @@ export default {
 }
 
 .title {
+  min-height: 3rem;
+  padding: 5px 0;
   font-size: 1.4rem;
   font-weight: bold;
   line-height: 2rem;
   word-break: break-all;
   user-select: none;
-  min-height: 3rem;
-  padding: 5px 0;
 }
 
 .lists {
@@ -80,13 +80,13 @@ export default {
 .userName {
   display: flex;
   align-items: flex-start;
-  background: var(--base-background-light);
-  font-size: 1.1rem;
   min-height: 3rem;
   padding: 5px;
+  font-size: 1.1rem;
   word-break: break-all;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
+  background: var(--base-background-light);
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);

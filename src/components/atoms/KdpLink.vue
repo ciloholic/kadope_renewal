@@ -33,16 +33,16 @@ export default {
 
 <style lang="scss" module>
 .link {
-  color: var(--base-font-color-primary);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  justify-content: center;
   width: 75px;
   height: 70px;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  color: var(--base-font-color-primary);
   text-decoration: none;
+  letter-spacing: 1px;
   user-select: none;
 }
 

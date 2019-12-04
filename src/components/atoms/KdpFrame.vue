@@ -6,9 +6,9 @@
 
 <style lang="scss" module>
 .frame {
+  padding: 10px;
   color: var(--base-font-color-default);
   background: var(--base-background-default);
   border-radius: 3px;
-  padding: 10px;
 }
 </style>

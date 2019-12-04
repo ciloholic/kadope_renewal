@@ -29,14 +29,14 @@ export default {
 
 <style lang="scss" module>
 .search {
-  color: var(--base-font-color-default);
-  background: var(--base-background-primary);
-  font-size: 1.6rem;
-  border-radius: 3px;
-  padding: 5px 10px;
-  border: none;
   width: 100%;
+  padding: 5px 10px;
+  font-size: 1.6rem;
+  color: var(--base-font-color-default);
   user-select: none;
+  background: var(--base-background-primary);
+  border: none;
+  border-radius: 3px;
 
   &:focus {
     outline: 0;

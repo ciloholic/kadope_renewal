@@ -61,15 +61,15 @@ export default {
 
 <style lang="scss" module>
 .checkboxList {
-  font-size: 1.4rem;
   display: flex;
   flex-direction: column;
+  font-size: 1.4rem;
 }
 
 .label {
   display: flex;
-  user-select: none;
   word-break: break-all;
+  user-select: none;
 }
 
 .input {

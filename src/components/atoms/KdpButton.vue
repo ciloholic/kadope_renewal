@@ -16,13 +16,13 @@ export default {
 
 <style lang="scss" module>
 .button {
-  color: var(--base-font-color-primary);
-  background: var(--base-background-secondary);
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: 3px;
+  color: var(--base-font-color-primary);
   cursor: default;
+  background: var(--base-background-secondary);
+  border-radius: 3px;
 }
 </style>

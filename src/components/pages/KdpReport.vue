@@ -26,16 +26,16 @@ export default {
 
 <style lang="scss" module>
 .container {
-  margin-right: 15px;
-  height: 100vh;
   display: grid;
-  grid-gap: 0 15px;
-  grid-template-rows: 15px 1fr 15px;
-  grid-template-columns: 75px 300px 1fr 300px;
   grid-template-areas:
     'area-s-h ........ ........ ........'
     'area-s-h area-r-f area-r-m area-r-s'
     'area-s-h ........ ........ ........';
+  grid-template-rows: 15px 1fr 15px;
+  grid-template-columns: 75px 300px 1fr 300px;
+  grid-gap: 0 15px;
+  height: 100vh;
+  margin-right: 15px;
 }
 
 .sideHeader {

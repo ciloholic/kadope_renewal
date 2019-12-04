@@ -43,8 +43,8 @@ export default {
 
 .items {
   list-style: none;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
 }
 
 .item {
@@ -57,10 +57,10 @@ export default {
 }
 
 .status {
-  color: #ff5544;
+  color: #f54;
 
   &[data-completed] {
-    color: #44cc22;
+    color: #4c2;
   }
 }
 
