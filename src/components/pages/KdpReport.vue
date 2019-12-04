@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container">
-    <KdpSideHeader :class="$style.sideHeader" />
+    <KdpHeader :class="$style.header" />
     <div :class="$style.reportFilter">
       <KdpReportFilter />
     </div>
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import KdpSideHeader from '@/components/molecules/KdpSideHeader'
+import KdpHeader from '@/components/molecules/KdpHeader'
 import KdpReportFilter from '@/components/organisms/KdpReportFilter'
 import KdpReportMain from '@/components/organisms/KdpReportMain'
 import KdpReportSave from '@/components/organisms/KdpReportSave'
 
 export default {
-  components: { KdpSideHeader, KdpReportFilter, KdpReportMain, KdpReportSave }
+  components: { KdpHeader, KdpReportFilter, KdpReportMain, KdpReportSave }
 }
 </script>
 
@@ -38,7 +38,7 @@ export default {
   margin-right: 15px;
 }
 
-.sideHeader {
+.header {
   grid-area: area-s-h;
 }
 

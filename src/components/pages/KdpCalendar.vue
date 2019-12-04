@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container">
-    <KdpSideHeader :class="$style.sideHeader" />
+    <KdpHeader :class="$style.header" />
     <div :class="$style.scroll">
       <div :class="$style.taskList">
         <KdpTaskList />
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import KdpSideHeader from '@/components/molecules/KdpSideHeader'
+import KdpHeader from '@/components/molecules/KdpHeader'
 import KdpTaskList from '@/components/organisms/KdpTaskList'
 import KdpCalendar from '@/components/organisms/KdpCalendar'
 
 export default {
-  components: { KdpSideHeader, KdpTaskList, KdpCalendar }
+  components: { KdpHeader, KdpTaskList, KdpCalendar }
 }
 </script>
 
@@ -34,7 +34,7 @@ export default {
   margin-right: 15px;
 }
 
-.sideHeader {
+.header {
   grid-area: area-s-h;
 }
 

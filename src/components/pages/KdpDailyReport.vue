@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container">
-    <KdpSideHeader :class="$style.sideHeader" />
+    <KdpHeader :class="$style.header" />
     <div :class="$style.dailyReportList">
       <KdpDailyReportList />
     </div>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import KdpSideHeader from '@/components/molecules/KdpSideHeader'
+import KdpHeader from '@/components/molecules/KdpHeader'
 import KdpDailyReportList from '@/components/organisms/KdpDailyReportList'
 import KdpDailyReportMain from '@/components/organisms/KdpDailyReportMain'
 
 export default {
-  components: { KdpSideHeader, KdpDailyReportList, KdpDailyReportMain }
+  components: { KdpHeader, KdpDailyReportList, KdpDailyReportMain }
 }
 </script>
 
@@ -34,7 +34,7 @@ export default {
   margin-right: 15px;
 }
 
-.sideHeader {
+.header {
   grid-area: area-s-h;
 }
 
