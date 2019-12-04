@@ -1,14 +1,16 @@
 <template>
   <KdpFrame>
     <KdpTitleHeader :class="$style.h1">
-      <span :class="$style.status" :data-completed="item.completed">{{ statusText(item.completed) }}</span>
-      <span>{{ item.datetime | $_formatMoment('YYYY-MM-DD') }} の日報</span>
+      <span :class="$style.status" :data-completed="_dailyReportInfo.completed">{{
+        statusText(_dailyReportInfo.completed)
+      }}</span>
+      <span>{{ _dailyReportInfo.datetime | $_formatMoment('YYYY-MM-DD') }} の日報</span>
     </KdpTitleHeader>
-    <KdpTable :items="reports" />
+    <KdpTable :items="_reports" />
     <KdpTitleSubHeader :class="$style.h2">件名</KdpTitleSubHeader>
-    <p :class="$style.title">{{ item.title }}</p>
+    <div :class="$style.title">{{ _dailyReportInfo.title }}</div>
     <KdpTitleSubHeader :class="$style.h2">所感</KdpTitleSubHeader>
-    <textarea v-model="item.body" :class="$style.textarea" />
+    <textarea v-model="_dailyReportInfo.body" :class="$style.textarea" />
     <div :class="$style.buttonGroup">
       <KdpButton :class="$style.button" @onClick="onSaveClick">保存</KdpButton>
       <KdpButton :class="$style.button" @onClick="onSendClick">送信</KdpButton>
@@ -17,6 +19,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import mixinMoment from '@/mixins/moment'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpButton from '@/components/atoms/KdpButton'
@@ -27,18 +30,18 @@ import KdpTable from '@/components/atoms/KdpTable'
 export default {
   components: { KdpFrame, KdpTitleHeader, KdpTitleSubHeader, KdpTable, KdpButton },
   mixins: [mixinMoment],
-  model: {
-    prop: 'value',
-    event: 'input'
-  },
-  props: {
-    item: {
-      type: Object,
-      required: true
+  computed: {
+    ...mapGetters(['dailyReportInfo', 'reports']),
+    _dailyReportInfo() {
+      return { ...this.dailyReportInfo, datetime: this.moment(this.dailyReportInfo, 'YYYY-MM-DD') }
     },
-    reports: {
-      type: Array,
-      required: true
+    _reports() {
+      return this.reports.map(x => {
+        const project = { projectId: x.id, projectName: x.name, total: x.total }
+        return x.tasks.map(y => {
+          return { ...project, taskId: y.id, taskName: y.name, time: y.time }
+        })
+      })
     }
   },
   methods: {

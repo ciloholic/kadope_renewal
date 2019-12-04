@@ -2,7 +2,7 @@
   <KdpFrame>
     <KdpTitleHeader :class="$style.h1">ユーザ権限設定</KdpTitleHeader>
     <ul :class="$style.users">
-      <li v-for="user in _users" :key="user.id" :class="$style.user">
+      <li v-for="user in users" :key="user.id" :class="$style.user">
         <div :class="$style.name">{{ user.name }}</div>
         <div :class="$style.email">{{ user.email }}</div>
         <KdpSwitch
@@ -34,12 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['users']),
-    _users() {
-      return this.users.map(x => {
-        return { ...x, name: x.userName }
-      })
-    }
+    ...mapGetters(['users'])
   },
   methods: {
     ...mapMutations(['USER_UPDATE']),

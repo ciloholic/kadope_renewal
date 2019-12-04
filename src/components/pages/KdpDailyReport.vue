@@ -2,56 +2,21 @@
   <div :class="$style.container">
     <KdpSideHeader :class="$style.sideHeader" />
     <div :class="$style.dailyReportList">
-      <KdpDailyReportList :items="_dailyReports" @onClick="onDailyReportClick" />
+      <KdpDailyReportList />
     </div>
     <div :class="$style.dailyReportMain">
-      <KdpDailyReportMain v-model="item" :item="item" :reports="_reports" />
+      <KdpDailyReportMain />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import KdpSideHeader from '@/components/molecules/KdpSideHeader'
 import KdpDailyReportList from '@/components/organisms/KdpDailyReportList'
 import KdpDailyReportMain from '@/components/organisms/KdpDailyReportMain'
 
 export default {
-  components: { KdpSideHeader, KdpDailyReportList, KdpDailyReportMain },
-  data() {
-    return {
-      item: {
-        datetime: this.moment(),
-        title: '',
-        body: '',
-        completed: false
-      }
-    }
-  },
-  computed: {
-    ...mapGetters(['dailyReports', 'reports']),
-    _dailyReports() {
-      return this.dailyReports.map(x => {
-        return {
-          ...x,
-          datetime: this.moment(x.datetime, 'YYYY-MM-DD')
-        }
-      })
-    },
-    _reports() {
-      return this.reports.map(x => {
-        const project = { projectId: x.id, projectName: x.projectName, total: x.total }
-        return x.tasks.map(y => {
-          return { ...project, taskId: y.id, taskName: y.taskName, time: y.time }
-        })
-      })
-    }
-  },
-  methods: {
-    onDailyReportClick(id) {
-      this.item = this._.find(this._dailyReports, ['id', id])
-    }
-  }
+  components: { KdpSideHeader, KdpDailyReportList, KdpDailyReportMain }
 }
 </script>
 

@@ -2,7 +2,7 @@
   <KdpFrame>
     <KdpTitleHeader :class="$style.h1">過去の日報</KdpTitleHeader>
     <ul :class="$style.items">
-      <li v-for="item in items" :key="item.id" :class="$style.item" @click="onClick(item.id)">
+      <li v-for="item in _dailyReports" :key="item.id" :class="$style.item">
         <div :class="$style.status" :data-completed="item.completed">{{ statusText(item.completed) }}</div>
         <div>{{ item.title }}</div>
         <div :class="$style.total">{{ item.total | $_formatMinute() }}</div>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import mixinMoment from '@/mixins/moment'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
@@ -19,16 +20,18 @@ import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
 export default {
   components: { KdpFrame, KdpTitleHeader },
   mixins: [mixinMoment],
-  props: {
-    items: {
-      type: Array,
-      required: true
+  computed: {
+    ...mapGetters(['dailyReports']),
+    _dailyReports() {
+      return this.dailyReports.map(x => {
+        return {
+          ...x,
+          datetime: this.moment(x.datetime, 'YYYY-MM-DD')
+        }
+      })
     }
   },
   methods: {
-    onClick(id) {
-      this.$emit('onClick', id)
-    },
     statusText(completed) {
       return completed ? '【済】' : '【未】'
     }

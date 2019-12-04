@@ -1,7 +1,7 @@
 <template>
   <KdpFrame :class="$style.groupListAdmin">
     <KdpTitleHeader :class="$style.h1">グループ一覧</KdpTitleHeader>
-    <KdpList :items="_groups" @onClick="onListClick" />
+    <KdpList :items="groups" @onClick="onListClick" />
   </KdpFrame>
 </template>
 
@@ -14,12 +14,7 @@ import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
 export default {
   components: { KdpTitleHeader, KdpFrame, KdpList },
   computed: {
-    ...mapGetters(['groups']),
-    _groups() {
-      return this.groups.map(x => {
-        return { id: x.id, name: x.groupName }
-      })
-    }
+    ...mapGetters(['groups'])
   },
   methods: {
     onListClick(e) {

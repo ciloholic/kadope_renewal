@@ -1,13 +1,13 @@
 <template>
-  <KdpFrame :class="$style.groupList">
+  <KdpFrame :class="$style.frame">
     <KdpTitleHeader>グループ一覧</KdpTitleHeader>
-    <KdpDropdownList
-      v-for="group in _groups"
-      :key="group.id"
-      :class="$style.dropdownList"
-      :title="group.name"
-      :lists="group.users"
-    />
+    <div v-for="(group, i) in groups" :key="group.id">
+      <div :class="$style.group" @click="onToggleClick(i)">
+        <font-awesome-icon :class="$style.icon" :icon="getIcon(i)" size="sm" fixed-width />
+        <div :class="$style.name">{{ group.name }}</div>
+      </div>
+      <KdpList :class="$style.list" :items="group.users" :shown="groupShown[i]" />
+    </div>
   </KdpFrame>
 </template>
 
@@ -15,33 +15,64 @@
 import { mapGetters } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpTitleHeader from '@/components/atoms/KdpTitleHeader'
-import KdpDropdownList from '@/components/molecules/KdpDropdownList'
+import KdpList from '@/components/atoms/KdpList'
 
 export default {
-  components: { KdpDropdownList, KdpTitleHeader, KdpFrame },
+  components: { KdpList, KdpTitleHeader, KdpFrame },
+  data() {
+    return {
+      groupShown: []
+    }
+  },
   computed: {
-    ...mapGetters(['groups']),
-    _groups() {
-      return this.groups.map(x => {
-        return { ...x, id: x.id, name: x.groupName }
-      })
+    ...mapGetters(['groups'])
+  },
+  created() {
+    this.groupShown = new Array(this.groups.length).fill(true)
+  },
+  methods: {
+    getIcon(i) {
+      return this.groupShown[i] ? 'chevron-down' : 'chevron-right'
+    },
+    onToggleClick(i) {
+      this.$set(this.groupShown, i, !this.groupShown[i])
     }
   }
 }
 </script>
 
 <style lang="scss" module>
-.groupList {
+.frame {
   display: flex;
   flex-direction: column;
 }
 
-.dropdownList {
+.group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin: auto 2px;
+}
+
+.name {
+  min-height: 3rem;
+  padding: 5px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
+  word-break: break-all;
+  user-select: none;
+}
+
+.list {
   max-width: 230px;
   margin-top: 5px;
 }
 
-.dropdownList + .dropdownList {
+.list + .list {
   margin-top: 5px;
 }
 </style>

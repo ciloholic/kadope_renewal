@@ -26,6 +26,9 @@ export default {
   dailyReports: state => {
     return state.dailyReports
   },
+  dailyReportInfo: state => {
+    return state.dailyReportInfo
+  },
   reportInfo: state => {
     return state.reportInfo
   },

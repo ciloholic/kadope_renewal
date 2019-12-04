@@ -10,13 +10,13 @@
       <KdpCheckboxList
         v-model="projectChecked"
         :class="$style.checkboxList"
-        :items="_projects"
+        :items="projects"
         :checked="projectChecked"
       />
     </div>
     <div :class="$style.block">
       <KdpTitleSubHeader :class="$style.h2">ユーザ</KdpTitleSubHeader>
-      <KdpCheckboxList v-model="userChecked" :class="$style.checkboxList" :items="_users" :checked="userChecked" />
+      <KdpCheckboxList v-model="userChecked" :class="$style.checkboxList" :items="users" :checked="userChecked" />
     </div>
   </KdpFrame>
 </template>
@@ -39,24 +39,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['projects', 'users']),
-    _projects() {
-      return this.projects.map(x => {
-        const tasks = x.tasks.map(y => {
-          return { ...y, name: y.taskName }
-        })
-        return {
-          ...x,
-          name: x.projectName,
-          tasks: tasks
-        }
-      })
-    },
-    _users() {
-      return this.users.map(x => {
-        return { id: x.id, name: x.userName }
-      })
-    }
+    ...mapGetters(['projects', 'users'])
   },
   methods: {
     onSaveClick() {

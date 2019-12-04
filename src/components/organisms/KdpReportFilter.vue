@@ -32,12 +32,12 @@
       <!-- project -->
       <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">プロジェクト</KdpTitleSubHeader>
-        <KdpCheckboxList v-model="projectChecked" :items="_projects" :checked="projectChecked" />
+        <KdpCheckboxList v-model="projectChecked" :items="projects" :checked="projectChecked" />
       </div>
       <!-- user -->
       <div :class="$style.block">
         <KdpTitleSubHeader :class="$style.h2">ユーザ</KdpTitleSubHeader>
-        <KdpCheckboxList v-model="userChecked" :items="_users" :checked="userChecked" />
+        <KdpCheckboxList v-model="userChecked" :items="users" :checked="userChecked" />
       </div>
     </div>
   </KdpFrame>
@@ -84,23 +84,6 @@ export default {
   },
   computed: {
     ...mapGetters(['groups', 'projects', 'users', 'calendarInfo']),
-    _projects() {
-      return this.projects.map(x => {
-        const tasks = x.tasks.map(y => {
-          return { ...y, name: y.taskName }
-        })
-        return {
-          ...x,
-          name: x.projectName,
-          tasks: tasks
-        }
-      })
-    },
-    _users() {
-      return this.users.map(x => {
-        return { id: x.id, name: x.userName }
-      })
-    },
     baseline() {
       let baseline = this.calendarInfo.today
         .clone()

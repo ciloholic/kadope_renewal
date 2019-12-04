@@ -2,7 +2,7 @@
   <KdpFrame>
     <KdpTitleHeader :class="$style.h1">保存したレポート</KdpTitleHeader>
     <ul :class="$style.items">
-      <li v-for="item in saveReports" :key="item.id" :class="$style.item">{{ item.reportName }}</li>
+      <li v-for="item in saveReports" :key="item.id" :class="$style.item">{{ item.name }}</li>
     </ul>
   </KdpFrame>
 </template>

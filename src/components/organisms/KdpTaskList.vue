@@ -3,7 +3,7 @@
     <KdpSearch v-model="search" :class="$style.search" />
     <KdpPinTask :class="$style.list" title="ピン留めタスク" :tasks="pinTasks" />
     <KdpProject
-      v-for="project in _projects"
+      v-for="project in projects"
       :key="project.id"
       :class="$style.list"
       :project="project"
@@ -28,19 +28,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['pinTasks', 'projects']),
-    _projects() {
-      return this.projects.map(x => {
-        const tasks = x.tasks.map(y => {
-          return { ...y, name: y.taskName }
-        })
-        return {
-          ...x,
-          name: x.projectName,
-          tasks: tasks
-        }
-      })
-    }
+    ...mapGetters(['pinTasks', 'projects'])
   },
   methods: {
     ...mapMutations(['TASK_TOGGLE_BY_ID'])

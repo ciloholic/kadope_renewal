@@ -25,35 +25,35 @@ export default {
   projects: [
     {
       id: 1,
-      projectName: 'project-name-1',
+      name: 'project-name-1',
       hsla: 'hsla(111, 100%, 80%, 0.5)',
       pin: true,
       tasks: [
-        { id: 1, taskName: 'task-name-1', pin: true },
-        { id: 2, taskName: 'task-name-2', pin: false },
-        { id: 3, taskName: 'task-name-3', pin: false }
+        { id: 1, name: 'task-name-1', pin: true },
+        { id: 2, name: 'task-name-2', pin: false },
+        { id: 3, name: 'task-name-3', pin: false }
       ]
     },
     {
       id: 2,
-      projectName: 'projectname2projectname2projectname2projectname2',
+      name: 'projectname2projectname2projectname2projectname2',
       hsla: 'hsla(222, 100%, 80%, 0.5)',
       pin: false,
       tasks: [
-        { id: 4, taskName: 'task-name-1', pin: true },
-        { id: 5, taskName: 'taskname2taskname2taskname2taskname2taskname2', pin: true },
-        { id: 6, taskName: 'task-name-3', pin: false }
+        { id: 4, name: 'task-name-1', pin: true },
+        { id: 5, name: 'taskname2taskname2taskname2taskname2taskname2', pin: true },
+        { id: 6, name: 'task-name-3', pin: false }
       ]
     },
     {
       id: 3,
-      projectName: 'マイプロジェクト',
+      name: 'マイプロジェクト',
       hsla: 'hsla(333, 100%, 80%, 0.5)',
       pin: true,
       tasks: [
-        { id: 7, taskName: 'task-name-7', pin: true },
-        { id: 8, taskName: 'task-name-8', pin: false },
-        { id: 9, taskName: 'task-name-9', pin: false }
+        { id: 7, name: 'task-name-7', pin: true },
+        { id: 8, name: 'task-name-8', pin: false },
+        { id: 9, name: 'task-name-9', pin: false }
       ]
     }
   ],
@@ -75,25 +75,25 @@ export default {
   groups: [
     {
       id: 1,
-      groupName: 'group-1',
+      name: 'group-1',
       users: [
         {
           id: 1,
-          userName: 'user-name-1'
+          name: 'user-name-1'
         },
         {
           id: 2,
-          userName: 'user-name-2'
+          name: 'user-name-2'
         }
       ]
     },
     {
       id: 2,
-      groupName: 'group-2',
+      name: 'group-2',
       users: [
         {
           id: 3,
-          userName: 'user-name-3'
+          name: 'user-name-3'
         }
       ]
     }
@@ -101,19 +101,19 @@ export default {
   users: [
     {
       id: 1,
-      userName: 'user-name-1',
+      name: 'user-name-1',
       email: 'xxxx@yyyy.zzz',
       authority: 1
     },
     {
       id: 2,
-      userName: 'user-name-2',
+      name: 'user-name-2',
       email: 'xxxx@yyyy.zzz',
       authority: 2
     },
     {
       id: 3,
-      userName: 'user-name-3',
+      name: 'user-name-3',
       email: 'xxxx@yyyy.zzz',
       authority: 3
     }
@@ -121,44 +121,44 @@ export default {
   reports: [
     {
       id: 1,
-      projectName: 'project-name-1',
+      name: 'project-name-1',
       total: 60,
-      tasks: [{ id: 1, taskName: 'task-name-1', time: 60 }]
+      tasks: [{ id: 1, name: 'task-name-1', time: 60 }]
     },
     {
       id: 2,
-      projectName: 'projectname2projectname2projectname2projectname2',
+      name: 'projectname2projectname2projectname2projectname2',
       total: 90,
       tasks: [
-        { id: 2, taskName: 'task-name-2', time: 15 },
-        { id: 3, taskName: 'taskname3taskname3taskname3taskname3taskname3', time: 30 },
-        { id: 4, taskName: 'task-name-4', time: 45 }
+        { id: 2, name: 'task-name-2', time: 15 },
+        { id: 3, name: 'taskname3taskname3taskname3taskname3taskname3', time: 30 },
+        { id: 4, name: 'task-name-4', time: 45 }
       ]
     },
     {
       id: 3,
-      projectName: 'マイプロジェクト',
+      name: 'マイプロジェクト',
       total: 135,
       tasks: [
-        { id: 5, taskName: 'task-name-5', time: 30 },
-        { id: 6, taskName: 'task-name-6', time: 45 },
-        { id: 7, taskName: 'task-name-7', time: 45 },
-        { id: 8, taskName: 'task-name-8', time: 15 }
+        { id: 5, name: 'task-name-5', time: 30 },
+        { id: 6, name: 'task-name-6', time: 45 },
+        { id: 7, name: 'task-name-7', time: 45 },
+        { id: 8, name: 'task-name-8', time: 15 }
       ]
     }
   ],
   saveReports: [
     {
       id: 1,
-      reportName: 'report-name-1'
+      name: 'report-name-1'
     },
     {
       id: 2,
-      reportName: 'report-name-2'
+      name: 'report-name-2'
     },
     {
       id: 3,
-      reportName: 'report-name-3'
+      name: 'report-name-3'
     }
   ],
   dailyReports: [
@@ -187,6 +187,14 @@ export default {
       total: 540
     }
   ],
+  dailyReportInfo: {
+    id: 1,
+    datetime: '2019-01-01',
+    title: 'daily-report-name-1',
+    body: 'daily-report-name-1daily-report-name-1daily-report-name-1daily-report-name-1',
+    completed: true,
+    total: 480
+  },
   reportInfo: {
     start: null,
     end: null,

@@ -14,11 +14,7 @@ import KdpUserAdminMain from '@/components/organisms/KdpUserAdminMain'
 export default {
   components: { KdpSideHeader, KdpUserAdminMain },
   computed: {},
-  methods: {
-    onClick(e) {
-      console.log(e)
-    }
-  }
+  methods: {}
 }
 </script>
 
