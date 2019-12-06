@@ -1,12 +1,12 @@
 <template>
-  <KdpFrame :class="$style.calendar">
-    <div :class="$style.calendarHeader">
+  <KdpFrame :class="$style.calendarInput">
+    <div :class="$style.header">
       <font-awesome-icon :class="$style.prev" icon="angle-left" size="lg" fixed-width @click="onPrev" />
-      <p @click="onToday">{{ calendarInfo.currentDay | $_formatMoment('gggg年M月') }}</p>
+      <span @click="onToday">{{ calendarInfo.currentDay | $_formatMoment('gggg年M月') }}</span>
       <font-awesome-icon :class="$style.next" icon="angle-right" size="lg" fixed-width @click="onNext" />
     </div>
-    <ul :class="$style.calendarLabel">
-      <li v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')" :class="$style.calendarLabelList">
+    <ul :class="$style.labels">
+      <li v-for="hour in hours" :key="hour | $_formatMoment('HH:mm')" :class="$style.label">
         {{ hour | $_formatMoment('HH:mm') }}
       </li>
     </ul>
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-.calendar {
+.calendarInput {
   display: grid;
   grid-template-areas:
     'area-c-h area-c-h'
@@ -56,9 +56,14 @@ export default {
   grid-template-columns: 40px 1fr;
   height: 100%;
   font-size: 0.9rem;
+
+  > .calendarMain {
+    display: flex;
+    grid-area: area-c-b;
+  }
 }
 
-.calendarHeader {
+.header {
   display: flex;
   grid-area: area-c-h;
   align-items: center;
@@ -67,35 +72,31 @@ export default {
   font-size: 1.5rem;
   user-select: none;
 
-  .topLink {
+  > .topLink {
     color: var(--base-font-color-default);
     text-decoration: none;
   }
 
-  .prev {
+  > .prev {
     margin-right: 20px;
   }
 
-  .next {
+  > .next {
     margin-left: 20px;
   }
 }
 
-.calendarLabel {
+.labels {
   grid-area: area-c-l;
 
-  .calendarLabelList {
+  > .label {
     height: 15px;
     list-style: none;
     user-select: none;
-
-    & + .calendarLabelList {
-      margin-top: 33px;
-    }
   }
-}
 
-.calendarMain {
-  grid-area: area-c-b;
+  .label + .label {
+    margin-top: 33px;
+  }
 }
 </style>

@@ -8,7 +8,7 @@ export default {
   projects: state => {
     return state.projects
   },
-  events: state => {
+  jobs: state => {
     return state.events
   },
   groups: state => {

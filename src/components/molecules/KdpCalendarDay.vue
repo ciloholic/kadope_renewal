@@ -1,11 +1,11 @@
 <template>
   <div :class="$style.calendarDay">
     <div :class="$style.header">
-      <span :class="[$style.dayOfWeek, { [$style.active]: isToDay }]">{{ currentDay.format('ddd') }}</span>
-      <span :class="[$style.day, { [$style.active]: isToDay }]">{{ currentDay.format('DD') }}</span>
+      <span :data-active="isToDay" :class="$style.dayOfWeek">{{ currentDay.format('ddd') }}</span>
+      <span :data-active="isToDay" :class="$style.day">{{ currentDay.format('DD') }}</span>
     </div>
     <div :class="$style.cells">
-      <KdpEvent v-for="event in currentEvent" :key="event.id" :class="$style.eventList" :event="event" />
+      <KdpJob v-for="job in currentJob" :key="job.id" :class="$style.jobList" :job="job" />
       <div v-for="hour in hours" :key="hour.format('HH:mm')" :class="[$style.minute, classObject(hour)]"></div>
     </div>
     <KdpTimeLine v-if="isToDay" :class="$style.timeLine" />
@@ -14,11 +14,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import KdpEvent from '@/components/atoms/KdpEvent'
+import KdpJob from '@/components/atoms/KdpJob'
 import KdpTimeLine from '@/components/atoms/KdpTimeLine'
 
 export default {
-  components: { KdpEvent, KdpTimeLine },
+  components: { KdpJob, KdpTimeLine },
   props: {
     currentDay: {
       type: Object,
@@ -26,7 +26,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['events', 'calendarInfo']),
+    ...mapGetters(['jobs', 'calendarInfo']),
     isToDay() {
       return this.currentDay.isSame(this.calendarInfo.today, 'day')
     },
@@ -34,9 +34,9 @@ export default {
       let start = this.moment().startOf('day')
       return [...Array(24 * 4).keys()].map(x => start.clone().add(x * 15, 'minutes'))
     },
-    currentEvent() {
+    currentJob() {
       let self = this
-      return this.events.filter(event => self.currentDay.isSame(event.start, 'day'))
+      return this.jobs.filter(job => self.currentDay.isSame(job.start, 'day'))
     }
   },
   methods: {
@@ -55,6 +55,10 @@ export default {
 .calendarDay {
   position: relative;
   flex-grow: 1;
+
+  > .timeLine {
+    position: absolute;
+  }
 }
 
 .header {
@@ -67,32 +71,32 @@ export default {
   justify-content: center;
   height: 50px;
   user-select: none;
-}
 
-.dayOfWeek {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  user-select: none;
+  > .dayOfWeek {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    user-select: none;
+  }
 
-  &.active {
+  > .dayOfWeek[data-active] {
     color: var(--base-background-secondary);
   }
-}
 
-.day {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  margin-bottom: 2px;
-  font-size: 1.8rem;
-  user-select: none;
-  border-radius: 50%;
+  > .day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 2px;
+    font-size: 1.8rem;
+    user-select: none;
+    border-radius: 50%;
+  }
 
-  &.active {
+  > .day[data-active] {
     color: var(--base-font-color-secondary);
     background: var(--base-background-secondary);
   }
@@ -101,37 +105,33 @@ export default {
 .cells {
   position: relative;
 
-  .minute {
+  > .minute {
     height: 12px;
     list-style: none;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
   }
 
-  .m00,
+  > .minute:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  > .m00,
   .m45 + .m00 {
     border-top: 1px solid #888;
   }
 
-  .m45:last-child {
+  > .m45:last-child {
     border-bottom: 1px solid #888;
   }
 
-  .m30 {
+  > .m30 {
     border-top: 1px dashed #888;
   }
 
-  .eventList {
+  > .jobList {
     position: absolute;
     width: 100%;
     height: 12px;
     list-style: none;
   }
-}
-
-.timeLine {
-  position: absolute;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.calendarMain">
+  <div>
     <KdpCalendarDay
       v-for="day in days"
       :key="day.format('YYYY-MM-DD')"
@@ -17,7 +17,7 @@ export default {
   components: { KdpCalendarDay },
   computed: {
     ...mapGetters(['calendarInfo']),
-    days: function() {
+    days() {
       if (this.calendarInfo.displayDays === 5) {
         let start = this.calendarInfo.currentDay
           .clone()
@@ -34,10 +34,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-.calendarMain {
-  display: flex;
-}
-
 .calendarDay {
   border-left: 1px solid #888;
 
