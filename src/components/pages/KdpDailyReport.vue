@@ -24,9 +24,9 @@ export default {
 .container {
   display: grid;
   grid-template-areas:
-    'area-s-h . .......... .......... .'
-    'area-s-h . area-d-r-l area-d-r-m .'
-    'area-s-h . .......... .......... .';
+    'area-h . .......... .......... .'
+    'area-h . area-d-r-l area-d-r-m .'
+    'area-h . .......... .......... .';
   grid-template-rows: 15px 1fr 15px;
   grid-template-columns: 75px 1fr 300px 700px 1fr;
   grid-gap: 0 15px;
@@ -35,7 +35,7 @@ export default {
 }
 
 .header {
-  grid-area: area-s-h;
+  grid-area: area-h;
 }
 
 .dailyReportList {

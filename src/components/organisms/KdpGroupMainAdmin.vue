@@ -16,7 +16,12 @@
     </div>
     <div :class="$style.block">
       <KdpH2 :class="$style.h2">ユーザ</KdpH2>
-      <KdpCheckboxList v-model="userChecked" :class="$style.checkboxList" :items="users" :checked="userChecked" />
+      <KdpCheckboxList
+        v-model="accountChecked"
+        :class="$style.checkboxList"
+        :items="accounts"
+        :checked="accountChecked"
+      />
     </div>
   </KdpFrame>
 </template>
@@ -35,11 +40,11 @@ export default {
     return {
       groupName: '',
       projectChecked: [],
-      userChecked: []
+      accountChecked: []
     }
   },
   computed: {
-    ...mapGetters(['projects', 'users'])
+    ...mapGetters(['projects', 'accounts'])
   },
   methods: {
     onSaveClick() {

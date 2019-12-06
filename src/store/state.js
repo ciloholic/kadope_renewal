@@ -3,16 +3,6 @@ moment.tz.setDefault('Asia/Tokyo')
 moment.locale('ja')
 
 export default {
-  links: [
-    { to: 'KdpCalendar', icon: 'calendar-alt', title: '稼働入力' },
-    { to: 'KdpCalendarAdmin', icon: 'search', title: '稼働閲覧' },
-    { to: 'KdpReport', icon: 'chart-bar', title: 'レポート' },
-    { to: 'KdpDailyReport', icon: 'envelope', title: '日報' },
-    { to: 'KdpGroupAdmin', icon: 'users', title: 'グループ' },
-    { to: 'KdpUserAdmin', icon: 'users-cog', title: 'ユーザ' },
-    { to: 'KdpProjectAdmin', icon: 'folder-open', title: 'プロジェクト' },
-    { to: 'KdpLogout', icon: 'sign-out-alt', title: 'ログアウト' }
-  ],
   pinTasks: [
     { projectId: 1, projectName: 'project-name-1', hsla: 'hsla(111, 100%, 80%, 0.5)', taskName: 'task-name-1' },
     { projectId: 2, projectName: 'project-name-2', hsla: 'hsla(222, 100%, 80%, 0.5)', taskName: 'task-name-2' },
@@ -28,6 +18,7 @@ export default {
       name: 'project-name-1',
       hsla: 'hsla(111, 100%, 80%, 0.5)',
       pin: true,
+      display: 1,
       tasks: [
         { id: 1, name: 'task-name-1', pin: true },
         { id: 2, name: 'task-name-2', pin: false },
@@ -39,6 +30,7 @@ export default {
       name: 'projectname2projectname2projectname2projectname2',
       hsla: 'hsla(222, 100%, 80%, 0.5)',
       pin: false,
+      display: 2,
       tasks: [
         { id: 4, name: 'task-name-1', pin: true },
         { id: 5, name: 'taskname2taskname2taskname2taskname2taskname2', pin: true },
@@ -50,6 +42,7 @@ export default {
       name: 'マイプロジェクト',
       hsla: 'hsla(333, 100%, 80%, 0.5)',
       pin: true,
+      display: 1,
       tasks: [
         { id: 7, name: 'task-name-7', pin: true },
         { id: 8, name: 'task-name-8', pin: false },
@@ -76,44 +69,44 @@ export default {
     {
       id: 1,
       name: 'group-1',
-      users: [
+      accounts: [
         {
           id: 1,
-          name: 'user-name-1'
+          name: 'account-name-1'
         },
         {
           id: 2,
-          name: 'user-name-2'
+          name: 'account-name-2'
         }
       ]
     },
     {
       id: 2,
       name: 'group-2',
-      users: [
+      accounts: [
         {
           id: 3,
-          name: 'user-name-3'
+          name: 'account-name-3'
         }
       ]
     }
   ],
-  users: [
+  accounts: [
     {
       id: 1,
-      name: 'user-name-1',
+      name: 'account-name-1',
       email: 'xxxx@yyyy.zzz',
       authority: 1
     },
     {
       id: 2,
-      name: 'user-name-2',
+      name: 'account-name-2',
       email: 'xxxx@yyyy.zzz',
       authority: 2
     },
     {
       id: 3,
-      name: 'user-name-3',
+      name: 'account-name-3',
       email: 'xxxx@yyyy.zzz',
       authority: 3
     }
@@ -201,7 +194,7 @@ export default {
     group: -1,
     aggregateUnit: 1,
     projectChecked: [],
-    userChecked: []
+    accountChecked: []
   },
   calendarInfo: {
     today: moment(),

@@ -6,10 +6,10 @@
 
 <style lang="scss">
 @import '~normalize.css/normalize.css';
-@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&subset=japanese');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
 
 :root {
-  --base-font-family: 'M PLUS 1p', sans-serif;
+  --base-font-family: 'Noto Sans JP', sans-serif;
   --base-background-default: #514a44;
   --base-background-primary: #332a25;
   --base-background-secondary: #fd0;

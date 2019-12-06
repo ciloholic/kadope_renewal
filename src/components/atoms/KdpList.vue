@@ -1,6 +1,6 @@
 <template>
   <ul :class="$style.items">
-    <li v-for="item in items" v-show="shown" :key="item.id" :class="$style.item" @click="onClick">
+    <li v-for="item in items" v-show="show" :key="item.id" :class="$style.item" @click="onClick">
       <div :class="$style.name">{{ item.name }}</div>
     </li>
   </ul>
@@ -13,7 +13,7 @@ export default {
       type: Array,
       required: true
     },
-    shown: {
+    show: {
       type: Boolean,
       default: true
     }

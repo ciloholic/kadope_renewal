@@ -34,10 +34,10 @@
         <KdpH2 :class="$style.h2">プロジェクト</KdpH2>
         <KdpCheckboxList v-model="projectChecked" :items="projects" :checked="projectChecked" />
       </div>
-      <!-- user -->
+      <!-- account -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">ユーザ</KdpH2>
-        <KdpCheckboxList v-model="userChecked" :items="users" :checked="userChecked" />
+        <KdpCheckboxList v-model="accountChecked" :items="accounts" :checked="accountChecked" />
       </div>
     </div>
   </KdpFrame>
@@ -79,11 +79,11 @@ export default {
         authority: 1
       },
       projectChecked: [],
-      userChecked: []
+      accountChecked: []
     }
   },
   computed: {
-    ...mapGetters(['groups', 'projects', 'users', 'calendarInfo']),
+    ...mapGetters(['groups', 'projects', 'accounts', 'calendarInfo']),
     baseline() {
       let baseline = this.calendarInfo.today
         .clone()
@@ -114,8 +114,8 @@ export default {
     projectChecked: function() {
       this.REPORT_FILTER_INFO_UPDATE({ projectChecked: this.projectChecked })
     },
-    userChecked: function() {
-      this.REPORT_FILTER_INFO_UPDATE({ userChecked: this.userChecked })
+    accountChecked: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ accountChecked: this.accountChecked })
     }
   },
   created() {

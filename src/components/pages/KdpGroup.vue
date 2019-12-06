@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
 import KdpHeader from '@/components/molecules/KdpHeader'
 import KdpGroupListAdmin from '@/components/organisms/KdpGroupListAdmin'
 import KdpGroupMainAdmin from '@/components/organisms/KdpGroupMainAdmin'

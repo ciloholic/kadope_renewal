@@ -1,12 +1,12 @@
 <template>
-  <div :class="$style.dropdownList">
-    <!-- main title -->
-    <div :class="$style.mainTitle" :style="setStyle" @click="onDropdown">
+  <div :class="$style.calendarProject">
+    <div :class="$style.titleGroup" :style="setStyle" @click="onToggleClick">
       <font-awesome-icon :class="$style.icon" :icon="getIcon" size="sm" fixed-width />
       <div :class="$style.title">{{ project.name }}</div>
       <KdpToolButton
-        :class="[$style.pinButton, $style.projectPin, { [$style.onPin]: project.pin }]"
+        :class="[$style.pinButton, $style.projectPin]"
         :project-id="project.id"
+        :pinned="project.pin"
         icon="map-pin"
         @onClick="onProjectPinClick"
       />
@@ -18,18 +18,10 @@
         @onClick="onProjectEditClick"
       />
     </div>
-    <!-- tasks -->
     <ul :class="$style.tasks">
-      <li
-        v-for="task in project.tasks"
-        v-show="hiddenTask(dropdownShown, task.name)"
-        :key="task.id"
-        :class="$style.task"
-      >
-        <!-- task name -->
+      <li v-for="task in project.tasks" v-show="hiddenTask(show, task.name)" :key="task.id" :class="$style.task">
         <div :class="$style.taskName" :style="setStyle">
           {{ task.name }}
-          <!-- pin button -->
           <KdpToolButton
             :class="[$style.pinButton, $style.taskPin, { [$style.onPin]: task.pin }]"
             :project-id="project.id"
@@ -37,17 +29,14 @@
             icon="map-pin"
             @onClick="onTaskPinClick"
           />
-          <!-- edit button -->
           <KdpToolButton :class="$style.editButton" icon="ellipsis-h" @onClick="onTaskEditClick" />
         </div>
       </li>
     </ul>
-    <!-- project modal -->
-    <KdpModal v-show="projectModalShown" @onCloseClick="onProjectCloseClick">
+    <KdpModal v-show="modal.projectShow" @onCloseClick="onProjectCloseClick">
       <p>project</p>
     </KdpModal>
-    <!-- task modal -->
-    <KdpModal v-show="taskModalShown" @onCloseClick="onTaskCloseClick">
+    <KdpModal v-show="modal.taskShow" @onCloseClick="onTaskCloseClick">
       <p>task</p>
     </KdpModal>
   </div>
@@ -74,9 +63,11 @@ export default {
   },
   data() {
     return {
-      dropdownShown: false,
-      projectModalShown: false,
-      taskModalShown: false
+      show: false,
+      modal: {
+        projectShow: false,
+        taskShow: false
+      }
     }
   },
   computed: {
@@ -84,19 +75,19 @@ export default {
       return { '--target-background-color-hover': this.project.hsla }
     },
     getIcon() {
-      return this.dropdownShown ? 'chevron-down' : 'chevron-right'
+      return this.show ? 'chevron-down' : 'chevron-right'
     }
   },
   methods: {
     ...mapMutations(['PROJECT_PIN_TOGGLE_BY_ID', 'TASK_PIN_TOGGLE_BY_ID']),
-    hiddenTask(dropdownShown, taskName) {
+    hiddenTask(show, taskName) {
       if (this.search) {
         return taskName.indexOf(this.search) !== -1
       }
-      return dropdownShown
+      return show
     },
-    onDropdown() {
-      this.dropdownShown = !this.dropdownShown
+    onToggleClick() {
+      this.show = !this.show
     },
     onProjectPinClick(e) {
       this.PROJECT_PIN_TOGGLE_BY_ID(e['projectId'])
@@ -105,7 +96,7 @@ export default {
       console.log('onProjectAddClick')
     },
     onProjectEditClick() {
-      this.projectModalShown = !this.projectModalShown
+      this.modal.projectShow = !this.modal.projectShow
     },
     onTaskPinClick(e) {
       this.TASK_PIN_TOGGLE_BY_ID(e)
@@ -114,62 +105,62 @@ export default {
       console.log('onTaskAddClick')
     },
     onTaskEditClick() {
-      this.taskModalShown = !this.taskModalShown
+      this.modal.taskShow = !this.modal.taskShow
     },
     onProjectCloseClick() {
-      this.projectModalShown = !this.projectModalShown
+      this.modal.projectShow = !this.modal.projectShow
     },
     onTaskCloseClick() {
-      this.taskModalShown = !this.taskModalShown
+      this.modal.taskShow = !this.modal.taskShow
     }
   }
 }
 </script>
 
 <style lang="scss" module>
-.dropdownList {
+.calendarProject {
   font-size: 1.6rem;
   color: var(--base-font-color-default);
   border-radius: 3px;
 }
 
-.mainTitle {
+.titleGroup {
   position: relative;
   display: flex;
   align-items: center;
 
   &:hover {
     background: var(--target-background-color-hover);
+
+    > .pinButton,
+    > .addButton,
+    > .editButton {
+      display: flex;
+    }
   }
 
-  &:hover > .pinButton,
-  &:hover > .addButton,
-  &:hover > .editButton {
-    display: flex;
+  > .icon {
+    margin: auto 2px;
   }
-}
 
-.icon {
-  margin: auto 2px;
-}
-
-.title {
-  min-height: 3rem;
-  padding: 5px 0;
-  font-size: 1.4rem;
-  font-weight: bold;
-  line-height: 2rem;
-  word-break: break-all;
-  user-select: none;
+  > .title {
+    min-height: 3rem;
+    padding: 5px 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 2rem;
+    word-break: break-all;
+    user-select: none;
+  }
 }
 
 .tasks {
   list-style: none;
-}
 
-.task {
-  position: relative;
-  margin-top: 5px;
+  > .task {
+    position: relative;
+    margin-top: 5px;
+  }
 }
 
 .taskName {
@@ -185,12 +176,12 @@ export default {
 
   &:hover {
     background: var(--target-background-color-hover);
-  }
 
-  &:hover > .pinButton,
-  &:hover > .addButton,
-  &:hover > .editButton {
-    display: flex;
+    > .pinButton,
+    > .addButton,
+    > .editButton {
+      display: flex;
+    }
   }
 }
 
@@ -205,7 +196,7 @@ export default {
     right: 25px;
   }
 
-  &.onPin {
+  &[pinned] {
     color: var(--base-font-color-primary);
     background: var(--base-background-secondary);
   }

@@ -7,9 +7,9 @@ export default {
   data() {
     return {
       intervalId: null,
-      min_height: 12,
-      min_minutes: 15,
-      header_height: 50
+      minHeight: 12,
+      minMinutes: 15,
+      headerHeight: 50
     }
   },
   mounted() {
@@ -25,7 +25,7 @@ export default {
     updateTimeLine: function() {
       const start = this.moment().startOf('day')
       const minutes = this.moment().diff(start, 'minutes')
-      const top = parseInt((minutes / this.min_minutes) * this.min_height + this.header_height)
+      const top = parseInt((minutes / this.minMinutes) * this.minHeight + this.headerHeight)
       this.$refs.timeLine.style.top = `${top}px`
     }
   }

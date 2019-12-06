@@ -38,7 +38,7 @@ export default {
   align-items: center;
   justify-content: center;
   width: 75px;
-  height: 70px;
+  height: 65px;
   font-size: 1rem;
   color: var(--base-font-color-primary);
   text-decoration: none;

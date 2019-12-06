@@ -6,7 +6,7 @@
         <font-awesome-icon :class="$style.icon" :icon="getIcon(i)" size="sm" fixed-width />
         <div :class="$style.name">{{ group.name }}</div>
       </div>
-      <KdpList :class="$style.list" :items="group.users" :shown="groupShown[i]" />
+      <KdpList :class="$style.list" :items="group.accounts" :show="groupShow[i]" />
     </div>
   </KdpFrame>
 </template>
@@ -21,21 +21,21 @@ export default {
   components: { KdpList, KdpH1, KdpFrame },
   data() {
     return {
-      groupShown: []
+      groupShow: []
     }
   },
   computed: {
     ...mapGetters(['groups'])
   },
   created() {
-    this.groupShown = new Array(this.groups.length).fill(true)
+    this.groupShow = new Array(this.groups.length).fill(true)
   },
   methods: {
     getIcon(i) {
-      return this.groupShown[i] ? 'chevron-down' : 'chevron-right'
+      return this.groupShow[i] ? 'chevron-down' : 'chevron-right'
     },
     onToggleClick(i) {
-      this.$set(this.groupShown, i, !this.groupShown[i])
+      this.$set(this.groupShow, i, !this.groupShow[i])
     }
   }
 }

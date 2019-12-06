@@ -14,8 +14,8 @@ export default {
   groups: state => {
     return state.groups
   },
-  users: state => {
-    return state.users
+  accounts: state => {
+    return state.accounts
   },
   reports: state => {
     return state.reports

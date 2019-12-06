@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss" module>
 .button {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;

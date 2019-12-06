@@ -1,18 +1,18 @@
 <template>
   <div :class="$style.container">
     <KdpHeader :class="$style.header" />
-    <div :class="$style.userAdminMain">
-      <KdpUserAdminMain />
+    <div :class="$style.accountAuthority">
+      <KdpAccountAuthority />
     </div>
   </div>
 </template>
 
 <script>
 import KdpHeader from '@/components/molecules/KdpHeader'
-import KdpUserAdminMain from '@/components/organisms/KdpUserAdminMain'
+import KdpAccountAuthority from '@/components/organisms/KdpAccountAuthority'
 
 export default {
-  components: { KdpHeader, KdpUserAdminMain },
+  components: { KdpHeader, KdpAccountAuthority },
   computed: {},
   methods: {}
 }
@@ -22,9 +22,9 @@ export default {
 .container {
   display: grid;
   grid-template-areas:
-    'area-s-h . .......... .'
-    'area-s-h . area-u-a-m .'
-    'area-s-h . .......... .';
+    'area-s-h . ........ .'
+    'area-s-h . area-a-a .'
+    'area-s-h . ........ .';
   grid-template-rows: 15px 1fr 15px;
   grid-template-columns: 75px 1fr 800px 1fr;
   grid-gap: 0 15px;
@@ -36,7 +36,7 @@ export default {
   grid-area: area-s-h;
 }
 
-.userAdminMain {
-  grid-area: area-u-a-m;
+.accountAuthority {
+  grid-area: area-a-a;
 }
 </style>

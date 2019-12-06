@@ -1,11 +1,11 @@
 <template>
-  <KdpFrame :class="$style.taskList">
+  <KdpFrame :class="$style.calendarTaskList">
     <KdpSearch v-model="search" :class="$style.search" />
-    <KdpPinTask :class="$style.list" title="ピン留めタスク" :tasks="pinTasks" />
-    <KdpProject
+    <KdpCalendarPinTask :class="$style.group" title="ピン留めタスク" :items="pinTasks" />
+    <KdpCalendarProject
       v-for="project in projects"
       :key="project.id"
-      :class="$style.list"
+      :class="$style.group"
       :project="project"
       :search="search"
       @click="TASK_TOGGLE_BY_ID(id)"
@@ -17,11 +17,11 @@
 import { mapGetters, mapMutations } from 'vuex'
 import KdpFrame from '@/components/atoms/KdpFrame'
 import KdpSearch from '@/components/atoms/KdpSearch'
-import KdpPinTask from '@/components/molecules/KdpPinTask'
-import KdpProject from '@/components/molecules/KdpProject'
+import KdpCalendarPinTask from '@/components/molecules/KdpCalendarPinTask'
+import KdpCalendarProject from '@/components/molecules/KdpCalendarProject'
 
 export default {
-  components: { KdpSearch, KdpFrame, KdpPinTask, KdpProject },
+  components: { KdpSearch, KdpFrame, KdpCalendarPinTask, KdpCalendarProject },
   data() {
     return {
       search: ''
@@ -37,22 +37,22 @@ export default {
 </script>
 
 <style lang="scss" module>
-.taskList {
+.calendarTaskList {
   display: flex;
   flex-direction: column;
-}
 
-.search {
-  width: auto;
-  height: 25px;
-}
+  > .search {
+    width: auto;
+    height: 25px;
+  }
 
-.list {
-  max-width: 230px;
-  margin-top: 5px;
-}
+  > .group {
+    max-width: 230px;
+    margin-top: 5px;
+  }
 
-.list + .list {
-  margin-top: 5px;
+  > .group + .group {
+    margin-top: 5px;
+  }
 }
 </style>

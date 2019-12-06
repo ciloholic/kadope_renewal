@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import KdpCalendar from '@/components/pages/KdpCalendar'
-import KdpCalendarAdmin from '@/components/pages/KdpCalendarAdmin'
-import KdpReport from '@/components/pages/KdpReport'
+import KdpCalendarInput from '@/components/pages/KdpCalendarInput'
+import KdpCalendarShow from '@/components/pages/KdpCalendarShow'
+import KdpAggregateReport from '@/components/pages/KdpAggregateReport'
 import KdpDailyReport from '@/components/pages/KdpDailyReport'
-import KdpGroupAdmin from '@/components/pages/KdpGroupAdmin'
-import KdpUserAdmin from '@/components/pages/KdpUserAdmin'
-import KdpProjectAdmin from '@/components/pages/KdpProjectAdmin'
+import KdpGroup from '@/components/pages/KdpGroup'
+import KdpAccount from '@/components/pages/KdpAccount'
+import KdpProject from '@/components/pages/KdpProject'
+import KdpSetting from '@/components/pages/KdpSetting'
 import KdpLogout from '@/components/pages/KdpLogout'
 
 Vue.use(Router)
@@ -17,18 +18,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'KdpCalendar',
-      component: KdpCalendar
+      name: 'KdpCalendarInput',
+      component: KdpCalendarInput
     },
     {
-      path: '/calendar-admin',
-      name: 'KdpCalendarAdmin',
-      component: KdpCalendarAdmin
+      path: '/calendar-show',
+      name: 'KdpCalendarShow',
+      component: KdpCalendarShow
     },
     {
-      path: '/report',
-      name: 'KdpReport',
-      component: KdpReport
+      path: '/aggregete-report',
+      name: 'KdpAggregateReport',
+      component: KdpAggregateReport
     },
     {
       path: '/daily-report',
@@ -36,19 +37,24 @@ export default new Router({
       component: KdpDailyReport
     },
     {
-      path: '/group-admin',
-      name: 'KdpGroupAdmin',
-      component: KdpGroupAdmin
+      path: '/group',
+      name: 'KdpGroup',
+      component: KdpGroup
     },
     {
-      path: '/user-admin',
-      name: 'KdpUserAdmin',
-      component: KdpUserAdmin
+      path: '/account',
+      name: 'KdpAccount',
+      component: KdpAccount
     },
     {
-      path: '/project-admin',
-      name: 'KdpProjectAdmin',
-      component: KdpProjectAdmin
+      path: '/project',
+      name: 'KdpProject',
+      component: KdpProject
+    },
+    {
+      path: '/setting',
+      name: 'KdpSetting',
+      component: KdpSetting
     },
     {
       path: '/logout',

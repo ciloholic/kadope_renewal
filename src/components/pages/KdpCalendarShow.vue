@@ -5,7 +5,7 @@
       <div :class="$style.groupList">
         <KdpGroupList />
       </div>
-      <KdpCalendar :class="$style.calendar" />
+      <KdpCalendarInput :class="$style.calendarInput" />
     </div>
   </div>
 </template>
@@ -13,10 +13,10 @@
 <script>
 import KdpHeader from '@/components/molecules/KdpHeader'
 import KdpGroupList from '@/components/organisms/KdpGroupList'
-import KdpCalendar from '@/components/organisms/KdpCalendar'
+import KdpCalendarInput from '@/components/organisms/KdpCalendarInput'
 
 export default {
-  components: { KdpHeader, KdpGroupList, KdpCalendar }
+  components: { KdpHeader, KdpGroupList, KdpCalendarInput }
 }
 </script>
 
@@ -24,35 +24,35 @@ export default {
 .container {
   display: grid;
   grid-template-areas:
-    'area-s-h ......'
-    'area-s-h area-s'
-    'area-s-h ......';
+    'area-h ......'
+    'area-h area-s'
+    'area-h ......';
   grid-template-rows: 15px 1fr 15px;
   grid-template-columns: 75px 1fr;
   grid-gap: 0 15px;
   height: 100vh;
   margin-right: 15px;
-}
 
-.header {
-  grid-area: area-s-h;
-}
+  > .header {
+    grid-area: area-h;
+  }
 
-.scroll {
-  display: grid;
-  grid-area: area-s;
-  grid-template-areas: 'area-t-l area-c';
-  grid-template-rows: 1fr;
-  grid-template-columns: 250px 1fr;
-  grid-gap: 0 15px;
-  overflow-y: scroll;
-}
+  > .scroll {
+    display: grid;
+    grid-area: area-s;
+    grid-template-areas: 'area-g-l area-c-i';
+    grid-template-rows: 1fr;
+    grid-template-columns: 250px 1fr;
+    grid-gap: 0 15px;
+    overflow-y: scroll;
+  }
 
-.groupList {
-  grid-area: area-t-l;
-}
+  > .groupList {
+    grid-area: area-g-l;
+  }
 
-.calendar {
-  grid-area: area-c;
+  > .calendarInput {
+    grid-area: area-c-i;
+  }
 }
 </style>

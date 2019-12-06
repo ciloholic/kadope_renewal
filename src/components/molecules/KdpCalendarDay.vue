@@ -85,8 +85,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   margin-bottom: 2px;
   font-size: 1.8rem;
   user-select: none;

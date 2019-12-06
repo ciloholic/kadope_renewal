@@ -22,6 +22,10 @@ Vue.prototype.moment = moment
 import _ from 'lodash'
 Vue.prototype._ = _
 
+// vue-color
+import { Chrome } from 'vue-color'
+Vue.component('chrome-picker', Chrome)
+
 Vue.config.productionTip = false
 
 new Vue({

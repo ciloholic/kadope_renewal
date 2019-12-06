@@ -26,12 +26,12 @@ export default {
       }
     })
   },
-  [types.USER_UPDATE](state, payload) {
-    const userId = payload['userId']
-    delete payload['userId']
-    state.users.forEach(user => {
-      if (user.id === userId) {
-        user = Object.assign(user, payload)
+  [types.ACCOUNT_UPDATE](state, payload) {
+    const accountId = payload['accountId']
+    delete payload['accountId']
+    state.accounts.forEach(account => {
+      if (account.id === accountId) {
+        account = Object.assign(account, payload)
       }
     })
   },

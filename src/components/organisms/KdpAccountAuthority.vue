@@ -1,15 +1,15 @@
 <template>
   <KdpFrame>
-    <KdpH1 :class="$style.h1">ユーザ権限設定</KdpH1>
-    <ul :class="$style.users">
-      <li v-for="user in users" :key="user.id" :class="$style.user">
-        <div :class="$style.name">{{ user.name }}</div>
-        <div :class="$style.email">{{ user.email }}</div>
+    <KdpH1 :class="$style.h1">アカウント権限設定</KdpH1>
+    <ul :class="$style.accounts">
+      <li v-for="account in accounts" :key="account.id" :class="$style.account">
+        <div :class="$style.name">{{ account.name }}</div>
+        <div :class="$style.email">{{ account.email }}</div>
         <KdpSwitch
-          :value="user.authority"
+          :value="account.authority"
           :class="$style.switch"
           :labels="labels"
-          @onClick="onSwitchClick(user.id, $event)"
+          @onClick="onSwitchClick(account.id, $event)"
         />
       </li>
     </ul>
@@ -34,12 +34,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['users'])
+    ...mapGetters(['accounts'])
   },
   methods: {
-    ...mapMutations(['USER_UPDATE']),
-    onSwitchClick(userId, authorityId) {
-      this.USER_UPDATE({ userId: userId, authority: authorityId })
+    ...mapMutations(['account_UPDATE']),
+    onSwitchClick(accountId, authorityId) {
+      this.account_UPDATE({ accountId: accountId, authority: authorityId })
     }
   }
 }
@@ -50,11 +50,11 @@ export default {
   margin-bottom: 10px;
 }
 
-.users {
+.accounts {
   list-style: none;
 }
 
-.user {
+.account {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   height: 35px;
