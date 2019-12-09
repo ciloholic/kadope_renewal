@@ -10,7 +10,7 @@
     <KdpH2 :class="$style.h2">件名</KdpH2>
     <div :class="$style.title">{{ _dailyReportInfo.title }}</div>
     <KdpH2 :class="$style.h2">所感</KdpH2>
-    <textarea v-model="_dailyReportInfo.body" :class="$style.textarea" />
+    <KdpTextarea v-model="_dailyReportInfo.body" />
     <div :class="$style.buttonGroup">
       <KdpButton :class="$style.button" @onClick="onSaveClick">保存</KdpButton>
       <KdpButton :class="$style.button" @onClick="onSendClick">送信</KdpButton>
@@ -26,9 +26,10 @@ import KdpButton from '@/components/atoms/KdpButton'
 import KdpH1 from '@/components/atoms/KdpH1'
 import KdpH2 from '@/components/atoms/KdpH2'
 import KdpTable from '@/components/atoms/KdpTable'
+import KdpTextarea from '@/components/atoms/KdpTextarea'
 
 export default {
-  components: { KdpFrame, KdpH1, KdpH2, KdpTable, KdpButton },
+  components: { KdpFrame, KdpH1, KdpH2, KdpTable, KdpTextarea, KdpButton },
   mixins: [mixinMoment],
   computed: {
     ...mapGetters(['dailyReportInfo', 'reports']),
@@ -70,17 +71,6 @@ export default {
 .title {
   height: 30px;
   margin-bottom: 5px;
-}
-
-.textarea {
-  width: 100%;
-  height: 200px;
-  padding: 5px 10px;
-  color: var(--base-font-color-default);
-  resize: none;
-  background: var(--base-background-primary);
-  border: none;
-  border-radius: 3px;
 }
 
 .status {
