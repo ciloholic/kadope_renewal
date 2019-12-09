@@ -40,19 +40,19 @@ export default {
 .calendarTaskList {
   display: flex;
   flex-direction: column;
+}
 
-  > .search {
-    width: auto;
-    height: 25px;
-  }
+.search {
+  width: auto;
+  height: 25px;
+}
 
-  > .group {
-    max-width: 230px;
-    margin-top: 5px;
-  }
+.group {
+  max-width: 230px;
+  margin-top: 5px;
+}
 
-  > .group + .group {
-    margin-top: 5px;
-  }
+.group + .group {
+  margin-top: 5px;
 }
 </style>

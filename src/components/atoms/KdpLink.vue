@@ -44,14 +44,14 @@ export default {
   text-decoration: none;
   letter-spacing: 1px;
   user-select: none;
-}
 
-.link[data-active] {
-  background: rgba(0, 0, 0, 0.3);
-}
+  &[data-active] {
+    background: rgba(0, 0, 0, 0.3);
+  }
 
-.link:hover {
-  background: rgba(0, 0, 0, 0.3);
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
 
 .title {

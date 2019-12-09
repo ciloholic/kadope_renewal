@@ -40,7 +40,7 @@ export default {
         this.$emit('input', checked)
       }
     },
-    allChecked: function() {
+    allChecked() {
       return this._.isEqual(this._.sortBy(this._checked), this._.sortBy(this._.map(this.items, 'id')))
     }
   },

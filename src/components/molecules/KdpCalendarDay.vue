@@ -55,10 +55,10 @@ export default {
 .calendarDay {
   position: relative;
   flex-grow: 1;
+}
 
-  > .timeLine {
-    position: absolute;
-  }
+.timeLine {
+  position: absolute;
 }
 
 .header {
@@ -71,32 +71,32 @@ export default {
   justify-content: center;
   height: 50px;
   user-select: none;
+}
 
-  > .dayOfWeek {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    user-select: none;
-  }
+.dayOfWeek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  user-select: none;
 
-  > .dayOfWeek[data-active] {
+  &[data-active] {
     color: var(--base-background-secondary);
   }
+}
 
-  > .day {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    margin-bottom: 2px;
-    font-size: 1.8rem;
-    user-select: none;
-    border-radius: 50%;
-  }
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 2px;
+  font-size: 1.8rem;
+  user-select: none;
+  border-radius: 50%;
 
-  > .day[data-active] {
+  &[data-active] {
     color: var(--base-font-color-secondary);
     background: var(--base-background-secondary);
   }
@@ -104,34 +104,34 @@ export default {
 
 .cells {
   position: relative;
+}
 
-  > .minute {
-    height: 12px;
-    list-style: none;
-  }
+.minute {
+  height: 12px;
+  list-style: none;
 
-  > .minute:hover {
+  &:hover {
     background: rgba(255, 255, 255, 0.3);
   }
+}
 
-  > .m00,
-  .m45 + .m00 {
-    border-top: 1px solid #888;
-  }
+.m00,
+.m45 + .m00 {
+  border-top: 1px solid #888;
+}
 
-  > .m45:last-child {
-    border-bottom: 1px solid #888;
-  }
+.m45:last-child {
+  border-bottom: 1px solid #888;
+}
 
-  > .m30 {
-    border-top: 1px dashed #888;
-  }
+.m30 {
+  border-top: 1px dashed #888;
+}
 
-  > .jobList {
-    position: absolute;
-    width: 100%;
-    height: 12px;
-    list-style: none;
-  }
+.jobList {
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  list-style: none;
 }
 </style>

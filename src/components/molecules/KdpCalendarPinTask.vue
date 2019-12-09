@@ -49,56 +49,54 @@ export default {
 .calendarPinTask {
   color: var(--base-font-color-default);
   border-radius: 3px;
-
-  > .titleGroup {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  > .items {
-    list-style: none;
-  }
 }
 
 .titleGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+
   &:hover {
     background: var(--target-background-color-hover);
   }
+}
 
-  > .icon {
-    margin: auto 2px;
-  }
-
-  > .title {
-    min-height: 3rem;
-    padding: 5px 0;
-    font-size: 1.4rem;
-    font-weight: bold;
-    line-height: 2rem;
-    word-break: break-all;
-    user-select: none;
-  }
+.items {
+  list-style: none;
 }
 
 .item {
   position: relative;
   margin-top: 5px;
+}
 
-  > .taskName {
-    display: flex;
-    align-items: flex-start;
-    min-height: 3rem;
-    padding: 5px;
-    font-size: 1.2rem;
-    word-break: break-all;
-    cursor: pointer;
-    user-select: none;
-    background: var(--base-background-light);
+.icon {
+  margin: auto 2px;
+}
 
-    &:hover {
-      background: var(--target-background-color-hover);
-    }
+.title {
+  min-height: 3rem;
+  padding: 5px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
+  word-break: break-all;
+  user-select: none;
+}
+
+.taskName {
+  display: flex;
+  align-items: flex-start;
+  min-height: 3rem;
+  padding: 5px;
+  font-size: 1.2rem;
+  word-break: break-all;
+  cursor: pointer;
+  user-select: none;
+  background: var(--base-background-light);
+
+  &:hover {
+    background: var(--target-background-color-hover);
   }
 }
 </style>

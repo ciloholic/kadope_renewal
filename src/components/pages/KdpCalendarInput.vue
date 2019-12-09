@@ -32,27 +32,27 @@ export default {
   grid-gap: 0 15px;
   height: 100vh;
   margin-right: 15px;
+}
 
-  > .header {
-    grid-area: area-h;
-  }
+.header {
+  grid-area: area-h;
+}
 
-  > .scroll {
-    display: grid;
-    grid-area: area-s;
-    grid-template-areas: 'area-c-t-l area-c-i';
-    grid-template-rows: 1fr;
-    grid-template-columns: 250px 1fr;
-    grid-gap: 0 15px;
-    overflow-y: scroll;
+.scroll {
+  display: grid;
+  grid-area: area-s;
+  grid-template-areas: 'area-c-t-l area-c-i';
+  grid-template-rows: 1fr;
+  grid-template-columns: 250px 1fr;
+  grid-gap: 0 15px;
+  overflow-y: scroll;
+}
 
-    > .calendarTaskList {
-      grid-area: area-c-t-l;
-    }
+.calendarTaskList {
+  grid-area: area-c-t-l;
+}
 
-    > .calendarInput {
-      grid-area: area-c-i;
-    }
-  }
+.calendarInput {
+  grid-area: area-c-i;
 }
 </style>

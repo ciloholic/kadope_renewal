@@ -138,29 +138,29 @@ export default {
       display: flex;
     }
   }
+}
 
-  > .icon {
-    margin: auto 2px;
-  }
+.icon {
+  margin: auto 2px;
+}
 
-  > .title {
-    min-height: 3rem;
-    padding: 5px 0;
-    font-size: 1.4rem;
-    font-weight: bold;
-    line-height: 2rem;
-    word-break: break-all;
-    user-select: none;
-  }
+.title {
+  min-height: 3rem;
+  padding: 5px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
+  word-break: break-all;
+  user-select: none;
 }
 
 .tasks {
   list-style: none;
+}
 
-  > .task {
-    position: relative;
-    margin-top: 5px;
-  }
+.task {
+  position: relative;
+  margin-top: 5px;
 }
 
 .taskName {

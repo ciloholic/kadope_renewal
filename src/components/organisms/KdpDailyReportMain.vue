@@ -1,9 +1,9 @@
 <template>
   <KdpFrame>
     <KdpH1 :class="$style.h1">
-      <span :class="$style.status" :data-completed="_dailyReportInfo.completed">{{
-        statusText(_dailyReportInfo.completed)
-      }}</span>
+      <span :class="$style.status" :data-completed="_dailyReportInfo.completed">
+        {{ statusText(_dailyReportInfo.completed) }}
+      </span>
       <span>{{ _dailyReportInfo.datetime | $_formatMoment('YYYY-MM-DD') }} の日報</span>
     </KdpH1>
     <KdpTable :items="_reports" />
@@ -67,14 +67,6 @@ export default {
   margin-bottom: 10px;
 }
 
-.status {
-  color: #f54;
-
-  &[data-completed] {
-    color: #4c2;
-  }
-}
-
 .title {
   height: 30px;
   margin-bottom: 5px;
@@ -89,6 +81,14 @@ export default {
   background: var(--base-background-primary);
   border: none;
   border-radius: 3px;
+}
+
+.status {
+  color: #f54;
+
+  &[data-completed] {
+    color: #4c2;
+  }
 }
 
 .buttonGroup {

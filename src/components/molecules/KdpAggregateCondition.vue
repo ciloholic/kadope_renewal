@@ -25,7 +25,7 @@
           </li>
           <li :class="$style.item">
             <span>ユーザー</span>
-            <span>{{ reportInfo.userChecked }}</span>
+            <span>{{ reportInfo.accountChecked }}</span>
           </li>
         </template>
       </ul>

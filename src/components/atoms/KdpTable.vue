@@ -57,6 +57,14 @@ export default {
   border-collapse: collapse;
 }
 
+tr:nth-of-type(n) > .task {
+  background: #ddd;
+}
+
+tr:nth-of-type(2n) > .task {
+  background: #fff;
+}
+
 .projects + .projects {
   border-top: solid 1px var(--base-border-color-primary);
 }
@@ -69,14 +77,6 @@ export default {
   display: block;
   width: 180px;
   margin: auto;
-}
-
-tr:nth-of-type(n) > .task {
-  background: #ddd;
-}
-
-tr:nth-of-type(2n) > .task {
-  background: #fff;
 }
 
 .taskName {
@@ -97,15 +97,15 @@ tr:nth-of-type(2n) > .task {
   padding: 0 5px;
   font-weight: bold;
   background: #faf5d0;
-}
 
-.taskSummary {
-  display: table-cell;
-  width: 100px;
-  text-align: right;
-}
+  &.taskSummary {
+    display: table-cell;
+    width: 100px;
+    text-align: right;
+  }
 
-.totalSummary {
-  text-align: left;
+  &.totalSummary {
+    text-align: left;
+  }
 }
 </style>

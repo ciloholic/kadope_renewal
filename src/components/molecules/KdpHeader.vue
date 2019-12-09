@@ -37,9 +37,9 @@ export default {
 .header {
   position: relative;
   background: var(--base-background-secondary);
+}
 
-  > .logo {
-    position: absolute;
-  }
+.logo {
+  position: absolute;
 }
 </style>

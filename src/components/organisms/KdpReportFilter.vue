@@ -2,7 +2,6 @@
   <KdpFrame :class="$style.reportFilter">
     <div :class="$style.block">
       <KdpH1 :class="$style.h1">条件指定</KdpH1>
-      <!-- period -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">期間</KdpH2>
         <KdpInput v-model="start" :class="$style.input" type="date" />
@@ -11,7 +10,6 @@
           <KdpPeriodButton v-for="(period, key) in periods" :key="key" :period="period" @onClick="onPeriodClick" />
         </div>
       </div>
-      <!-- department -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">グループ</KdpH2>
         <KdpSelect v-model="department" :class="$style.select" :items="departments" />
@@ -19,7 +17,6 @@
     </div>
     <div :class="$style.block">
       <KdpH1 :class="$style.h1">詳細指定</KdpH1>
-      <!-- aggregate unit -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">集計単位</KdpH2>
         <KdpSwitch
@@ -29,12 +26,10 @@
           @onClick="onSwitchClick"
         />
       </div>
-      <!-- project -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">プロジェクト</KdpH2>
         <KdpCheckboxList v-model="projectChecked" :items="projects" :checked="projectChecked" />
       </div>
-      <!-- account -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">ユーザ</KdpH2>
         <KdpCheckboxList v-model="accountChecked" :items="accounts" :checked="accountChecked" />
@@ -239,10 +234,6 @@ export default {
   flex-direction: column;
 }
 
-.block + .block {
-  margin-top: 10px;
-}
-
 .h1 {
   margin-bottom: 5px;
 }
@@ -260,5 +251,9 @@ export default {
 .periodGroup {
   display: flex;
   justify-content: space-between;
+}
+
+.block + .block {
+  margin-top: 10px;
 }
 </style>

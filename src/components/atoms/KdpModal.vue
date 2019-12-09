@@ -1,8 +1,8 @@
 <template>
   <transition name="modal">
-    <div :class="$style.modalMask" @click="onCloseClick">
-      <div :class="$style.modalContainer">
-        <div :class="$style.modalBody">
+    <div :class="$style.modal" @click="onCloseClick">
+      <div :class="[$style.container, $style._container]">
+        <div :class="$style.body">
           <slot />
         </div>
       </div>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-.modalMask {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -35,7 +35,7 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-.modalContainer {
+.container {
   min-width: 500px;
   min-height: 300px;
   padding: 20px 30px;
@@ -44,7 +44,7 @@ export default {
   transition: all 0.3s ease;
 }
 
-.modalBody {
+.body {
   margin: 20px 0;
 }
 
@@ -53,8 +53,8 @@ export default {
   opacity: 0;
 }
 
-.modal-enter .modalContainer,
-.modal-leave-active .modalContainer {
+.modal-enter .container,
+.modal-leave-active .container {
   transform: scale(1.1);
 }
 </style>

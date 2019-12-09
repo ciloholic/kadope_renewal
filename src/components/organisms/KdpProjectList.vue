@@ -2,7 +2,7 @@
   <KdpFrame>
     <KdpH1 :class="$style.h1">プロジェクト一覧</KdpH1>
     <ul :class="$style.projects">
-      <li :class="[$style.project, $style.input]">
+      <li :class="[$style.project, $style.projectInput]">
         <div :class="$style.color" :style="setStyle" @click="onNewToggleClick">
           <chrome-picker v-show="newProject.show" v-model="newProject.color" />
         </div>
@@ -94,53 +94,53 @@ export default {
   height: 36px;
   margin-top: 5px;
   background: var(--base-background-light);
+}
 
-  > .name,
-  > .switch,
-  > .button {
-    display: flex;
-    align-items: center;
-    margin: auto 0;
-    word-break: break-all;
-    cursor: pointer;
-    user-select: none;
-  }
+.name,
+.switch,
+.button {
+  display: flex;
+  align-items: center;
+  margin: auto 0;
+  word-break: break-all;
+  cursor: pointer;
+  user-select: none;
+}
 
-  > .switch,
-  > .button {
-    height: 25px;
-  }
+.switch,
+.button {
+  height: 25px;
+}
 
-  > .name {
-    grid-area: area-n;
-  }
+.name {
+  grid-area: area-n;
+}
 
-  > .switch {
-    grid-area: area-s;
-  }
+.switch {
+  grid-area: area-s;
+}
 
-  > .button {
-    grid-area: area-b;
-  }
+.button {
+  grid-area: area-b;
+}
+
+.projectInput {
+  grid-template-areas: '. area-c . area-i . area-b .';
+  grid-template-columns: 5px 30px 5px 7fr 5px 1fr 5px;
+}
+
+.color {
+  grid-area: area-c;
+  width: 26px;
+  height: 26px;
+  margin: auto;
+  background: var(--background-color);
+  border-radius: 3px;
 }
 
 .input {
-  grid-template-areas: '. area-c . area-i . area-b .';
-  grid-template-columns: 5px 30px 5px 7fr 5px 1fr 5px;
-
-  > .color {
-    grid-area: area-c;
-    width: 26px;
-    height: 26px;
-    margin: auto;
-    background: var(--background-color);
-    border-radius: 3px;
-  }
-
-  > .input {
-    grid-area: area-i;
-    height: 26px;
-    margin: auto;
-  }
+  grid-area: area-i;
+  height: 26px;
+  margin: auto;
 }
 </style>

@@ -55,19 +55,19 @@ export default {
   font-size: 1.4rem;
 }
 
-.item + .item {
-  border-top: dashed 1px var(--base-border-color-default);
-}
-
 .status {
   color: #f54;
+}
 
-  &[data-completed] {
-    color: #4c2;
-  }
+.status[data-completed] {
+  color: #4c2;
 }
 
 .total {
   margin: 0 5px 0 auto;
+}
+
+.item + .item {
+  border-top: dashed 1px var(--base-border-color-default);
 }
 </style>

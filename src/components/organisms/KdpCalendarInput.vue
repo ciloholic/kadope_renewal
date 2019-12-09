@@ -56,11 +56,11 @@ export default {
   grid-template-columns: 40px 1fr;
   height: 100%;
   font-size: 0.9rem;
+}
 
-  > .calendarMain {
-    display: flex;
-    grid-area: area-c-b;
-  }
+.calendarMain {
+  display: flex;
+  grid-area: area-c-b;
 }
 
 .header {
@@ -71,32 +71,32 @@ export default {
   height: 100%;
   font-size: 1.5rem;
   user-select: none;
+}
 
-  > .topLink {
-    color: var(--base-font-color-default);
-    text-decoration: none;
-  }
+.topLink {
+  color: var(--base-font-color-default);
+  text-decoration: none;
+}
 
-  > .prev {
-    margin-right: 20px;
-  }
+.prev {
+  margin-right: 20px;
+}
 
-  > .next {
-    margin-left: 20px;
-  }
+.next {
+  margin-left: 20px;
 }
 
 .labels {
   grid-area: area-c-l;
+}
 
-  > .label {
-    height: 15px;
-    list-style: none;
-    user-select: none;
-  }
+.label {
+  height: 15px;
+  list-style: none;
+  user-select: none;
+}
 
-  .label + .label {
-    margin-top: 33px;
-  }
+.label + .label {
+  margin-top: 33px;
 }
 </style>

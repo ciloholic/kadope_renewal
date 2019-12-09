@@ -4,7 +4,7 @@
     <div
       v-for="label in labels"
       :key="label.id"
-      :class="[$style.switch, setClass(label.id)]"
+      :class="[$style.switch, $style._switch, setClass(label.id)]"
       @click.stop="onClick(label.id)"
     >
       {{ label.name }}
@@ -41,16 +41,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 30px;
-
-  & > .switch:first-of-type {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-
-  & > .switch:last-of-type {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
 }
 
 .input {
@@ -64,15 +54,25 @@ export default {
   width: 100%;
   height: 100%;
   cursor: pointer;
-}
 
-.on {
-  color: var(--base-font-color-primary);
-  background: var(--base-background-secondary);
-}
+  &:first-of-type {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
 
-.off {
-  color: var(--base-font-color-default);
-  background: var(--base-background-primary);
+  &:last-of-type {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  &.on {
+    color: var(--base-font-color-primary);
+    background: var(--base-background-secondary);
+  }
+
+  &.off {
+    color: var(--base-font-color-default);
+    background: var(--base-background-primary);
+  }
 }
 </style>
