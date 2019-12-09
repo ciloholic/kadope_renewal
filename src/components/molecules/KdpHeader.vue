@@ -26,7 +26,7 @@ export default {
         { to: 'KdpAccount', icon: 'users-cog', title: 'アカウント' },
         { to: 'KdpProject', icon: 'folder-open', title: 'プロジェクト' },
         { to: 'KdpSetting', icon: 'tools', title: '個人設定' },
-        { to: 'KdpLogout', icon: 'sign-out-alt', title: 'ログアウト' }
+        { to: 'KdpLogin', icon: 'sign-out-alt', title: 'ログアウト' }
       ]
     }
   }

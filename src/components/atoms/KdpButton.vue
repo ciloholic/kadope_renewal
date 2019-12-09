@@ -1,7 +1,7 @@
 <template>
-  <div :class="$style.button" @click="onClick">
+  <button :class="$style.button" @click="onClick">
     <slot />
-  </div>
+  </button>
 </template>
 
 <script>
@@ -24,6 +24,11 @@ export default {
   color: var(--base-font-color-primary);
   cursor: default;
   background: var(--base-background-secondary);
+  border: none;
   border-radius: 3px;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 </style>

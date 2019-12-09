@@ -8,7 +8,7 @@ import KdpDepartment from '@/components/pages/KdpDepartment'
 import KdpAccount from '@/components/pages/KdpAccount'
 import KdpProject from '@/components/pages/KdpProject'
 import KdpSetting from '@/components/pages/KdpSetting'
-import KdpLogout from '@/components/pages/KdpLogout'
+import KdpLogin from '@/components/pages/KdpLogin'
 
 Vue.use(Router)
 
@@ -57,9 +57,9 @@ export default new Router({
       component: KdpSetting
     },
     {
-      path: '/logout',
-      name: 'KdpLogout',
-      component: KdpLogout
+      path: '/login',
+      name: 'KdpLogin',
+      component: KdpLogin
     }
   ]
 })
