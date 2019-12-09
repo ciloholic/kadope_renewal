@@ -1,22 +1,22 @@
 <template>
   <div :class="$style.container">
     <KdpHeader :class="$style.header" />
-    <div :class="$style.groupListAdmin">
-      <KdpGroupListAdmin />
+    <div :class="$style.departmentListAdmin">
+      <KdpDepartmentListAdmin />
     </div>
-    <div :class="$style.groupMainAdmin">
-      <KdpGroupMainAdmin />
+    <div :class="$style.departmentMainAdmin">
+      <KdpDepartmentMainAdmin />
     </div>
   </div>
 </template>
 
 <script>
 import KdpHeader from '@/components/molecules/KdpHeader'
-import KdpGroupListAdmin from '@/components/organisms/KdpGroupListAdmin'
-import KdpGroupMainAdmin from '@/components/organisms/KdpGroupMainAdmin'
+import KdpDepartmentListAdmin from '@/components/organisms/KdpDepartmentListAdmin'
+import KdpDepartmentMainAdmin from '@/components/organisms/KdpDepartmentMainAdmin'
 
 export default {
-  components: { KdpHeader, KdpGroupListAdmin, KdpGroupMainAdmin },
+  components: { KdpHeader, KdpDepartmentListAdmin, KdpDepartmentMainAdmin },
   computed: {},
   methods: {}
 }
@@ -40,11 +40,11 @@ export default {
   grid-area: area-s-h;
 }
 
-.groupListAdmin {
+.departmentListAdmin {
   grid-area: area-g-l-a;
 }
 
-.groupMainAdmin {
+.departmentMainAdmin {
   grid-area: area-g-m-a;
 }
 </style>

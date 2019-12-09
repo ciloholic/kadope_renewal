@@ -9,10 +9,10 @@ export default {
     return state.projects
   },
   jobs: state => {
-    return state.events
+    return state.jobs
   },
-  groups: state => {
-    return state.groups
+  departments: state => {
+    return state.departments
   },
   accounts: state => {
     return state.accounts

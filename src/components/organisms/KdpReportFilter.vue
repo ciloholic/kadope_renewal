@@ -11,10 +11,10 @@
           <KdpPeriodButton v-for="(period, key) in periods" :key="key" :period="period" @onClick="onPeriodClick" />
         </div>
       </div>
-      <!-- group -->
+      <!-- department -->
       <div :class="$style.block">
         <KdpH2 :class="$style.h2">グループ</KdpH2>
-        <KdpSelect v-model="group" :class="$style.select" :items="groups" />
+        <KdpSelect v-model="department" :class="$style.select" :items="departments" />
       </div>
     </div>
     <div :class="$style.block">
@@ -70,7 +70,7 @@ export default {
       start: null,
       end: null,
       periods: [],
-      group: -1,
+      department: -1,
       aggregateUnit: {
         labels: [
           { id: 1, name: 'プロジェクト' },
@@ -83,7 +83,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['groups', 'projects', 'accounts', 'calendarInfo']),
+    ...mapGetters(['departments', 'projects', 'accounts', 'calendarInfo']),
     baseline() {
       let baseline = this.calendarInfo.today
         .clone()
@@ -105,8 +105,8 @@ export default {
     end: function() {
       this.REPORT_FILTER_INFO_UPDATE({ end: this.end })
     },
-    group: function() {
-      this.REPORT_FILTER_INFO_UPDATE({ group: this.group })
+    department: function() {
+      this.REPORT_FILTER_INFO_UPDATE({ department: this.department })
     },
     'aggregateUnit.authority': function() {
       this.REPORT_FILTER_INFO_UPDATE({ aggregateUnit: this.aggregateUnit.authority })

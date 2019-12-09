@@ -3,7 +3,7 @@
     <KdpH1 :class="$style.h1">新規グループの追加</KdpH1>
     <div :class="$style.block">
       <KdpH2 :class="$style.h2">グループ名</KdpH2>
-      <KdpInput v-model="groupName" :class="$style.input" type="text" placeholder="グループ名" />
+      <KdpInput v-model="departmentName" :class="$style.input" type="text" placeholder="グループ名" />
     </div>
     <div :class="$style.block">
       <KdpH2 :class="$style.h2">プロジェクト</KdpH2>
@@ -38,7 +38,7 @@ export default {
   components: { KdpFrame, KdpH1, KdpH2, KdpInput, KdpCheckboxList },
   data() {
     return {
-      groupName: '',
+      departmentName: '',
       projectChecked: [],
       accountChecked: []
     }

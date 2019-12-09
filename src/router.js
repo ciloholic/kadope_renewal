@@ -4,7 +4,7 @@ import KdpCalendarInput from '@/components/pages/KdpCalendarInput'
 import KdpCalendarShow from '@/components/pages/KdpCalendarShow'
 import KdpAggregateReport from '@/components/pages/KdpAggregateReport'
 import KdpDailyReport from '@/components/pages/KdpDailyReport'
-import KdpGroup from '@/components/pages/KdpGroup'
+import KdpDepartment from '@/components/pages/KdpDepartment'
 import KdpAccount from '@/components/pages/KdpAccount'
 import KdpProject from '@/components/pages/KdpProject'
 import KdpSetting from '@/components/pages/KdpSetting'
@@ -37,9 +37,9 @@ export default new Router({
       component: KdpDailyReport
     },
     {
-      path: '/group',
-      name: 'KdpGroup',
-      component: KdpGroup
+      path: '/department',
+      name: 'KdpDepartment',
+      component: KdpDepartment
     },
     {
       path: '/account',

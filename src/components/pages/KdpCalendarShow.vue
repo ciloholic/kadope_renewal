@@ -2,8 +2,8 @@
   <div :class="$style.container">
     <KdpHeader :class="$style.header" />
     <div :class="$style.scroll">
-      <div :class="$style.groupList">
-        <KdpGroupList />
+      <div :class="$style.departmentList">
+        <KdpDepartmentList />
       </div>
       <KdpCalendarInput :class="$style.calendarInput" />
     </div>
@@ -12,11 +12,11 @@
 
 <script>
 import KdpHeader from '@/components/molecules/KdpHeader'
-import KdpGroupList from '@/components/organisms/KdpGroupList'
+import KdpDepartmentList from '@/components/organisms/KdpDepartmentList'
 import KdpCalendarInput from '@/components/organisms/KdpCalendarInput'
 
 export default {
-  components: { KdpHeader, KdpGroupList, KdpCalendarInput }
+  components: { KdpHeader, KdpDepartmentList, KdpCalendarInput }
 }
 </script>
 
@@ -47,7 +47,7 @@ export default {
     overflow-y: scroll;
   }
 
-  > .groupList {
+  > .departmentList {
     grid-area: area-g-l;
   }
 

@@ -1,12 +1,12 @@
 <template>
   <KdpFrame :class="$style.frame">
     <KdpH1>グループ一覧</KdpH1>
-    <div v-for="(group, i) in groups" :key="group.id">
-      <div :class="$style.group" @click="onToggleClick(i)">
+    <div v-for="(department, i) in departments" :key="department.id">
+      <div :class="$style.department" @click="onToggleClick(i)">
         <font-awesome-icon :class="$style.icon" :icon="getIcon(i)" size="sm" fixed-width />
-        <div :class="$style.name">{{ group.name }}</div>
+        <div :class="$style.name">{{ department.name }}</div>
       </div>
-      <KdpList :class="$style.list" :items="group.accounts" :show="groupShow[i]" />
+      <KdpList :class="$style.list" :items="department.accounts" :show="departmentShow[i]" />
     </div>
   </KdpFrame>
 </template>
@@ -21,21 +21,21 @@ export default {
   components: { KdpList, KdpH1, KdpFrame },
   data() {
     return {
-      groupShow: []
+      departmentShow: []
     }
   },
   computed: {
-    ...mapGetters(['groups'])
+    ...mapGetters(['departments'])
   },
   created() {
-    this.groupShow = new Array(this.groups.length).fill(true)
+    this.departmentShow = new Array(this.departments.length).fill(true)
   },
   methods: {
     getIcon(i) {
-      return this.groupShow[i] ? 'chevron-down' : 'chevron-right'
+      return this.departmentShow[i] ? 'chevron-down' : 'chevron-right'
     },
     onToggleClick(i) {
-      this.$set(this.groupShow, i, !this.groupShow[i])
+      this.$set(this.departmentShow, i, !this.departmentShow[i])
     }
   }
 }
@@ -47,7 +47,7 @@ export default {
   flex-direction: column;
 }
 
-.group {
+.department {
   position: relative;
   display: flex;
   align-items: center;

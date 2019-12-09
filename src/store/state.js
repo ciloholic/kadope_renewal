@@ -50,7 +50,7 @@ export default {
       ]
     }
   ],
-  events: [
+  jobs: [
     {
       id: 1,
       projectId: 1,
@@ -65,7 +65,7 @@ export default {
       time: 60
     }
   ],
-  groups: [
+  departments: [
     {
       id: 1,
       name: 'group-1',

@@ -1,7 +1,7 @@
 <template>
-  <KdpFrame :class="$style.groupListAdmin">
+  <KdpFrame :class="$style.departmentListAdmin">
     <KdpH1 :class="$style.h1">グループ一覧</KdpH1>
-    <KdpList :items="groups" @onClick="onListClick" />
+    <KdpList :items="departments" @onClick="onListClick" />
   </KdpFrame>
 </template>
 
@@ -14,7 +14,7 @@ import KdpH1 from '@/components/atoms/KdpH1'
 export default {
   components: { KdpH1, KdpFrame, KdpList },
   computed: {
-    ...mapGetters(['groups'])
+    ...mapGetters(['departments'])
   },
   methods: {
     onListClick(e) {
@@ -29,7 +29,7 @@ export default {
   margin-bottom: 5px;
 }
 
-.groupListAdmin {
+.departmentListAdmin {
   display: flex;
   flex-direction: column;
 }
